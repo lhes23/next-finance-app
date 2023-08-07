@@ -4,6 +4,7 @@ import DashboardCharts from "./DashboardCharts"
 import IncomeExpenseTable from "./IncomeExpenseTable"
 
 const MainContent = ({ incomesExpenses }: { incomesExpenses: any }) => {
+  console.log({ incomesExpenses })
   return (
     <>
       <h2 className="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">

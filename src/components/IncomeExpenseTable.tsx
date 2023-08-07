@@ -1,10 +1,18 @@
 "use client"
+import { baseUrl } from "@/lib/baseUrl"
 import { incomeExpense } from "@/lib/dbData"
 import React from "react"
 import { BsPencil, BsFillTrashFill } from "react-icons/bs"
 
 const IncomeExpenseTable = ({ incomesExpenses }: { incomesExpenses: any }) => {
-  console.log({ incomesExpenses })
+  const deleteBudgetHandler = async (id: string) => {
+    const res = await fetch(`${baseUrl}/api/budgets/${id}`, {
+      method: "DELETE"
+    })
+    if (!res.ok) return
+    console.log(`Deleted: ${id}`)
+  }
+
   return (
     <>
       <div className="w-full overflow-hidden rounded-lg shadow-xs">
@@ -70,6 +78,7 @@ const IncomeExpenseTable = ({ incomesExpenses }: { incomesExpenses: any }) => {
                         <button
                           className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                           aria-label="Delete"
+                          onClick={() => deleteBudgetHandler(ie.id)}
                         >
                           <BsFillTrashFill />
                         </button>

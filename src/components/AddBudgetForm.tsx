@@ -1,20 +1,29 @@
 "use client"
 import React, { useState } from "react"
 import ButtonComp from "./ButtonComp"
+import { baseUrl } from "@/lib/baseUrl"
 
 const AddBudgetForm = () => {
   const [budgetName, setBudgetName] = useState<string>("")
   const [budgetType, setBudgetType] = useState<string>("expense")
   const [budgetAmount, setBudgetAmount] = useState<string>("")
 
-  const formHandler = (e: React.FormEvent) => {
+  const formHandler = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log({
-      budgetDate: new Date().toLocaleString(),
+    const data = {
       budgetName,
       budgetType,
       budgetAmount
+    }
+    const res = await fetch(`${baseUrl}/api/budgets`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
     })
+
+    if (!res.ok) return
 
     setBudgetName("")
     setBudgetType("expense")
@@ -37,7 +46,6 @@ const AddBudgetForm = () => {
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
               id="inline-full-name"
               type="text"
-              defaultValue=""
               value={budgetName}
               onChange={(e) => setBudgetName(e.target.value)}
             />
@@ -66,7 +74,7 @@ const AddBudgetForm = () => {
                 type="radio"
                 className="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                 name="budgetType"
-                defaultValue="expense"
+                value="expense"
                 checked={budgetType === "expense"}
                 onChange={() => setBudgetType("expense")}
               />
@@ -85,7 +93,6 @@ const AddBudgetForm = () => {
             <input
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
               type="text"
-              defaultValue=""
               value={budgetAmount}
               onChange={(e) => setBudgetAmount(e.target.value)}
             />
