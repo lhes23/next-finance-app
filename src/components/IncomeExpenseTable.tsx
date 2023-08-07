@@ -1,31 +1,8 @@
+import { incomeExpense } from "@/lib/dbData"
 import React from "react"
 import { BsPencil, BsFillTrashFill } from "react-icons/bs"
 
 const IncomeExpenseTable = () => {
-  const incomeExpense = [
-    {
-      id: "1",
-      inputDate: "2023-08-05",
-      name: "salary",
-      amount: "1000",
-      type: "income"
-    },
-    {
-      id: "2",
-      inputDate: "2023-08-05",
-      name: "grocery",
-      amount: "500",
-      type: "expense"
-    },
-    {
-      id: "3",
-      inputDate: "2023-08-05",
-      name: "cake",
-      amount: "500",
-      type: "income"
-    }
-  ]
-
   return (
     <>
       <div className="w-full overflow-hidden rounded-lg shadow-xs">
@@ -42,7 +19,10 @@ const IncomeExpenseTable = () => {
             </thead>
             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
               {incomeExpense.map((ie) => {
-                const col = ie.type === "income" ? "green" : "red"
+                const col =
+                  ie.type === "income"
+                    ? "text-green-700 bg-green-100"
+                    : "text-red-700 bg-red-100"
                 return (
                   <tr key={ie.id} className="">
                     <td className="px-4 py-3">
@@ -72,7 +52,7 @@ const IncomeExpenseTable = () => {
                     <td className="px-4 py-3 text-xs">₱ {ie.amount}</td>
                     <td className="px-4 py-3 text-sm">
                       <span
-                        className={`px-2 py-1 font-semibold leading-tight rounded-full dark:bg-${col}-700 dark:text-${col}-100 text-${col}-700 bg-${col}-100`}
+                        className={`px-2 py-1 font-semibold leading-tight rounded-full ${col}`}
                       >
                         {ie.type}
                       </span>

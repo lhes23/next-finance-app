@@ -1,6 +1,7 @@
 import React from "react"
 import LineChart, { IData } from "./LineChart"
-import { cashData, expensesData, incomesData, months } from "@/lib/months"
+import { months } from "@/lib/months"
+import { cashData, expensesData, incomesData } from "@/lib/dbData"
 
 const DashboardCharts = () => {
   const incomesExpensesData: IData = {

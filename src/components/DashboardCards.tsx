@@ -1,7 +1,7 @@
 "use client"
 import React from "react"
 import Card from "./Card"
-import { cashData, expensesData, incomesData } from "@/lib/months"
+import { cashData, expensesData, incomesData } from "@/lib/dbData"
 
 const DashboardCards = () => {
   const incomeStatement = [
