@@ -1,8 +1,10 @@
+"use client"
 import { incomeExpense } from "@/lib/dbData"
 import React from "react"
 import { BsPencil, BsFillTrashFill } from "react-icons/bs"
 
-const IncomeExpenseTable = () => {
+const IncomeExpenseTable = ({ incomesExpenses }: { incomesExpenses: any }) => {
+  console.log({ incomesExpenses })
   return (
     <>
       <div className="w-full overflow-hidden rounded-lg shadow-xs">
@@ -18,9 +20,9 @@ const IncomeExpenseTable = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-              {incomeExpense.map((ie) => {
+              {incomesExpenses?.map((ie: any) => {
                 const col =
-                  ie.type === "income"
+                  ie.budgetType === "income"
                     ? "text-green-700 bg-green-100"
                     : "text-red-700 bg-red-100"
                 return (
@@ -41,20 +43,20 @@ const IncomeExpenseTable = () => {
                           />
                         </div>
                         <div>
-                          <p className="font-semibold">{ie.inputDate}</p>
+                          <p className="font-semibold">{ie.createdAt}</p>
                           <p className="text-xs text-gray-600 dark:text-gray-400">
                             10x Developer
                           </p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-4 py-3 text-sm">{ie.name}</td>
-                    <td className="px-4 py-3 text-xs">₱ {ie.amount}</td>
+                    <td className="px-4 py-3 text-sm">{ie.budgetName}</td>
+                    <td className="px-4 py-3 text-xs">₱ {ie.budgetAmount}</td>
                     <td className="px-4 py-3 text-sm">
                       <span
                         className={`px-2 py-1 font-semibold leading-tight rounded-full ${col}`}
                       >
-                        {ie.type}
+                        {ie.budgetType}
                       </span>
                     </td>
                     <td className="px-4 py-3">

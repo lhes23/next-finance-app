@@ -1,12 +1,17 @@
-import Header from "@/components/Header"
 import MainContent from "@/components/MainContent"
-import Sidebar from "@/components/Sidebar"
 import React from "react"
 
-const DashboardPage = () => {
+const fetchData = async () => {
+  const res = await fetch("http://localhost:3000/api/budgets")
+  const data = await res.json()
+  return data
+}
+
+const DashboardPage = async () => {
+  const incomesExpenses = await fetchData()
   return (
     <>
-      <MainContent />
+      <MainContent incomesExpenses={incomesExpenses} />
     </>
   )
 }

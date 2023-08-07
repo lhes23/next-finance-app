@@ -9,7 +9,16 @@ const AddBudgetForm = () => {
 
   const formHandler = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log({ budgetName, budgetType, budgetAmount })
+    console.log({
+      budgetDate: new Date().toLocaleString(),
+      budgetName,
+      budgetType,
+      budgetAmount
+    })
+
+    setBudgetName("")
+    setBudgetType("expense")
+    setBudgetAmount("")
   }
   return (
     <>

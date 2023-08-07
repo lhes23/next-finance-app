@@ -3,7 +3,7 @@ import DashboardCards from "./DashboardCards"
 import DashboardCharts from "./DashboardCharts"
 import IncomeExpenseTable from "./IncomeExpenseTable"
 
-const MainContent = () => {
+const MainContent = ({ incomesExpenses }: { incomesExpenses: any }) => {
   return (
     <>
       <h2 className="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
@@ -16,7 +16,7 @@ const MainContent = () => {
       <DashboardCharts />
 
       {/* New Table */}
-      <IncomeExpenseTable />
+      <IncomeExpenseTable incomesExpenses={incomesExpenses} />
     </>
   )
 }
