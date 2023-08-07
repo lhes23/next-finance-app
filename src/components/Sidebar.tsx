@@ -41,7 +41,7 @@ const Sidebar = ({ isSideBarOpen }: { isSideBarOpen: boolean }) => {
     <>
       <div>
         {/* Desktop View */}
-        <aside className="z-20 hidden md:block w-64 overflow-y-auto bg-white dark:bg-gray-800 flex-shrink-0">
+        <aside className="z-20 hidden md:block w-64 overflow-y-auto bg-white dark:bg-gray-800 flex-shrink-0 h-screen">
           <SideBarContent title={title} sidebarLinks={sidebarLinks} />
         </aside>
         {/* Mobile View */}
