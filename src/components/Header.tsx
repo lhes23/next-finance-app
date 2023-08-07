@@ -3,6 +3,8 @@ import React, { useState } from "react"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { BiSolidBrightnessHalf } from "react-icons/bi"
 import { IoNotificationsCircle } from "react-icons/io5"
+import Link from "next/link"
+import ButtonComp from "./ButtonComp"
 
 const Header = ({
   isSideBarOpen,
@@ -28,7 +30,16 @@ const Header = ({
             <GiHamburgerMenu />
           </button>
 
-          {/* <div className="w-[50%] border-8"></div> */}
+          <div className="px-6">
+            <ButtonComp>
+              <Link href="/dashboard/add-budget">
+                Add Budget
+                <span className="ml-2" aria-hidden="true">
+                  +
+                </span>
+              </Link>
+            </ButtonComp>
+          </div>
 
           <ul className="flex flex-shrink-0 space-x-6 w-64 justify-end">
             {/* <!-- Theme toggler --> */}
