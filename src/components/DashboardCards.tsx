@@ -2,23 +2,30 @@
 import React from "react"
 import Card from "./Card"
 import { cashData, expensesData, incomesData } from "@/lib/dbData"
+import { GiReceiveMoney, GiPayMoney, GiCash } from "react-icons/gi"
 
 const DashboardCards = () => {
   const incomeStatement = [
     {
       name: "income",
-      amount: incomesData.map((inc) => inc.income).reduce((a, c) => a + c)
+      amount: incomesData.map((inc) => inc.income).reduce((a, c) => a + c),
+      icon: <GiReceiveMoney />,
+      color: "green"
     },
     {
       name: "expenses",
       amount: expensesData
         .map((exp) => exp.expense)
         .reduce((a, c) => a + c)
-        .toFixed(2)
+        .toFixed(2),
+      icon: <GiPayMoney />,
+      color: "red"
     },
     {
       name: "cashflow",
-      amount: cashData.map((cash) => cash.flow).reduce((a, c) => a + c)
+      amount: cashData.map((cash) => cash.flow).reduce((a, c) => a + c),
+      icon: <GiCash />,
+      color: "blue"
     }
   ]
 

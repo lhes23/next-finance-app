@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { prisma } from "@/prisma/prismaInit"
+import { prisma } from "@/app/api/prismaInit"
 
 interface IParams {
   params: {

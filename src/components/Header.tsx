@@ -41,7 +41,7 @@ const Header = ({
             </ButtonComp>
           </div>
 
-          <ul className="flex flex-shrink-0 space-x-6 w-64 justify-end">
+          <ul className="flex space-x-6 justify-end">
             {/* <!-- Theme toggler --> */}
             <li className="flex">
               <button
@@ -72,7 +72,7 @@ const Header = ({
                 ></span>
               </button>
               {isNotiOpen && (
-                <div x-if="isNotificationsMenuOpen">
+                <div>
                   <ul className="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:text-gray-300 dark:border-gray-700 dark:bg-gray-700">
                     <li className="flex">
                       <a
