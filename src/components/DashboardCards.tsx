@@ -10,11 +10,12 @@ const DashboardCards = ({
   incomesExpenses: IBudget[]
 }) => {
   const getAmount = (type: string) => {
-    return incomesExpenses
-      .filter((inExp: any) => inExp.budgetType === type)
-      .map((c: any) => c.budgetAmount)
-      .reduce((a: any, c: any) => Number(a) + Number(c))
-      .toFixed(2)
+    return parseInt(
+      incomesExpenses
+        .filter((inExp: any) => inExp.budgetType === type)
+        .map((c: any) => c.budgetAmount)
+        .reduce((a: any, c: any) => Number(a) + Number(c), 0)
+    )
   }
 
   const incomesAmount = getAmount("income")

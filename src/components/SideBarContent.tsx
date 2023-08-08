@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { AiOutlineDashboard } from "react-icons/ai"
 import ButtonComp from "./ButtonComp"
 
 const SideBarContent = ({

@@ -3,6 +3,7 @@ import DashboardCards from "./DashboardCards"
 import DashboardCharts from "./DashboardCharts"
 import IncomeExpenseTable from "./IncomeExpenseTable"
 import { IBudget } from "@/lib/interfaces"
+import AddBudgetModal from "./AddBudgetModal"
 
 const MainContent = ({ incomesExpenses }: { incomesExpenses: IBudget[] }) => {
   return (

@@ -5,6 +5,7 @@ import { BiSolidBrightnessHalf } from "react-icons/bi"
 import { IoNotificationsCircle } from "react-icons/io5"
 import Link from "next/link"
 import ButtonComp from "./ButtonComp"
+import AddBudgetModal from "./AddBudgetModal"
 
 const Header = ({
   isSideBarOpen,
@@ -31,14 +32,7 @@ const Header = ({
           </button>
 
           <div className="px-6">
-            <ButtonComp>
-              <Link href="/dashboard/add-budget">
-                Add Budget
-                <span className="ml-2" aria-hidden="true">
-                  +
-                </span>
-              </Link>
-            </ButtonComp>
+            <AddBudgetModal />
           </div>
 
           <ul className="flex space-x-6 justify-end">

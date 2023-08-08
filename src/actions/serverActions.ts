@@ -22,3 +22,11 @@ export const addBudgetHandler = async (e: FormData) => {
 
   revalidateTag("budgets")
 }
+
+export const deleteBudget = async (id: string) => {
+  const res = await fetch(`${baseUrl}/api/budgets/${id}`, {
+    method: "DELETE"
+  })
+  if (!res.ok) return
+  revalidateTag("budgets")
+}
