@@ -1,37 +1,19 @@
 "use client"
 import React, { useState } from "react"
 import ButtonComp from "./ButtonComp"
-import { baseUrl } from "@/lib/baseUrl"
+import { addBudgetHandler } from "@/actions/serverActions"
 
 const AddBudgetForm = () => {
   const [budgetName, setBudgetName] = useState<string>("")
   const [budgetType, setBudgetType] = useState<string>("expense")
   const [budgetAmount, setBudgetAmount] = useState<string>("")
 
-  const formHandler = async (e: React.FormEvent) => {
-    e.preventDefault()
-    const data = {
-      budgetName,
-      budgetType,
-      budgetAmount
-    }
-    const res = await fetch(`${baseUrl}/api/budgets`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    })
-
-    if (!res.ok) return
-
-    setBudgetName("")
-    setBudgetType("expense")
-    setBudgetAmount("")
-  }
   return (
     <>
-      <form className="w-full max-w-md shadow-lg p-10" onSubmit={formHandler}>
+      <form
+        className="w-full max-w-md shadow-lg p-10"
+        action={addBudgetHandler}
+      >
         <div className="md:flex md:items-center mb-6">
           <div className="md:w-1/3">
             <label
@@ -46,6 +28,7 @@ const AddBudgetForm = () => {
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
               id="inline-full-name"
               type="text"
+              name="budgetName"
               value={budgetName}
               onChange={(e) => setBudgetName(e.target.value)}
             />
@@ -93,6 +76,7 @@ const AddBudgetForm = () => {
             <input
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
               type="text"
+              name="budgetAmount"
               value={budgetAmount}
               onChange={(e) => setBudgetAmount(e.target.value)}
             />

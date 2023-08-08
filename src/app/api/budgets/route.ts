@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { prisma } from "@/app/api/prismaInit"
+import { prisma } from "@/prisma/prismaInit"
 
 export const GET = async () => {
   const budgets = await prisma.budget.findMany()

@@ -3,7 +3,10 @@ import React from "react"
 
 const fetchData = async () => {
   const res = await fetch("http://localhost:3000/api/budgets", {
-    cache: "no-store"
+    cache: "no-store",
+    next: {
+      tags: ["budgets"]
+    }
   })
   const data = await res.json()
   return data

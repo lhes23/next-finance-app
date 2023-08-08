@@ -1,10 +1,14 @@
 "use client"
-import { baseUrl } from "@/lib/baseUrl"
-import { incomeExpense } from "@/lib/dbData"
 import React from "react"
+import { baseUrl } from "@/lib/baseUrl"
+import { IBudget } from "@/lib/interfaces"
 import { BsPencil, BsFillTrashFill } from "react-icons/bs"
 
-const IncomeExpenseTable = ({ incomesExpenses }: { incomesExpenses: any }) => {
+const IncomeExpenseTable = ({
+  incomesExpenses
+}: {
+  incomesExpenses: IBudget[]
+}) => {
   const deleteBudgetHandler = async (id: string) => {
     const res = await fetch(`${baseUrl}/api/budgets/${id}`, {
       method: "DELETE"
@@ -28,11 +32,16 @@ const IncomeExpenseTable = ({ incomesExpenses }: { incomesExpenses: any }) => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-              {incomesExpenses?.map((ie: any) => {
+              {incomesExpenses?.map((ie: IBudget) => {
                 const col =
                   ie.budgetType === "income"
                     ? "text-green-700 bg-green-100"
                     : "text-red-700 bg-red-100"
+
+                const d =
+                  ie?.updatedAt !== undefined
+                    ? new Date(Date.parse(ie.updatedAt)).toString().split(" ")
+                    : ""
                 return (
                   <tr key={ie.id} className="">
                     <td className="px-4 py-3">
@@ -51,7 +60,7 @@ const IncomeExpenseTable = ({ incomesExpenses }: { incomesExpenses: any }) => {
                           />
                         </div>
                         <div>
-                          <p className="font-semibold">{ie.createdAt}</p>
+                          <p className="font-semibold">{`${d[0]} ${d[1]} ${d[2]}`}</p>
                           <p className="text-xs text-gray-600 dark:text-gray-400">
                             10x Developer
                           </p>

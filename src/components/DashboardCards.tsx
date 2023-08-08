@@ -1,35 +1,47 @@
 "use client"
 import React from "react"
 import Card from "./Card"
-import { cashData, expensesData, incomesData } from "@/lib/dbData"
 import { GiReceiveMoney, GiPayMoney, GiCash } from "react-icons/gi"
+import { IBudget } from "@/lib/interfaces"
 
-const DashboardCards = () => {
+const DashboardCards = ({
+  incomesExpenses
+}: {
+  incomesExpenses: IBudget[]
+}) => {
+  const getAmount = (type: string) => {
+    return incomesExpenses
+      .filter((inExp: any) => inExp.budgetType === type)
+      .map((c: any) => c.budgetAmount)
+      .reduce((a: any, c: any) => Number(a) + Number(c))
+      .toFixed(2)
+  }
+
+  const incomesAmount = getAmount("income")
+  const expensesAmount = getAmount("expense")
+  const cashFlowAmount = incomesAmount - expensesAmount
+
   const incomeStatement = [
     {
       name: "income",
-      amount: incomesData.map((inc) => inc.income).reduce((a, c) => a + c),
+      amount: incomesAmount,
       icon: <GiReceiveMoney />,
       color: "green"
     },
     {
       name: "expenses",
-      amount: expensesData
-        .map((exp) => exp.expense)
-        .reduce((a, c) => a + c)
-        .toFixed(2),
+      amount: expensesAmount,
       icon: <GiPayMoney />,
       color: "red"
     },
     {
       name: "cashflow",
-      amount: cashData.map((cash) => cash.flow).reduce((a, c) => a + c),
+      amount: cashFlowAmount,
       icon: <GiCash />,
       color: "blue"
     }
   ]
 
-  console.log()
   return (
     <>
       {/* Cards */}
