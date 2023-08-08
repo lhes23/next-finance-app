@@ -46,7 +46,7 @@ const AddBudgetModal = () => {
                         </button>
                         <button
                           type="submit"
-                          onClick={() => setShowModal(false)}
+                          // onClick={() => setShowModal(false)}
                         >
                           <ButtonComp>Add Budget</ButtonComp>
                         </button>
