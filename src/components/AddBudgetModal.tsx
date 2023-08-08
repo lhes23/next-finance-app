@@ -26,11 +26,11 @@ const AddBudgetModal = () => {
                   {/*header*/}
                   <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                     <h3 className="text-3xl font-semibold">Add a Budget</h3>
-                    <button
-                      className="p-1 ml-auto border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                      onClick={() => setShowModal(false)}
-                    >
-                      <AiOutlineCloseCircle className="text-red-500" />
+                    <button className="p-1 ml-auto border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none">
+                      <AiOutlineCloseCircle
+                        className="text-red-500"
+                        onClick={() => setShowModal(false)}
+                      />
                     </button>
                   </div>
                   {/*body*/}
