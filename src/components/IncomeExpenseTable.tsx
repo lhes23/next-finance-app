@@ -1,10 +1,8 @@
 "use client"
 import React from "react"
-import { baseUrl } from "@/lib/baseUrl"
 import { IBudget } from "@/lib/interfaces"
 import { BsPencil, BsFillTrashFill } from "react-icons/bs"
 import { deleteBudget } from "@/actions/serverActions"
-import Image from "next/image"
 
 const IncomeExpenseTable = ({
   incomesExpenses
@@ -42,7 +40,7 @@ const IncomeExpenseTable = ({
                       <div className="flex items-center text-sm">
                         {/* Avatar with inset shadow */}
                         <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                          <Image
+                          <img
                             className="object-cover w-full h-full rounded-full"
                             src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
                             alt=""

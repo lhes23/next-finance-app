@@ -119,6 +119,8 @@ const Header = ({
                   src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
                   alt=""
                   aria-hidden="true"
+                  width={32}
+                  height={32}
                 />
               </button>
               {isProfileOpen && (
