@@ -18,20 +18,22 @@ const ConfirmDeleteModal = ({
         <button
           type="button"
           onClick={() => setShowDeleteModal(true)}
-          className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+          className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray"
         >
           {children}
         </button>
 
         {showDeleteModal && (
           <>
-            <div className="justify-center mx-6 items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none dark:bg-gray-800">
+            <div className="justify-center mx-6 items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none dark:text-gray-800 ">
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
                 {/*content*/}
                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                   {/*header*/}
                   <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                    <h3 className="text-xl font-semibold">Delete a Budget</h3>
+                    <h3 className="text-xl font-semibold text-purple-600">
+                      Delete a Budget
+                    </h3>
                     <button className="p-1 ml-auto border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none">
                       <AiOutlineCloseCircle
                         className="text-red-500"
