@@ -2,7 +2,7 @@
 import React from "react"
 import { addBudgetHandler } from "@/actions/serverActions"
 
-const AddBudgetForm = ({ children }: { children: React.ReactNode }) => {
+const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
   return (
     <>
       <form className="w-full max-w-md p-2" action={addBudgetHandler}>
