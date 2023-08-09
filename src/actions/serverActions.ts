@@ -1,7 +1,7 @@
 "use server"
 
 import { baseUrl } from "@/lib/baseUrl"
-import { revalidateTag } from "next/cache"
+import { revalidatePath, revalidateTag } from "next/cache"
 
 export const addBudgetHandler = async (e: FormData) => {
   const data = {

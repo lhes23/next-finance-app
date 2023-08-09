@@ -46,7 +46,7 @@ const AddBudgetForm = ({ children }: { children: React.ReactNode }) => {
                 className="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                 name="budgetType"
                 value="expense"
-                checked
+                defaultChecked
               />
               <span className="ml-2">Expense</span>
             </label>

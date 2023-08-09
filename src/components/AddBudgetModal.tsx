@@ -46,7 +46,9 @@ const AddBudgetModal = () => {
                         </button>
                         <button
                           type="submit"
-                          // onClick={() => setShowModal(false)}
+                          onClick={() =>
+                            setTimeout(() => setShowModal(false), 1000)
+                          }
                         >
                           <ButtonComp>Add Budget</ButtonComp>
                         </button>
