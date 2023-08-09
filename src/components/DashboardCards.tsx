@@ -24,19 +24,19 @@ const DashboardCards = ({
 
   const incomeStatement = [
     {
-      name: "income",
+      name: "Income",
       amount: incomesAmount,
       icon: <GiReceiveMoney />,
       color: "bg-green-500"
     },
     {
-      name: "expenses",
+      name: "Expenses",
       amount: expensesAmount,
       icon: <GiPayMoney />,
       color: "bg-red-500"
     },
     {
-      name: "cashflow",
+      name: "Cashflow",
       amount: cashFlowAmount,
       icon: <GiCash />,
       color: "bg-blue-500"
