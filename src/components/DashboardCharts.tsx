@@ -1,23 +1,30 @@
+"use client"
 import React from "react"
 import LineChart, { IData } from "./LineChart"
-import { months } from "@/lib/months"
-import { cashData, expensesData, incomesData } from "@/lib/dbData"
+import { IBudget } from "@/lib/interfaces"
+import { getIncomesExpensesData } from "@/lib/getIncomesExpensesData"
 
-const DashboardCharts = () => {
+const DashboardCharts = ({
+  incomesExpenses
+}: {
+  incomesExpenses: IBudget[]
+}) => {
+  const monthsIncomesExpenses = getIncomesExpensesData(incomesExpenses)
+
   const incomesExpensesData: IData = {
-    labels: months,
+    labels: monthsIncomesExpenses.map((m) => m.month),
     datasets: [
       {
         fill: true,
         label: "Income",
-        data: incomesData.map((inc) => inc.income),
+        data: monthsIncomesExpenses.map((m) => m.incomes),
         borderColor: "rgb(21, 128, 61)",
         backgroundColor: "rgba(21, 128, 61, 0.5)"
       },
       {
         fill: true,
         label: "Expenses",
-        data: expensesData.map((inc) => inc.expense),
+        data: monthsIncomesExpenses.map((m) => m.expenses),
         borderColor: "rgb(185, 28, 28)",
         backgroundColor: "rgba(185, 28, 28,0.5)"
       }
@@ -25,16 +32,17 @@ const DashboardCharts = () => {
   }
 
   const cashFlowData = {
-    labels: months,
+    labels: monthsIncomesExpenses.map((m) => m.month),
     datasets: [
       {
         fill: false,
         label: "Cash Flow",
-        data: cashData.map((c) => c.flow),
+        data: monthsIncomesExpenses.map((m) => m.cashFlow),
         borderColor: "blue"
       }
     ]
   }
+
   return (
     <>
       <h2 className="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">

@@ -3,6 +3,6 @@ export interface IBudget {
   budgetName: string
   budgetType: string
   budgetAmount: number | string
-  createdAt?: string
+  createdAt: string
   updatedAt?: string
 }
