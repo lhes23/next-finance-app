@@ -13,7 +13,7 @@ export const addBudgetHandler = async (e: FormData) => {
         .map((amn) => parseInt(amn))
         .reduce((a, c) => a + c)
     : amnt
-  console.log({ amountTotal })
+
   const data = {
     budgetName: e.get("budgetName")?.toString(),
     budgetType: e.get("budgetType")?.toString(),

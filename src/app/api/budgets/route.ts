@@ -8,8 +8,6 @@ export const GET = async () => {
 
 export const POST = async (req: Request) => {
   const data = await req.json()
-  const budget = await prisma.budget.create({
-    data
-  })
+  const budget = await prisma.budget.create({ data })
   return NextResponse.json(budget)
 }
