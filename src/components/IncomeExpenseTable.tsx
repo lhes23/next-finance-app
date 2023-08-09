@@ -9,6 +9,12 @@ const IncomeExpenseTable = ({
 }: {
   incomesExpenses: IBudget[]
 }) => {
+  incomesExpenses = incomesExpenses.sort((a: any, b: any) => {
+    const b_date: any = new Date(b.createdAt)
+    const a_date: any = new Date(a.createdAt)
+    return b_date - a_date
+  })
+
   return (
     <>
       <div className="w-full overflow-hidden rounded-lg shadow-xs">

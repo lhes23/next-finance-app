@@ -46,7 +46,7 @@ const DashboardCards = ({
   return (
     <>
       {/* Cards */}
-      <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-6 mb-8 grid-cols-1 md:grid-cols-3">
         {incomeStatement.map((income, i) => (
           <Card key={i} {...income} />
         ))}
