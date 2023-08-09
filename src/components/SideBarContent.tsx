@@ -27,7 +27,7 @@ const SideBarContent = ({
               href={side.url}
             >
               {side.icon}
-              <span className="ml-4 md:text-lg text-base font-semibold text-purple-600">
+              <span className="ml-4 text-sm font-semibold text-purple-600">
                 {side.name}
               </span>
             </Link>

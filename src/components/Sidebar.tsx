@@ -41,12 +41,12 @@ const Sidebar = ({ isSideBarOpen }: { isSideBarOpen: boolean }) => {
     <>
       <div>
         {/* Desktop View */}
-        <aside className="z-20 hidden md:block w-64 overflow-y-auto bg-white dark:bg-gray-800 flex-shrink-0 h-screen">
+        <aside className="z-20 hidden md:block w-52 overflow-y-auto bg-white dark:bg-gray-800 flex-shrink-0 h-screen">
           <SideBarContent title={title} sidebarLinks={sidebarLinks} />
         </aside>
         {/* Mobile View */}
         {isSideBarOpen && (
-          <aside className="fixed inset-y-0 z-20 flex-shrink-0 w-64 mt-16 overflow-y-auto bg-white dark:bg-gray-800 md:hidden">
+          <aside className="fixed inset-y-0 z-20 flex-shrink-0 w-52 mt-16 overflow-y-auto bg-white dark:bg-gray-800 md:hidden">
             <SideBarContent title={title} sidebarLinks={sidebarLinks} />
           </aside>
         )}
