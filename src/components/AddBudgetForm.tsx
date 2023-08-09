@@ -5,7 +5,7 @@ import { addBudgetHandler } from "@/actions/serverActions"
 const AddBudgetForm = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <form className="w-full max-w-md p-10" action={addBudgetHandler}>
+      <form className="w-full max-w-md p-2" action={addBudgetHandler}>
         <div className="md:flex md:items-center mb-6">
           <div className="md:w-1/3">
             <label
