@@ -9,7 +9,7 @@ const Login = () => {
         <div className="h-32 md:h-auto md:w-1/2">
           <img
             aria-hidden="true"
-            className="object-cover w-full h-full dark:hidden"
+            className="object-cover w-full h-full"
             src="/imgs/office.jpg"
             alt="Office"
           />
