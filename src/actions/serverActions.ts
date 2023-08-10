@@ -28,7 +28,7 @@ export const addBudgetHandler = async (e: FormData) => {
     body: JSON.stringify(data)
   })
 
-  if (!res.ok) return
+  if (!res.ok) throw new Error()
 
   revalidateTag("budgets")
 }
