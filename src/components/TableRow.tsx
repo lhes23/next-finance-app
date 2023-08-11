@@ -1,7 +1,10 @@
+"use client"
 import { IBudget } from "@/lib/interfaces"
 import React from "react"
 import { BsFillTrashFill, BsPencil } from "react-icons/bs"
 import ConfirmDeleteModal from "./ConfirmDeleteModal"
+import Swal from "sweetalert2"
+import { deleteBudget } from "@/actions/serverActions"
 
 const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
   const col =
@@ -13,6 +16,23 @@ const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
     incomeExpenseRow?.updatedAt !== undefined
       ? new Date(Date.parse(incomeExpenseRow.updatedAt)).toString().split(" ")
       : ""
+
+  const clickHandler = (id: string) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setTimeout(() => deleteBudget(id), 1000)
+        Swal.fire("Deleted!", "Your file has been deleted.", "success")
+      }
+    })
+  }
   return (
     <tr key={incomeExpenseRow.id} className="">
       <td className="px-4 py-3">
@@ -44,6 +64,9 @@ const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
           <ConfirmDeleteModal id={incomeExpenseRow.id}>
             <BsFillTrashFill />
           </ConfirmDeleteModal>
+          <button onClick={() => clickHandler(incomeExpenseRow.id)}>
+            <BsFillTrashFill color="red" />
+          </button>
         </div>
       </td>
     </tr>
