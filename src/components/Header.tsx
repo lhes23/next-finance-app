@@ -1,6 +1,5 @@
 // "use client"
 import React, { useState } from "react"
-import { BiSolidBrightnessHalf } from "react-icons/bi"
 import AddBudgetModal from "./AddBudgetModal"
 import MobileHamburger from "./MobileHamburger"
 import HeaderNotification from "./HeaderNotification"
@@ -34,7 +33,7 @@ const Header = ({
 
           <ul className="flex space-x-6 justify-end">
             {/* <!-- Theme toggler --> */}
-            <li className="flex">
+            {/* <li className="flex">
               <button
                 className="rounded-md focus:outline-none focus:shadow-outline-purple"
                 //   @click="toggleTheme"
@@ -42,7 +41,7 @@ const Header = ({
               >
                 <BiSolidBrightnessHalf />
               </button>
-            </li>
+            </li> */}
             {/* <!-- Notifications menu --> */}
             <li className="relative">
               <HeaderNotification
