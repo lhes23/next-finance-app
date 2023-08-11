@@ -10,7 +10,11 @@ const AddBudgetModal = () => {
     <>
       <div>
         <ButtonComp>
-          <button type="button" onClick={() => setShowModal(true)}>
+          <button
+            type="button"
+            onClick={() => setShowModal(true)}
+            className="text-sm md:text-lg"
+          >
             Add Budget
             <span className="ml-2" aria-hidden="true">
               +
@@ -46,9 +50,9 @@ const AddBudgetModal = () => {
                         </button>
                         <button
                           type="submit"
-                          onClick={() =>
+                          onClick={() => {
                             setTimeout(() => setShowModal(false), 1000)
-                          }
+                          }}
                         >
                           <ButtonComp>Add Budget</ButtonComp>
                         </button>

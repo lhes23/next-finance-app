@@ -1,10 +1,9 @@
 "use client"
-import { IBudget } from "@/lib/interfaces"
 import React from "react"
+import { IBudget } from "@/lib/interfaces"
 import { BsFillTrashFill, BsPencil } from "react-icons/bs"
-import ConfirmDeleteModal from "./ConfirmDeleteModal"
-import Swal from "sweetalert2"
 import { deleteBudget } from "@/actions/serverActions"
+import Swal from "sweetalert2"
 
 const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
   const col =
@@ -17,7 +16,7 @@ const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
       ? new Date(Date.parse(incomeExpenseRow.updatedAt)).toString().split(" ")
       : ""
 
-  const clickHandler = (id: string) => {
+  const deleteHandler = (id: string) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -28,13 +27,13 @@ const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        setTimeout(() => deleteBudget(id), 1000)
-        Swal.fire("Deleted!", "Your file has been deleted.", "success")
+        deleteBudget(id)
+        Swal.fire("Deleted!", "Your budget has been deleted.", "success")
       }
     })
   }
   return (
-    <tr key={incomeExpenseRow.id} className="">
+    <tr className="">
       <td className="px-4 py-3">
         <div className="flex items-center text-sm">
           <div>
@@ -60,12 +59,11 @@ const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
           >
             <BsPencil />
           </button>
-
-          <ConfirmDeleteModal id={incomeExpenseRow.id}>
+          <button
+            onClick={() => deleteHandler(incomeExpenseRow.id)}
+            className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+          >
             <BsFillTrashFill />
-          </ConfirmDeleteModal>
-          <button onClick={() => clickHandler(incomeExpenseRow.id)}>
-            <BsFillTrashFill color="red" />
           </button>
         </div>
       </td>
