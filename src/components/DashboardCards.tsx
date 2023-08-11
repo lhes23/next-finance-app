@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 import React from "react"
 import Card from "./Card"
 import { GiReceiveMoney, GiPayMoney, GiCash } from "react-icons/gi"
@@ -10,12 +10,10 @@ const DashboardCards = ({
   incomesExpenses: IBudget[]
 }) => {
   const getAmount = (type: string) => {
-    return parseInt(
-      incomesExpenses
-        .filter((inExp: any) => inExp.budgetType === type)
-        .map((c: any) => c.budgetAmount)
-        .reduce((a: any, c: any) => Number(a) + Number(c), 0)
-    )
+    return incomesExpenses
+      .filter((inExp: IBudget) => inExp.budgetType === type)
+      .map((c: IBudget) => Number(c.budgetAmount))
+      .reduce((a: number, c: number) => a + c, 0)
   }
 
   const incomesAmount = getAmount("income")

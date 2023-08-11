@@ -32,9 +32,7 @@ const Sidebar = ({ isSideBarOpen }: { isSideBarOpen: boolean }) => {
     },
     { name: "Cards", url: "#", icon: <AiOutlineDashboard size={30} /> },
     { name: "Charts", url: "#", icon: <AiOutlineDashboard size={30} /> },
-    { name: "Buttons", url: "#", icon: <AiOutlineDashboard size={30} /> },
-    { name: "Modals", url: "#", icon: <AiOutlineDashboard size={30} /> },
-    { name: "Tables", url: "#", icon: <AiOutlineDashboard size={30} /> }
+    { name: "Buttons", url: "#", icon: <AiOutlineDashboard size={30} /> }
   ]
 
   return (
