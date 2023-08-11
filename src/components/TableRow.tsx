@@ -28,7 +28,7 @@ const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        setTimeout(() => deleteBudget(id), 1000)
+        deleteBudget(id)
         Swal.fire("Deleted!", "Your file has been deleted.", "success")
       }
     })
@@ -60,10 +60,6 @@ const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
           >
             <BsPencil />
           </button>
-
-          <ConfirmDeleteModal id={incomeExpenseRow.id}>
-            <BsFillTrashFill />
-          </ConfirmDeleteModal>
           <button onClick={() => clickHandler(incomeExpenseRow.id)}>
             <BsFillTrashFill color="red" />
           </button>
