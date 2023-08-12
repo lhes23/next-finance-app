@@ -1,26 +1,15 @@
-import { IBudget } from "./interfaces"
+import { IBudget, IIncomesExpensesData } from "./interfaces"
 import { months } from "./months"
 
 export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
-  let incomesExpensesData = [
-    { month: "January", incomes: 0, expenses: 0, cashFlow: 0 },
-    { month: "February", incomes: 0, expenses: 0, cashFlow: 0 },
-    { month: "March", incomes: 0, expenses: 0, cashFlow: 0 },
-    { month: "April", incomes: 0, expenses: 0, cashFlow: 0 },
-    { month: "May", incomes: 0, expenses: 0, cashFlow: 0 },
-    { month: "June", incomes: 0, expenses: 0, cashFlow: 0 },
-    { month: "July", incomes: 0, expenses: 0, cashFlow: 0 },
-    { month: "August", incomes: 0, expenses: 0, cashFlow: 0 },
-    { month: "September", incomes: 0, expenses: 0, cashFlow: 0 },
-    { month: "October", incomes: 0, expenses: 0, cashFlow: 0 },
-    { month: "November", incomes: 0, expenses: 0, cashFlow: 0 },
-    { month: "December", incomes: 0, expenses: 0, cashFlow: 0 }
-  ]
+  let incomesExpensesData: IIncomesExpensesData[] = months.map((month) => {
+    return { month, incomes: 0, expenses: 0, cashFlow: 0 }
+  })
 
   incomesExpenses.map((md) => {
     const b_month = months[new Date(md.createdAt).getMonth()]
     switch (b_month) {
-      case "January":
+      case "Jan":
         if (md.budgetType === "income") {
           incomesExpensesData[0].incomes += Number(md.budgetAmount)
         } else {
@@ -29,7 +18,7 @@ export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
         incomesExpensesData[0].cashFlow =
           incomesExpensesData[0].incomes - incomesExpensesData[0].expenses
         break
-      case "February":
+      case "Feb":
         if (md.budgetType === "income") {
           incomesExpensesData[1].incomes += Number(md.budgetAmount)
         } else {
@@ -38,7 +27,7 @@ export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
         incomesExpensesData[1].cashFlow =
           incomesExpensesData[1].incomes - incomesExpensesData[1].expenses
         break
-      case "March":
+      case "Mar":
         if (md.budgetType === "income") {
           incomesExpensesData[2].incomes += Number(md.budgetAmount)
         } else {
@@ -47,7 +36,7 @@ export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
         incomesExpensesData[2].cashFlow =
           incomesExpensesData[2].incomes - incomesExpensesData[2].expenses
         break
-      case "April":
+      case "Apr":
         if (md.budgetType === "income") {
           incomesExpensesData[3].incomes += Number(md.budgetAmount)
         } else {
@@ -65,7 +54,7 @@ export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
         incomesExpensesData[4].cashFlow =
           incomesExpensesData[4].incomes - incomesExpensesData[4].expenses
         break
-      case "June":
+      case "Jun":
         if (md.budgetType === "income") {
           incomesExpensesData[5].incomes += Number(md.budgetAmount)
         } else {
@@ -74,7 +63,7 @@ export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
         incomesExpensesData[5].cashFlow =
           incomesExpensesData[5].incomes - incomesExpensesData[5].expenses
         break
-      case "July":
+      case "Jul":
         if (md.budgetType === "income") {
           incomesExpensesData[6].incomes += Number(md.budgetAmount)
         } else {
@@ -83,7 +72,7 @@ export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
         incomesExpensesData[6].cashFlow =
           incomesExpensesData[6].incomes - incomesExpensesData[6].expenses
         break
-      case "August":
+      case "Aug":
         if (md.budgetType === "income") {
           incomesExpensesData[7].incomes += Number(md.budgetAmount)
         } else {
@@ -92,7 +81,7 @@ export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
         incomesExpensesData[7].cashFlow =
           incomesExpensesData[7].incomes - incomesExpensesData[7].expenses
         break
-      case "September":
+      case "Sep":
         if (md.budgetType === "income") {
           incomesExpensesData[8].incomes += Number(md.budgetAmount)
         } else {
@@ -101,7 +90,7 @@ export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
         incomesExpensesData[8].cashFlow =
           incomesExpensesData[8].incomes - incomesExpensesData[8].expenses
         break
-      case "October":
+      case "Oct":
         if (md.budgetType === "income") {
           incomesExpensesData[9].incomes += Number(md.budgetAmount)
         } else {
@@ -110,7 +99,7 @@ export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
         incomesExpensesData[9].cashFlow =
           incomesExpensesData[9].incomes - incomesExpensesData[9].expenses
         break
-      case "November":
+      case "Nov":
         if (md.budgetType === "income") {
           incomesExpensesData[10].incomes += Number(md.budgetAmount)
         } else {
@@ -119,7 +108,7 @@ export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
         incomesExpensesData[10].cashFlow =
           incomesExpensesData[10].incomes - incomesExpensesData[10].expenses
         break
-      case "December":
+      case "Dec":
         if (md.budgetType === "income") {
           incomesExpensesData[11].incomes += Number(md.budgetAmount)
         } else {

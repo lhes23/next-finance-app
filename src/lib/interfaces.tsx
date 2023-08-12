@@ -6,3 +6,10 @@ export interface IBudget {
   createdAt: string
   updatedAt?: string
 }
+
+export interface IIncomesExpensesData {
+  month: string
+  incomes: number
+  expenses: number
+  cashFlow: number
+}
