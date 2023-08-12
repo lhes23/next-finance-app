@@ -21,8 +21,8 @@ const Sidebar = ({ isSideBarOpen }: { isSideBarOpen: boolean }) => {
       )
     },
     {
-      name: "Forms",
-      url: "/dashboard/forms",
+      name: "All Budgets",
+      url: "/dashboard/all-budgets",
       icon: (
         <BsClipboardCheck
           size={iconClassName.size}
