@@ -2,12 +2,13 @@ import React from "react"
 import SideBarContent from "./SideBarContent"
 import { AiOutlineDashboard } from "react-icons/ai"
 import { BsClipboardCheck } from "react-icons/bs"
+import { FaMoneyBillTrendUp } from "react-icons/fa6"
 
 const Sidebar = ({ isSideBarOpen }: { isSideBarOpen: boolean }) => {
   const title = "Finance App"
   const iconClassName = {
     color: "text-purple-600",
-    size: 25
+    size: 20
   }
   const sidebarLinks = [
     {
@@ -30,9 +31,16 @@ const Sidebar = ({ isSideBarOpen }: { isSideBarOpen: boolean }) => {
         />
       )
     },
-    { name: "Cards", url: "#", icon: <AiOutlineDashboard size={30} /> },
-    { name: "Charts", url: "#", icon: <AiOutlineDashboard size={30} /> },
-    { name: "Buttons", url: "#", icon: <AiOutlineDashboard size={30} /> }
+    {
+      name: "Yearly Budgets",
+      url: "/dashboard/yearly-budgets",
+      icon: (
+        <FaMoneyBillTrendUp
+          size={iconClassName.size}
+          className={iconClassName.color}
+        />
+      )
+    }
   ]
 
   return (

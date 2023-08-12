@@ -8,6 +8,7 @@ export interface IBudget {
 }
 
 export interface IIncomesExpensesData {
+  year: number
   month: string
   incomes: number
   expenses: number

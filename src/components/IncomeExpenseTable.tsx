@@ -1,8 +1,6 @@
 import React from "react"
 import { IBudget } from "@/lib/interfaces"
 import TableRow from "./TableRow"
-import { months } from "@/lib/months"
-import { getIncomeExpenseThisMonth } from "@/lib/getIncomeExpensesThisMonth"
 
 const IncomeExpenseTable = ({
   incomesExpenses
