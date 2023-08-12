@@ -3,14 +3,16 @@ import React from "react"
 import Card from "./Card"
 import { GiReceiveMoney, GiPayMoney, GiCash } from "react-icons/gi"
 import { IBudget } from "@/lib/interfaces"
+import { getIncomeExpenseThisMonth } from "@/lib/getIncomeExpensesThisMonth"
 
 const DashboardCards = ({
   incomesExpenses
 }: {
   incomesExpenses: IBudget[]
 }) => {
+  const incomeExpensThisMonth = getIncomeExpenseThisMonth(incomesExpenses)
   const getAmount = (type: string) => {
-    return incomesExpenses
+    return incomeExpensThisMonth
       .filter((inExp: IBudget) => inExp.budgetType === type)
       .map((c: IBudget) => Number(c.budgetAmount))
       .reduce((a: number, c: number) => a + c, 0)
