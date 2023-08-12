@@ -9,7 +9,6 @@ const IncomeExpenseTable = ({
 }: {
   incomesExpenses: IBudget[]
 }) => {
-  const incomeExpenseThisMonth = getIncomeExpenseThisMonth(incomesExpenses)
   return (
     <>
       <div className="w-full overflow-hidden rounded-lg shadow-xs">
@@ -25,7 +24,7 @@ const IncomeExpenseTable = ({
               </tr>
             </thead>
             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-              {incomeExpenseThisMonth.map((incomeExpenseRow: IBudget) => {
+              {incomesExpenses.map((incomeExpenseRow: IBudget) => {
                 return (
                   <TableRow
                     key={incomeExpenseRow.id}

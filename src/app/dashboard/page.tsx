@@ -2,6 +2,7 @@ import DashboardCards from "@/components/DashboardCards"
 import DashboardCharts from "@/components/DashboardCharts"
 import IncomeExpenseTable from "@/components/IncomeExpenseTable"
 import { baseUrl } from "@/lib/baseUrl"
+import { getIncomeExpenseThisMonth } from "@/lib/getIncomeExpensesThisMonth"
 import React from "react"
 
 const fetchData = async () => {
@@ -17,6 +18,7 @@ const fetchData = async () => {
 
 const DashboardPage = async () => {
   const incomesExpenses = await fetchData()
+  const incomeExpenseThisMonth = getIncomeExpenseThisMonth(incomesExpenses)
   return (
     <>
       {/* <MainContent incomesExpenses={incomesExpenses} /> */}
@@ -25,13 +27,13 @@ const DashboardPage = async () => {
       </h2>
 
       {/* Cards */}
-      <DashboardCards incomesExpenses={incomesExpenses} />
+      <DashboardCards incomesExpenses={incomeExpenseThisMonth} />
 
       {/* Charts */}
       <DashboardCharts incomesExpenses={incomesExpenses} />
 
       {/* New Table */}
-      <IncomeExpenseTable incomesExpenses={incomesExpenses} />
+      <IncomeExpenseTable incomesExpenses={incomeExpenseThisMonth} />
     </>
   )
 }
