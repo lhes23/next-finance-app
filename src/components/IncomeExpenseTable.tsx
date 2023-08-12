@@ -1,6 +1,8 @@
 import React from "react"
 import { IBudget } from "@/lib/interfaces"
 import TableRow from "./TableRow"
+import { months } from "@/lib/months"
+import { getIncomeExpenseThisMonth } from "@/lib/getIncomeExpensesThisMonth"
 
 const IncomeExpenseTable = ({
   incomesExpenses
@@ -13,21 +15,7 @@ const IncomeExpenseTable = ({
     return b_date - a_date
   })
 
-  const MONTH = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
-  ]
-
+  const incomeExpensThisMonth = getIncomeExpenseThisMonth(incomesExpenses)
   return (
     <>
       <div className="w-full overflow-hidden rounded-lg shadow-xs">
@@ -43,22 +31,14 @@ const IncomeExpenseTable = ({
               </tr>
             </thead>
             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-              {incomesExpenses
-                ?.filter((incomeExpenseRow) => {
-                  const d = new Date(Date.parse(incomeExpenseRow.createdAt))
-                    .toString()
-                    .split(" ")
-                  const dt = new Date().getMonth()
-                  if (d[1] === MONTH[dt]) return incomeExpenseRow
-                })
-                .map((incomeExpenseRow: IBudget) => {
-                  return (
-                    <TableRow
-                      key={incomeExpenseRow.id}
-                      incomeExpenseRow={incomeExpenseRow}
-                    />
-                  )
-                })}
+              {incomeExpensThisMonth.map((incomeExpenseRow: IBudget) => {
+                return (
+                  <TableRow
+                    key={incomeExpenseRow.id}
+                    incomeExpenseRow={incomeExpenseRow}
+                  />
+                )
+              })}
             </tbody>
           </table>
         </div>
