@@ -9,13 +9,7 @@ const IncomeExpenseTable = ({
 }: {
   incomesExpenses: IBudget[]
 }) => {
-  incomesExpenses = incomesExpenses.sort((a: any, b: any) => {
-    const b_date: any = new Date(b.createdAt)
-    const a_date: any = new Date(a.createdAt)
-    return b_date - a_date
-  })
-
-  const incomeExpensThisMonth = getIncomeExpenseThisMonth(incomesExpenses)
+  const incomeExpenseThisMonth = getIncomeExpenseThisMonth(incomesExpenses)
   return (
     <>
       <div className="w-full overflow-hidden rounded-lg shadow-xs">
@@ -31,7 +25,7 @@ const IncomeExpenseTable = ({
               </tr>
             </thead>
             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-              {incomeExpensThisMonth.map((incomeExpenseRow: IBudget) => {
+              {incomeExpenseThisMonth.map((incomeExpenseRow: IBudget) => {
                 return (
                   <TableRow
                     key={incomeExpenseRow.id}
