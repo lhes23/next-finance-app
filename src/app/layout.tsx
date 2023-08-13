@@ -1,3 +1,4 @@
+"use client"
 import { store } from "@/redux/store"
 import "./globals.css"
 import type { Metadata } from "next"
