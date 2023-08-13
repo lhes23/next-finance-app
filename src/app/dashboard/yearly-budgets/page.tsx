@@ -1,4 +1,3 @@
-import IncomeExpenseTable from "@/components/IncomeExpenseTable"
 import YearlyTable from "@/components/YearlyTable"
 import { fetchData } from "@/lib/fetchData"
 import React from "react"
