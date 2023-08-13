@@ -17,10 +17,10 @@ const Header = ({
 
   return (
     <>
-      <header className="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
-        <div className="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300">
+      <header className="z-10 py-4 shadow-md bg-gradient-to-t from-purple-400 to-pink-400">
+        <div className="container items-center justify-between h-full px-2 mx-auto text-white flex">
           {/* <!-- Mobile hamburger --> */}
-          <div className="px-6">
+          <div className="px-2">
             <MobileHamburger
               isSideBarOpen={isSideBarOpen}
               setIsSideBarOpen={setIsSideBarOpen}
@@ -31,7 +31,7 @@ const Header = ({
             <AddBudgetModal />
           </div>
 
-          <ul className="flex space-x-6 justify-end">
+          <ul className="flex px-1 justify-end">
             {/* <!-- Theme toggler --> */}
             {/* <li className="flex">
               <button
@@ -43,7 +43,7 @@ const Header = ({
               </button>
             </li> */}
             {/* <!-- Notifications menu --> */}
-            <li className="relative">
+            <li className="relative px-2">
               <HeaderNotification
                 isNotiOpen={isNotiOpen}
                 setIsNotiOpen={setIsNotiOpen}
@@ -51,7 +51,7 @@ const Header = ({
               />
             </li>
             {/* <!-- Profile menu --> */}
-            <li className="relative">
+            <li className="relative px-2">
               <HeaderProfile
                 isProfileOpen={isProfileOpen}
                 setIsProfileOpen={setIsProfileOpen}

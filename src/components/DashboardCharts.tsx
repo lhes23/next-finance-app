@@ -1,15 +1,8 @@
 "use client"
 import React from "react"
 import LineChart, { IData } from "./LineChart"
-import { IBudget } from "@/lib/interfaces"
 import { getIncomesExpensesData } from "@/lib/getIncomesExpensesData"
 import { useAppSelector } from "@/redux/store"
-
-// const DashboardCharts = ({
-//   incomesExpenses
-// }: {
-//   incomesExpenses: IBudget[]
-// }) => {
 
 const DashboardCharts = () => {
   const incomesExpenses = useAppSelector(
@@ -55,16 +48,14 @@ const DashboardCharts = () => {
         Charts
       </h2>
       <div className="grid gap-6 mb-8 grid-cols-1 md:grid-cols-2">
-        <div className="min-w-0 p-4 bg-white rounded-lg shadow-lg dark:bg-gray-800">
-          <h4 className="mb-4 font-semibold text-gray-800 dark:text-gray-300">
+        <div className="min-w-0 p-4 bg-white rounded-lg shadow-lg">
+          <h4 className="mb-4 font-semibold text-gray-600">
             Income and Expenses
           </h4>
           <LineChart data={incomesExpensesData} />
         </div>
-        <div className="min-w-0 p-4 bg-white rounded-lg shadow-lg dark:bg-gray-800">
-          <h4 className="mb-4 font-semibold text-gray-800 dark:text-gray-300">
-            Cash Flow
-          </h4>
+        <div className="min-w-0 p-4 bg-white rounded-lg shadow-lg">
+          <h4 className="mb-4 font-semibold text-gray-600">Cash Flow</h4>
           <LineChart data={cashFlowData} />
         </div>
       </div>

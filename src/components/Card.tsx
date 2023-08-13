@@ -13,20 +13,18 @@ const Card = ({
 }) => {
   const amountColor = () => {
     if (Number(amount) <= 0 && name == "Cashflow")
-      return "text-red-500 dark:text-red-200"
+      return "text-red-500 dark:text-red-500"
     if (Number(amount) > 0 && name == "Cashflow")
-      return "text-green-500 dark:text-green-200"
+      return "text-green-500 dark:text-green-500"
   }
   return (
     <>
-      <div className="flex items-center p-4 bg-white rounded-lg shadow-lg dark:bg-gray-800">
+      <div className="flex items-center p-4 bg-white rounded-lg shadow-lg text-gray-600">
         <div className={`p-3 mr-4 ${color} rounded-full text-white`}>
           {icon}
         </div>
         <div>
-          <p className="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-            {name}
-          </p>
+          <p className="mb-2 text-sm font-medium ">{name}</p>
           <p className={`text-lg font-semibold ${amountColor()}`}>₱ {amount}</p>
         </div>
       </div>
