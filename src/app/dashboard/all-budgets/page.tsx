@@ -8,7 +8,7 @@ const AllBudgetsPage = async () => {
   return (
     <>
       <PageComponent title="All Budget" incomesExpenses={incomesExpenses}>
-        <IncomeExpenseTable />
+        <IncomeExpenseTable incomesExpenses={incomesExpenses} />
       </PageComponent>
     </>
   )
