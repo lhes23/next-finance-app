@@ -1,16 +1,10 @@
-// "use client"
+"use client"
 import React from "react"
 import Card from "./Card"
 import { GiReceiveMoney, GiPayMoney, GiCash } from "react-icons/gi"
 import { IBudget } from "@/lib/interfaces"
 import { getIncomeExpenseThisMonth } from "@/lib/getIncomeExpensesThisMonth"
 import { useAppSelector } from "@/redux/store"
-
-// const DashboardCards = ({
-//   incomesExpenses
-// }: {
-//   incomesExpenses: IBudget[]
-// }) => {
 
 const DashboardCards = () => {
   const incomesExpenses = useAppSelector(
