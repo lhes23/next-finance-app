@@ -1,12 +1,15 @@
+"use client"
 import React from "react"
 import { IBudget } from "@/lib/interfaces"
 import TableRow from "./TableRow"
+import { useAppSelector } from "@/redux/store"
+import { getIncomeExpenseThisMonth } from "@/lib/getIncomeExpensesThisMonth"
 
-const IncomeExpenseTable = ({
-  incomesExpenses
-}: {
-  incomesExpenses: IBudget[]
-}) => {
+const IncomeExpenseTable = () => {
+  const incomesExpenses = useAppSelector(
+    (state) => state.budgetSliceReducer.allBudgets
+  )
+  const incomeExpenseThisMonth = getIncomeExpenseThisMonth(incomesExpenses)
   return (
     <>
       <div className="w-full overflow-hidden rounded-lg shadow-xs">
@@ -22,7 +25,7 @@ const IncomeExpenseTable = ({
               </tr>
             </thead>
             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-              {incomesExpenses.map((incomeExpenseRow: IBudget) => {
+              {incomeExpenseThisMonth.map((incomeExpenseRow: IBudget) => {
                 return (
                   <TableRow
                     key={incomeExpenseRow.id}

@@ -2,7 +2,7 @@ import React from "react"
 
 const Loading = () => {
   return (
-    <div>
+    <main className="flex items-center w-full min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
       <div className="bg-white p-2 sm:p-4 sm:h-64 rounded-2xl shadow-lg flex flex-col sm:flex-row gap-5 select-none ">
         <div className="h-52 sm:h-full sm:w-72 rounded-xl bg-gray-200 animate-pulse" />
         <div className="flex flex-col flex-1 gap-5 sm:p-2">
@@ -20,7 +20,7 @@ const Loading = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 

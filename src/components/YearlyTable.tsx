@@ -1,9 +1,14 @@
+"use client"
 import React from "react"
-import { IBudget, IIncomesExpensesData } from "@/lib/interfaces"
+import { IIncomesExpensesData } from "@/lib/interfaces"
 import YearlyTableRow from "./YearlyTableRow"
 import { getIncomesExpensesData } from "@/lib/getIncomesExpensesData"
+import { useAppSelector } from "@/redux/store"
 
-const YearlyTable = ({ incomesExpenses }: { incomesExpenses: IBudget[] }) => {
+const YearlyTable = () => {
+  const incomesExpenses = useAppSelector(
+    (state) => state.budgetSliceReducer.allBudgets
+  )
   const monthsIncomesExpenses = getIncomesExpensesData(incomesExpenses)
   return (
     <>
