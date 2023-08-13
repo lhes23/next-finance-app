@@ -8,7 +8,6 @@ const AllBudgetsPage = async () => {
   return (
     <>
       <PageComponent title="All Budget" incomesExpenses={incomesExpenses}>
-        {/* New Table */}
         <IncomeExpenseTable />
       </PageComponent>
     </>

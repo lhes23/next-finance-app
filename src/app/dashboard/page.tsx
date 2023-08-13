@@ -14,7 +14,6 @@ const DashboardPage = async () => {
         <DashboardCards />
 
         {/* Charts */}
-
         <DashboardCharts />
 
         {/* New Table */}
