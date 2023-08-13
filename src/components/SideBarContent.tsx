@@ -34,16 +34,6 @@ const SideBarContent = ({
           </li>
         ))}
       </ul>
-      <div className="px-6 my-6">
-        <ButtonComp>
-          <Link href="/dashboard/add-budget">
-            Add Budget
-            <span className="ml-2" aria-hidden="true">
-              +
-            </span>
-          </Link>
-        </ButtonComp>
-      </div>
     </div>
   )
 }
