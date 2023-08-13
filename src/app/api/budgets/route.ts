@@ -2,7 +2,11 @@ import { NextResponse } from "next/server"
 import { prisma } from "@/prisma/prismaInit"
 
 export const GET = async () => {
-  const budgets = await prisma.budget.findMany()
+  const budgets = await prisma.budget.findMany({
+    orderBy: {
+      createdAt: "desc"
+    }
+  })
   return NextResponse.json(budgets)
 }
 

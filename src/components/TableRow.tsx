@@ -27,8 +27,9 @@ const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteBudget(id)
-        Swal.fire("Deleted!", "Your budget has been deleted.", "success")
+        deleteBudget(id).then(() => {
+          Swal.fire("Deleted!", "Your budget has been deleted.", "success")
+        })
       }
     })
   }

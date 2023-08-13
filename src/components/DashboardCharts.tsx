@@ -3,12 +3,18 @@ import React from "react"
 import LineChart, { IData } from "./LineChart"
 import { IBudget } from "@/lib/interfaces"
 import { getIncomesExpensesData } from "@/lib/getIncomesExpensesData"
+import { useAppSelector } from "@/redux/store"
 
-const DashboardCharts = ({
-  incomesExpenses
-}: {
-  incomesExpenses: IBudget[]
-}) => {
+// const DashboardCharts = ({
+//   incomesExpenses
+// }: {
+//   incomesExpenses: IBudget[]
+// }) => {
+
+const DashboardCharts = () => {
+  const incomesExpenses = useAppSelector(
+    (state) => state.budgetSliceReducer.allBudgets
+  )
   const monthsIncomesExpenses = getIncomesExpensesData(incomesExpenses)
 
   const incomesExpensesData: IData = {

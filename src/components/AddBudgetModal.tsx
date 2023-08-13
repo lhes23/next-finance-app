@@ -13,7 +13,7 @@ const AddBudgetModal = () => {
           <button
             type="button"
             onClick={() => setShowModal(true)}
-            className="text-sm md:text-lg"
+            className="text-sm md:text-base"
           >
             Add Budget
             <span className="ml-2" aria-hidden="true">

@@ -1,16 +1,18 @@
-// "use client"
+"use client"
 import React from "react"
 import Card from "./Card"
 import { GiReceiveMoney, GiPayMoney, GiCash } from "react-icons/gi"
 import { IBudget } from "@/lib/interfaces"
+import { getIncomeExpenseThisMonth } from "@/lib/getIncomeExpensesThisMonth"
+import { useAppSelector } from "@/redux/store"
 
-const DashboardCards = ({
-  incomesExpenses
-}: {
-  incomesExpenses: IBudget[]
-}) => {
+const DashboardCards = () => {
+  const incomesExpenses = useAppSelector(
+    (state) => state.budgetSliceReducer.allBudgets
+  )
+  const incomeExpenseThisMonth = getIncomeExpenseThisMonth(incomesExpenses)
   const getAmount = (type: string) => {
-    return incomesExpenses
+    return incomeExpenseThisMonth
       .filter((inExp: IBudget) => inExp.budgetType === type)
       .map((c: IBudget) => Number(c.budgetAmount))
       .reduce((a: number, c: number) => a + c, 0)

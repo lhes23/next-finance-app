@@ -1,37 +1,26 @@
+import React from "react"
+import { fetchData } from "@/lib/fetchData"
+import PageComponent from "@/components/PageComponent"
 import DashboardCards from "@/components/DashboardCards"
 import DashboardCharts from "@/components/DashboardCharts"
 import IncomeExpenseTable from "@/components/IncomeExpenseTable"
-import { baseUrl } from "@/lib/baseUrl"
-import React from "react"
-
-const fetchData = async () => {
-  const res = await fetch(`${baseUrl}/api/budgets`, {
-    cache: "no-store",
-    next: {
-      tags: ["budgets"]
-    }
-  })
-  const data = await res.json()
-  return data
-}
+import { getIncomeExpenseThisMonth } from "@/lib/getIncomeExpensesThisMonth"
 
 const DashboardPage = async () => {
   const incomesExpenses = await fetchData()
+  const incomeExpenseThisMonth = getIncomeExpenseThisMonth(incomesExpenses)
   return (
     <>
-      {/* <MainContent incomesExpenses={incomesExpenses} /> */}
-      <h2 className="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-        Dashboard
-      </h2>
+      <PageComponent title="Dashboard" incomesExpenses={incomesExpenses}>
+        {/* Cards */}
+        <DashboardCards />
 
-      {/* Cards */}
-      <DashboardCards incomesExpenses={incomesExpenses} />
+        {/* Charts */}
+        <DashboardCharts />
 
-      {/* Charts */}
-      <DashboardCharts incomesExpenses={incomesExpenses} />
-
-      {/* New Table */}
-      <IncomeExpenseTable incomesExpenses={incomesExpenses} />
+        {/* New Table */}
+        <IncomeExpenseTable incomesExpenses={incomeExpenseThisMonth} />
+      </PageComponent>
     </>
   )
 }
