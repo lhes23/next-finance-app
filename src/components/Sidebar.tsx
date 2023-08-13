@@ -7,7 +7,7 @@ import { FaMoneyBillTrendUp } from "react-icons/fa6"
 const Sidebar = ({ isSideBarOpen }: { isSideBarOpen: boolean }) => {
   const title = "Finance App"
   const iconClassName = {
-    color: "text-purple-600",
+    color: "",
     size: 20
   }
   const sidebarLinks = [
@@ -45,14 +45,14 @@ const Sidebar = ({ isSideBarOpen }: { isSideBarOpen: boolean }) => {
 
   return (
     <>
-      <div>
+      <div className="text-white">
         {/* Desktop View */}
-        <aside className="z-20 hidden md:block w-52 overflow-y-auto bg-white dark:bg-gray-800 flex-shrink-0 h-screen">
+        <aside className="z-20 hidden md:block w-52 overflow-y-auto bg-gradient-to-t from-purple-400 to-pink-400 flex-shrink-0 h-screen">
           <SideBarContent title={title} sidebarLinks={sidebarLinks} />
         </aside>
         {/* Mobile View */}
         {isSideBarOpen && (
-          <aside className="fixed inset-y-0 z-20 flex-shrink-0 w-52 mt-16 overflow-y-auto bg-white dark:bg-gray-800 md:hidden">
+          <aside className="fixed inset-y-0 z-20 flex-shrink-0 w-52 mt-16 overflow-y-auto bg-gradient-to-t from-purple-500 to-pink-500 md:hidden">
             <SideBarContent title={title} sidebarLinks={sidebarLinks} />
           </aside>
         )}

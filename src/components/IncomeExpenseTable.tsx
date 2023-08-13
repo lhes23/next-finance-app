@@ -14,7 +14,7 @@ const IncomeExpenseTable = ({
         <div className="w-full overflow-x-auto">
           <table className="w-full whitespace-no-wrap">
             <thead>
-              <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+              <tr className="text-xs font-semibold tracking-wide text-left text-gray-600 uppercase border-b dark:border-gray-700 bg-gray-50">
                 <th className="px-4 py-3">Date</th>
                 <th className="px-4 py-3">Name</th>
                 <th className="px-4 py-3">Amount</th>
@@ -22,7 +22,7 @@ const IncomeExpenseTable = ({
                 <th className="px-4 py-3 col-span-2">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+            <tbody className="divide-y dark:divide-gray-700">
               {incomesExpenses.map((incomeExpenseRow: IBudget) => {
                 return (
                   <TableRow
