@@ -1,10 +1,10 @@
 "use client"
 import React, { useState } from "react"
-import { addBudgetHandler } from "@/actions/serverActions"
 import { useAppDispatch } from "@/redux/store"
 import { setShowModal } from "@/redux/dashboardSlice"
 import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs"
 import { months } from "@/lib/months"
+import Swal from "sweetalert2"
 
 const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
   const dispatch = useAppDispatch()
@@ -14,7 +14,7 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
 
   const submitFormHandler = async (e: React.FormEvent) => {
     e.preventDefault()
-    // addBudgetHandler({ budgetName, budgetType, budgetAmount })
+
     const res = await fetch(`/api/budgets`, {
       method: "POST",
       headers: {
@@ -42,7 +42,9 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
     })
 
     if (!response.ok) console.log({ response })
-    console.log({ budgetName, budgetType, budgetAmount })
+
+    Swal.fire("Budget Saved", "You've added a budget for this month", "success")
+
     dispatch(getAllBudgets())
     dispatch(getAllYearlyBudgets())
     dispatch(setShowModal(false))
