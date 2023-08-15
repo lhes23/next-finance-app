@@ -2,16 +2,12 @@
 import React from "react"
 import { IIncomesExpensesData } from "@/lib/interfaces"
 import YearlyTableRow from "./YearlyTableRow"
-import { useAppSelector } from "@/redux/store"
 
 const YearlyTable = ({
   incomesExpensesData
 }: {
   incomesExpensesData: IIncomesExpensesData[]
 }) => {
-  const incomesExpenses = useAppSelector(
-    (state) => state.budgetSliceReducer.allBudgets
-  )
   return (
     <>
       <div className="w-full overflow-hidden rounded-lg shadow-xs">
