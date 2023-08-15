@@ -1,14 +1,24 @@
 "use client"
 import React from "react"
 import LineChart, { IData } from "./LineChart"
-import { getIncomesExpensesData } from "@/lib/getIncomesExpensesData"
+import {
+  getIncomesExpensesData,
+  getIncomesExpensesData2
+} from "@/lib/getIncomesExpensesData"
 import { useAppSelector } from "@/redux/store"
+import { IIncomesExpensesData } from "@/lib/interfaces"
 
-const DashboardCharts = () => {
+const DashboardCharts = ({
+  incomesExpensesData2
+}: {
+  incomesExpensesData2: IIncomesExpensesData[]
+}) => {
   const incomesExpenses = useAppSelector(
     (state) => state.budgetSliceReducer.allBudgets
   )
   const monthsIncomesExpenses = getIncomesExpensesData(incomesExpenses)
+
+  console.log(getIncomesExpensesData2(incomesExpensesData2))
 
   const incomesExpensesData: IData = {
     labels: monthsIncomesExpenses.map((m) => m.month),
@@ -16,14 +26,14 @@ const DashboardCharts = () => {
       {
         fill: true,
         label: "Income",
-        data: monthsIncomesExpenses.map((m) => m.incomes),
+        data: monthsIncomesExpenses.map((m) => m.income),
         borderColor: "rgb(21, 128, 61)",
         backgroundColor: "rgba(21, 128, 61, 0.5)"
       },
       {
         fill: true,
         label: "Expenses",
-        data: monthsIncomesExpenses.map((m) => m.expenses),
+        data: monthsIncomesExpenses.map((m) => m.expense),
         borderColor: "rgb(185, 28, 28)",
         backgroundColor: "rgba(185, 28, 28,0.5)"
       }
@@ -36,7 +46,7 @@ const DashboardCharts = () => {
       {
         fill: false,
         label: "Cash Flow",
-        data: monthsIncomesExpenses.map((m) => m.cashFlow),
+        data: monthsIncomesExpenses.map((m) => m.income - m.expense),
         borderColor: "blue"
       }
     ]

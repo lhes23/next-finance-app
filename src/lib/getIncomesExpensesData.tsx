@@ -3,7 +3,13 @@ import { months } from "./months"
 
 export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
   let incomesExpensesData: IIncomesExpensesData[] = months.map((month) => {
-    return { year: 0, month, incomes: 0, expenses: 0, cashFlow: 0 }
+    return {
+      id: Math.random().toString(),
+      year: 0,
+      month,
+      income: 0,
+      expense: 0
+    }
   })
 
   incomesExpenses.map((md) => {
@@ -17,12 +23,36 @@ export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
       // ) {
       if (incomesExpensesData.month === b_month) {
         if (md.budgetType === "income") {
-          incomesExpensesData.incomes += Number(md.budgetAmount)
+          incomesExpensesData.income += Number(md.budgetAmount)
         } else {
-          incomesExpensesData.expenses += Number(md.budgetAmount)
+          incomesExpensesData.expense += Number(md.budgetAmount)
         }
-        incomesExpensesData.cashFlow =
-          incomesExpensesData.incomes - incomesExpensesData.expenses
+      }
+    })
+  })
+
+  return incomesExpensesData
+}
+
+export const getIncomesExpensesData2 = (
+  incomesExpenses: IIncomesExpensesData[]
+) => {
+  let incomesExpensesData = months.map((month) => {
+    return {
+      id: "",
+      year: new Date().getFullYear(),
+      month,
+      income: 0,
+      expense: 0
+    }
+  })
+
+  incomesExpenses.map((md) => {
+    incomesExpensesData.filter((ied) => {
+      if (ied.year == md.year && ied.month == md.month) {
+        ied.id = md.id
+        ied.income = md.income
+        ied.expense = md.expense
       }
     })
   })
