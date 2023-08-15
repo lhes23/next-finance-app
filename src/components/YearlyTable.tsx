@@ -1,5 +1,5 @@
 "use client"
-import React from "react"
+import React, { useState } from "react"
 import { IIncomesExpensesData } from "@/lib/interfaces"
 import YearlyTableRow from "./YearlyTableRow"
 
@@ -8,6 +8,9 @@ const YearlyTable = ({
 }: {
   incomesExpensesData: IIncomesExpensesData[]
 }) => {
+  const [dataByYear, setDataByYear] =
+    useState<IIncomesExpensesData[]>(incomesExpensesData)
+
   return (
     <>
       <div className="w-full overflow-hidden rounded-lg shadow-xs">
