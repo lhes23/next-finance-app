@@ -11,11 +11,14 @@ const PageComponent = ({
 }: {
   title: string
   children: React.ReactNode
-  incomesExpenses: IBudget[]
+  incomesExpenses?: IBudget[]
 }) => {
   const dispatch = useAppDispatch()
+
   useEffect(() => {
-    dispatch(setAllBudgets(incomesExpenses))
+    if (incomesExpenses) {
+      dispatch(setAllBudgets(incomesExpenses))
+    }
   }, [dispatch, incomesExpenses])
 
   return (

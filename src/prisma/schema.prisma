@@ -23,11 +23,12 @@ model YearlyBudget {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   year Int
   month String
-  income Int
-  expense Int
-  cashFlow Int
+  income Int @default(0)
+  expense Int @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique(fields: [year, month], name: "YearlyBudgetId")
 }
 
 model User {

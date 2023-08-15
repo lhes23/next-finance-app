@@ -2,14 +2,16 @@
 import React from "react"
 import { IIncomesExpensesData } from "@/lib/interfaces"
 import YearlyTableRow from "./YearlyTableRow"
-import { getIncomesExpensesData } from "@/lib/getIncomesExpensesData"
 import { useAppSelector } from "@/redux/store"
 
-const YearlyTable = () => {
+const YearlyTable = ({
+  incomesExpensesData
+}: {
+  incomesExpensesData: IIncomesExpensesData[]
+}) => {
   const incomesExpenses = useAppSelector(
     (state) => state.budgetSliceReducer.allBudgets
   )
-  const monthsIncomesExpenses = getIncomesExpensesData(incomesExpenses)
   return (
     <>
       <div className="w-full overflow-hidden rounded-lg shadow-xs">
@@ -24,7 +26,7 @@ const YearlyTable = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-              {monthsIncomesExpenses.map(
+              {incomesExpensesData.map(
                 (incomeExpenseRow: IIncomesExpensesData, i: number) => {
                   return (
                     <YearlyTableRow
