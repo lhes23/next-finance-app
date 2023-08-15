@@ -1,24 +1,20 @@
 "use client"
-import React from "react"
+import React, { useEffect } from "react"
 import LineChart, { IData } from "./LineChart"
-import {
-  getIncomesExpensesData,
-  getIncomesExpensesData2
-} from "@/lib/getIncomesExpensesData"
-import { useAppSelector } from "@/redux/store"
-import { IIncomesExpensesData } from "@/lib/interfaces"
+import { getIncomesExpensesData } from "@/lib/getIncomesExpensesData"
+import { useAppDispatch, useAppSelector } from "@/redux/store"
+import { getAllYearlyBudgets } from "@/redux/createAsyncs"
 
-const DashboardCharts = ({
-  incomesExpenses
-}: {
-  incomesExpenses: IIncomesExpensesData[]
-}) => {
-  // const incomesExpenses = useAppSelector(
-  //   (state) => state.budgetSliceReducer.allBudgets
-  // )
+const DashboardCharts = () => {
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(getAllYearlyBudgets())
+  }, [dispatch])
+
+  const incomesExpenses = useAppSelector(
+    (state) => state.budgetSliceReducer.yearlyBudgets
+  )
   const monthsIncomesExpenses = getIncomesExpensesData(incomesExpenses)
-
-  // console.log(getIncomesExpensesData2(incomesExpensesData2))
 
   const incomesExpensesData: IData = {
     labels: monthsIncomesExpenses.map((m) => m.month),

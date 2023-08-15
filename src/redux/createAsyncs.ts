@@ -12,3 +12,14 @@ export const getAllBudgets = createAsyncThunk(
     }
   }
 )
+
+export const getAllYearlyBudgets = createAsyncThunk(
+  "budgets/getAllYearlyBudgets",
+  async () => {
+    try {
+      const res = await fetch("/api/budgets/yearly")
+      const data = await res.json()
+      return data
+    } catch (error) {}
+  }
+)

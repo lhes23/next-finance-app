@@ -1,27 +1,42 @@
-import React from "react"
-import { fetchData, fetchDataYearly } from "@/lib/fetchData"
+"use client"
+import React, { useEffect } from "react"
 import PageComponent from "@/components/PageComponent"
 import DashboardCards from "@/components/DashboardCards"
 import DashboardCharts from "@/components/DashboardCharts"
 import IncomeExpenseTable from "@/components/IncomeExpenseTable"
-import { getIncomeExpenseThisMonth } from "@/lib/getIncomeExpensesThisMonth"
+import { useAppDispatch, useAppSelector } from "@/redux/store"
+import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs"
 
-const DashboardPage = async () => {
-  const incomesExpenses = await fetchData()
-  const incomeExpenseThisMonth = getIncomeExpenseThisMonth(incomesExpenses)
-  const incomesExpensesData2 = await fetchDataYearly()
+const DashboardPage = () => {
+  const dispatch = useAppDispatch()
+
+  let all_budgets = useAppSelector(
+    (state) => state.budgetSliceReducer.allBudgets
+  )
+
+  useEffect(() => {
+    dispatch(getAllBudgets())
+    dispatch(getAllYearlyBudgets())
+  }, [dispatch])
+
+  all_budgets = all_budgets.filter(
+    (budget) =>
+      new Date(budget.createdAt).getFullYear() === new Date().getFullYear() &&
+      new Date(budget.createdAt).getMonth() === new Date().getMonth() &&
+      new Date(budget.createdAt).getMonth()
+  )
 
   return (
     <>
-      <PageComponent title="Dashboard" incomesExpenses={incomesExpenses}>
+      <PageComponent title="Dashboard">
         {/* Cards */}
         <DashboardCards />
 
         {/* Charts */}
-        <DashboardCharts incomesExpenses={incomesExpensesData2} />
+        <DashboardCharts />
 
         {/* New Table */}
-        <IncomeExpenseTable incomesExpenses={incomeExpenseThisMonth} />
+        <IncomeExpenseTable all_budgets={all_budgets} />
       </PageComponent>
     </>
   )

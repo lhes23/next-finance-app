@@ -25,6 +25,7 @@ const AddBudgetModal = () => {
             </span>
           </button>
         </ButtonComp>
+
         {showModal && (
           <>
             <div className="justify-center mx-6 items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -54,15 +55,7 @@ const AddBudgetModal = () => {
                         >
                           Close
                         </button>
-                        <button
-                          type="submit"
-                          onClick={() => {
-                            setTimeout(
-                              () => dispatch(setShowModal(false)),
-                              1000
-                            )
-                          }}
-                        >
+                        <button type="submit">
                           <ButtonComp>Add Budget</ButtonComp>
                         </button>
                       </div>

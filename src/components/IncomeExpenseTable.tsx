@@ -3,11 +3,7 @@ import React from "react"
 import { IBudget } from "@/lib/interfaces"
 import TableRow from "./TableRow"
 
-const IncomeExpenseTable = ({
-  incomesExpenses
-}: {
-  incomesExpenses: IBudget[]
-}) => {
+const IncomeExpenseTable = ({ all_budgets }: { all_budgets: IBudget[] }) => {
   return (
     <>
       <div className="w-full overflow-hidden rounded-lg shadow-xs mb-16">
@@ -23,7 +19,7 @@ const IncomeExpenseTable = ({
               </tr>
             </thead>
             <tbody className="divide-y dark:divide-gray-700">
-              {incomesExpenses.map((incomeExpenseRow: IBudget) => {
+              {all_budgets.map((incomeExpenseRow: IBudget) => {
                 return (
                   <TableRow
                     key={incomeExpenseRow.id}

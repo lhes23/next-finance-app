@@ -4,8 +4,11 @@ import { IBudget } from "@/lib/interfaces"
 import { BsFillTrashFill, BsPencil } from "react-icons/bs"
 import { deleteBudget } from "@/actions/serverActions"
 import Swal from "sweetalert2"
+import { useAppDispatch, useAppSelector } from "@/redux/store"
+import { setShowModal } from "@/redux/dashboardSlice"
 
 const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
+  const dispatch = useAppDispatch()
   const col =
     incomeExpenseRow.budgetType === "income"
       ? "text-green-700 bg-green-100"
@@ -57,6 +60,7 @@ const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
           <button
             className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray"
             aria-label="Edit"
+            onClick={() => dispatch(setShowModal(true))}
           >
             <BsPencil />
           </button>
