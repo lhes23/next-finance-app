@@ -18,7 +18,7 @@ const DashboardPage = async () => {
         <DashboardCards />
 
         {/* Charts */}
-        <DashboardCharts incomesExpensesData2={incomesExpensesData2} />
+        <DashboardCharts incomesExpenses={incomesExpensesData2} />
 
         {/* New Table */}
         <IncomeExpenseTable incomesExpenses={incomeExpenseThisMonth} />

@@ -1,7 +1,7 @@
 import { IBudget, IIncomesExpensesData } from "./interfaces"
 import { months } from "./months"
 
-export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
+export const getIncomesExpensesData2 = (incomesExpenses: IBudget[]) => {
   let incomesExpensesData: IIncomesExpensesData[] = months.map((month) => {
     return {
       id: Math.random().toString(),
@@ -34,7 +34,7 @@ export const getIncomesExpensesData = (incomesExpenses: IBudget[]) => {
   return incomesExpensesData
 }
 
-export const getIncomesExpensesData2 = (
+export const getIncomesExpensesData = (
   incomesExpenses: IIncomesExpensesData[]
 ) => {
   let incomesExpensesData = months.map((month) => {

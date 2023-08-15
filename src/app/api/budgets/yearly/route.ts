@@ -23,8 +23,6 @@ export const POST = async (req: Request) => {
     where: { year, month }
   })
 
-  if (!monthYear) throw new Error()
-
   let upsertBudget
 
   if (data.budgetType === "income") {
@@ -36,12 +34,12 @@ export const POST = async (req: Request) => {
         }
       },
       update: {
-        income: monthYear.income + budgetAmount
+        income: monthYear ? monthYear.income + budgetAmount : 0
       },
       create: {
         year,
         month,
-        income: monthYear.income + budgetAmount
+        income: budgetAmount
       }
     })
   } else {
@@ -53,12 +51,12 @@ export const POST = async (req: Request) => {
         }
       },
       update: {
-        expense: monthYear?.expense + budgetAmount
+        expense: monthYear ? monthYear.expense + budgetAmount : 0
       },
       create: {
         year,
         month,
-        expense: monthYear?.expense + budgetAmount
+        expense: budgetAmount
       }
     })
   }

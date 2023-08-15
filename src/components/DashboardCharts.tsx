@@ -9,16 +9,16 @@ import { useAppSelector } from "@/redux/store"
 import { IIncomesExpensesData } from "@/lib/interfaces"
 
 const DashboardCharts = ({
-  incomesExpensesData2
+  incomesExpenses
 }: {
-  incomesExpensesData2: IIncomesExpensesData[]
+  incomesExpenses: IIncomesExpensesData[]
 }) => {
-  const incomesExpenses = useAppSelector(
-    (state) => state.budgetSliceReducer.allBudgets
-  )
+  // const incomesExpenses = useAppSelector(
+  //   (state) => state.budgetSliceReducer.allBudgets
+  // )
   const monthsIncomesExpenses = getIncomesExpensesData(incomesExpenses)
 
-  console.log(getIncomesExpensesData2(incomesExpensesData2))
+  // console.log(getIncomesExpensesData2(incomesExpensesData2))
 
   const incomesExpensesData: IData = {
     labels: monthsIncomesExpenses.map((m) => m.month),
