@@ -1,14 +1,27 @@
 "use client"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { IIncomesExpensesData, IYearOption } from "@/lib/interfaces"
 import YearlyTableRow from "./YearlyTableRow"
 import ReactSelect from "react-select"
+import { useAppDispatch, useAppSelector } from "@/redux/store"
+import { getAllYearlyBudgets } from "@/redux/createAsyncs"
 
-const YearlyTable = ({
-  incomesExpensesData
-}: {
-  incomesExpensesData: IIncomesExpensesData[]
-}) => {
+// const YearlyTable = ({
+//   incomesExpensesData
+// }: {
+//   incomesExpensesData: IIncomesExpensesData[]
+// }) => {
+
+const YearlyTable = () => {
+  const dispatch = useAppDispatch()
+  const incomesExpensesData = useAppSelector(
+    (state) => state.budgetSliceReducer.yearlyBudgets
+  )
+
+  useEffect(() => {
+    dispatch(getAllYearlyBudgets())
+  }, [dispatch])
+
   const [year, setYear] = useState<number>(2023)
   const dataIncomeExpense = incomesExpensesData.filter(
     (ied) => ied.year === year

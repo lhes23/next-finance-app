@@ -1,29 +1,9 @@
 "use client"
-import React, { useEffect } from "react"
+import React from "react"
 import { IBudget } from "@/lib/interfaces"
 import TableRow from "./TableRow"
-import { useAppDispatch, useAppSelector } from "@/redux/store"
-import { getAllBudgets } from "@/redux/createAsyncs"
 
-const IncomeExpenseTable = () => {
-  const dispatch = useAppDispatch()
-  let all_budgets = useAppSelector(
-    (state) => state.budgetSliceReducer.allBudgets
-  )
-
-  all_budgets = all_budgets.filter(
-    (budget) =>
-      new Date(budget.createdAt).getFullYear() === new Date().getFullYear() &&
-      new Date(budget.createdAt).getMonth() === new Date().getMonth() &&
-      new Date(budget.createdAt).getMonth()
-  )
-
-  useEffect(() => {
-    dispatch(getAllBudgets())
-  }, [dispatch])
-
-  useEffect(() => console.log({ all_budgets }), [all_budgets])
-
+const IncomeExpenseTable = ({ all_budgets }: { all_budgets: IBudget[] }) => {
   return (
     <>
       <div className="w-full overflow-hidden rounded-lg shadow-xs mb-16">
