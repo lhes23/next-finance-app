@@ -8,9 +8,16 @@ export interface IBudget {
 }
 
 export interface IIncomesExpensesData {
+  id: string
   year: number
   month: string
-  incomes: number
-  expenses: number
-  cashFlow: number
+  income: number
+  expense: number
+  createdAt?: string
+  updatedAt?: string
+}
+
+export interface IYearOption {
+  label: string
+  value: number
 }

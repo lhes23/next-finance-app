@@ -1,6 +1,7 @@
 "use server"
 
 import { baseUrl } from "@/lib/baseUrl"
+import { months } from "@/lib/months"
 import { revalidateTag } from "next/cache"
 
 export const addBudgetHandler = async (e: FormData) => {
@@ -30,7 +31,27 @@ export const addBudgetHandler = async (e: FormData) => {
 
   if (!res.ok) throw new Error()
 
+  const dataRes = await res.json()
+  const year = new Date(dataRes.createdAt).getFullYear()
+  const month = months[new Date(dataRes.createdAt).getMonth()]
+
+  const response = await fetch(`${baseUrl}/api/budgets/yearly`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json"
+    },
+    body: JSON.stringify({
+      year,
+      month,
+      budgetAmount: dataRes.budgetAmount,
+      budgetType: dataRes.budgetType
+    })
+  })
+
+  if (!response.ok) console.log({ response })
+
   revalidateTag("budgets")
+  revalidateTag("yearly")
 }
 
 export const deleteBudget = async (id: string) => {

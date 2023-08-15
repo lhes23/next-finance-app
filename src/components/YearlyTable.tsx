@@ -1,17 +1,31 @@
 "use client"
-import React from "react"
-import { IIncomesExpensesData } from "@/lib/interfaces"
+import React, { useState } from "react"
+import { IIncomesExpensesData, IYearOption } from "@/lib/interfaces"
 import YearlyTableRow from "./YearlyTableRow"
-import { getIncomesExpensesData } from "@/lib/getIncomesExpensesData"
-import { useAppSelector } from "@/redux/store"
+import ReactSelect from "react-select"
 
-const YearlyTable = () => {
-  const incomesExpenses = useAppSelector(
-    (state) => state.budgetSliceReducer.allBudgets
+const YearlyTable = ({
+  incomesExpensesData
+}: {
+  incomesExpensesData: IIncomesExpensesData[]
+}) => {
+  const [year, setYear] = useState<number>(2023)
+  const dataIncomeExpense = incomesExpensesData.filter(
+    (ied) => ied.year === year
   )
-  const monthsIncomesExpenses = getIncomesExpensesData(incomesExpenses)
+
+  const options: IYearOption[] = [
+    { label: "2023", value: 2023 },
+    { label: "2024", value: 2024 },
+    { label: "2025", value: 2025 }
+  ]
+
   return (
     <>
+      <ReactSelect
+        options={options}
+        onChange={(selected: any) => setYear(selected?.value)}
+      />
       <div className="w-full overflow-hidden rounded-lg shadow-xs">
         <div className="w-full overflow-x-auto">
           <table className="w-full whitespace-no-wrap">
@@ -24,7 +38,8 @@ const YearlyTable = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-              {monthsIncomesExpenses.map(
+              {/* {incomesExpensesData.map( */}
+              {dataIncomeExpense.map(
                 (incomeExpenseRow: IIncomesExpensesData, i: number) => {
                   return (
                     <YearlyTableRow
