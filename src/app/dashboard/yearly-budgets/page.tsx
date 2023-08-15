@@ -2,7 +2,7 @@ import React from "react"
 import PageComponent from "@/components/PageComponent"
 import YearlyTable from "@/components/YearlyTable"
 
-const page = () => {
+const YearlyBudgetsPage = () => {
   return (
     <>
       <PageComponent title="Yearly Budgets">
@@ -12,4 +12,4 @@ const page = () => {
   )
 }
 
-export default page
+export default YearlyBudgetsPage

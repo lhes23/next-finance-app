@@ -6,12 +6,6 @@ import ReactSelect from "react-select"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { getAllYearlyBudgets } from "@/redux/createAsyncs"
 
-// const YearlyTable = ({
-//   incomesExpensesData
-// }: {
-//   incomesExpensesData: IIncomesExpensesData[]
-// }) => {
-
 const YearlyTable = () => {
   const dispatch = useAppDispatch()
   const incomesExpensesData = useAppSelector(
@@ -51,7 +45,6 @@ const YearlyTable = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-              {/* {incomesExpensesData.map( */}
               {dataIncomeExpense.map(
                 (incomeExpenseRow: IIncomesExpensesData, i: number) => {
                   return (
