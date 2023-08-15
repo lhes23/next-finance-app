@@ -21,10 +21,9 @@ export const budgetSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(
-      getAllBudgets.fulfilled,
-      (state, action) => (state.allBudgets = action.payload)
-    )
+    builder.addCase(getAllBudgets.fulfilled, function (state, action) {
+      state.allBudgets = action.payload
+    })
   }
 })
 

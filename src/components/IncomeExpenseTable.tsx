@@ -3,25 +3,16 @@ import React, { useEffect } from "react"
 import { IBudget } from "@/lib/interfaces"
 import TableRow from "./TableRow"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
-import { setAllBudgets } from "@/redux/budgetSlice"
+import { getAllBudgets } from "@/redux/createAsyncs"
 
-const IncomeExpenseTable = ({
-  incomesExpenses
-}: {
-  incomesExpenses: IBudget[]
-}) => {
+const IncomeExpenseTable = () => {
   const dispatch = useAppDispatch()
   const all_budgets = useAppSelector(
     (state) => state.budgetSliceReducer.allBudgets
   )
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(`/api/budgets`)
-      const data = await res.json()
-      dispatch(setAllBudgets(data))
-    }
-    fetchData()
+    dispatch(getAllBudgets())
   }, [dispatch])
 
   useEffect(() => console.log({ all_budgets }), [all_budgets])
@@ -41,7 +32,7 @@ const IncomeExpenseTable = ({
               </tr>
             </thead>
             <tbody className="divide-y dark:divide-gray-700">
-              {incomesExpenses.map((incomeExpenseRow: IBudget) => {
+              {all_budgets.map((incomeExpenseRow: IBudget) => {
                 return (
                   <TableRow
                     key={incomeExpenseRow.id}

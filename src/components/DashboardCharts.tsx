@@ -18,8 +18,6 @@ const DashboardCharts = ({
   // )
   const monthsIncomesExpenses = getIncomesExpensesData(incomesExpenses)
 
-  // console.log(getIncomesExpensesData2(incomesExpensesData2))
-
   const incomesExpensesData: IData = {
     labels: monthsIncomesExpenses.map((m) => m.month),
     datasets: [

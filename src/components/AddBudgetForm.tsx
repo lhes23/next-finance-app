@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { addBudgetHandler } from "@/actions/serverActions"
 import { useAppDispatch } from "@/redux/store"
 import { setShowModal } from "@/redux/dashboardSlice"
+import { getAllBudgets } from "@/redux/createAsyncs"
 
 const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
   const dispatch = useAppDispatch()
@@ -12,7 +13,6 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
 
   const submitFormHandler = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log({ budgetName, budgetType, budgetAmount })
     // addBudgetHandler({ budgetName, budgetType, budgetAmount })
     const res = await fetch(`/api/budgets`, {
       method: "POST",
@@ -21,7 +21,9 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
       },
       body: JSON.stringify({ budgetName, budgetType, budgetAmount })
     })
-    console.log({ res })
+    if (!res.ok) throw new Error()
+    console.log({ budgetName, budgetType, budgetAmount })
+    dispatch(getAllBudgets())
     dispatch(setShowModal(false))
   }
 

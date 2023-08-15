@@ -21,7 +21,7 @@ const DashboardPage = async () => {
         <DashboardCharts incomesExpenses={incomesExpensesData2} />
 
         {/* New Table */}
-        <IncomeExpenseTable incomesExpenses={incomeExpenseThisMonth} />
+        <IncomeExpenseTable />
       </PageComponent>
     </>
   )
