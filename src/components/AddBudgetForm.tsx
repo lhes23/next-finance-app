@@ -1,11 +1,34 @@
 "use client"
-import React from "react"
+import React, { useState } from "react"
 import { addBudgetHandler } from "@/actions/serverActions"
+import { useAppDispatch } from "@/redux/store"
+import { setShowModal } from "@/redux/dashboardSlice"
 
 const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
+  const dispatch = useAppDispatch()
+  const [budgetName, setBudgetName] = useState<string>("")
+  const [budgetType, setBudgetType] = useState<string>("expense")
+  const [budgetAmount, setBudgetAmount] = useState<string>("")
+
+  const submitFormHandler = async (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log({ budgetName, budgetType, budgetAmount })
+    // addBudgetHandler({ budgetName, budgetType, budgetAmount })
+    const res = await fetch(`/api/budgets`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ budgetName, budgetType, budgetAmount })
+    })
+    console.log({ res })
+    dispatch(setShowModal(false))
+  }
+
   return (
     <>
-      <form className="w-full max-w-md p-2" action={addBudgetHandler}>
+      {/* <form className="w-full max-w-md p-2" action={addBudgetHandler}> */}
+      <form className="w-full max-w-md p-2" onSubmit={submitFormHandler}>
         <div className="md:flex md:items-center mb-6">
           <div className="md:w-1/3">
             <label
@@ -21,6 +44,8 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
               id="inline-full-name"
               type="text"
               name="budgetName"
+              value={budgetName}
+              onChange={(e) => setBudgetName(e.target.value)}
             />
           </div>
         </div>
@@ -37,6 +62,7 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
                 className="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                 name="budgetType"
                 value="income"
+                onChange={(e) => setBudgetType(e.target.value)}
               />
               <span className="ml-2">Income</span>
             </label>
@@ -47,6 +73,7 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
                 name="budgetType"
                 value="expense"
                 defaultChecked
+                onChange={(e) => setBudgetType(e.target.value)}
               />
               <span className="ml-2">Expense</span>
             </label>
@@ -64,6 +91,8 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
               type="text"
               name="budgetAmount"
+              value={budgetAmount}
+              onChange={(e) => setBudgetAmount(e.target.value)}
             />
           </div>
         </div>

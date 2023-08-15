@@ -56,12 +56,12 @@ const AddBudgetModal = () => {
                         </button>
                         <button
                           type="submit"
-                          onClick={() => {
-                            setTimeout(
-                              () => dispatch(setShowModal(false)),
-                              1000
-                            )
-                          }}
+                          // onClick={() => {
+                          //   setTimeout(
+                          //     () => dispatch(setShowModal(false)),
+                          //     1000
+                          //   )
+                          // }}
                         >
                           <ButtonComp>Add Budget</ButtonComp>
                         </button>
