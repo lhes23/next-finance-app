@@ -4,6 +4,7 @@ import { addBudgetHandler } from "@/actions/serverActions"
 import { useAppDispatch } from "@/redux/store"
 import { setShowModal } from "@/redux/dashboardSlice"
 import { getAllBudgets } from "@/redux/createAsyncs"
+import { months } from "@/lib/months"
 
 const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
   const dispatch = useAppDispatch()
@@ -22,6 +23,25 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
       body: JSON.stringify({ budgetName, budgetType, budgetAmount })
     })
     if (!res.ok) throw new Error()
+
+    const dataRes = await res.json()
+    const year = new Date(dataRes.createdAt).getFullYear()
+    const month = months[new Date(dataRes.createdAt).getMonth()]
+
+    const response = await fetch(`/api/budgets/yearly`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        year,
+        month,
+        budgetAmount: dataRes.budgetAmount,
+        budgetType: dataRes.budgetType
+      })
+    })
+
+    if (!response.ok) console.log({ response })
     console.log({ budgetName, budgetType, budgetAmount })
     dispatch(getAllBudgets())
     dispatch(setShowModal(false))
