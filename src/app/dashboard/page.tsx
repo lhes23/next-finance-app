@@ -13,12 +13,12 @@ const DashboardPage = async () => {
 
   return (
     <>
-      <PageComponent title="Dashboard" incomesExpenses={incomesExpenses}>
+      <PageComponent title="Dashboard">
         {/* Cards */}
         <DashboardCards />
 
         {/* Charts */}
-        <DashboardCharts incomesExpenses={incomesExpensesData2} />
+        <DashboardCharts />
 
         {/* New Table */}
         <IncomeExpenseTable />

@@ -8,14 +8,10 @@ import {
 import { useAppSelector } from "@/redux/store"
 import { IIncomesExpensesData } from "@/lib/interfaces"
 
-const DashboardCharts = ({
-  incomesExpenses
-}: {
-  incomesExpenses: IIncomesExpensesData[]
-}) => {
-  // const incomesExpenses = useAppSelector(
-  //   (state) => state.budgetSliceReducer.allBudgets
-  // )
+const DashboardCharts = () => {
+  const incomesExpenses = useAppSelector(
+    (state) => state.budgetSliceReducer.yearlyBudgets
+  )
   const monthsIncomesExpenses = getIncomesExpensesData(incomesExpenses)
 
   const incomesExpensesData: IData = {

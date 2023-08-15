@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import { addBudgetHandler } from "@/actions/serverActions"
 import { useAppDispatch } from "@/redux/store"
 import { setShowModal } from "@/redux/dashboardSlice"
-import { getAllBudgets } from "@/redux/createAsyncs"
+import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs"
 import { months } from "@/lib/months"
 
 const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
@@ -44,6 +44,7 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
     if (!response.ok) console.log({ response })
     console.log({ budgetName, budgetType, budgetAmount })
     dispatch(getAllBudgets())
+    dispatch(getAllYearlyBudgets())
     dispatch(setShowModal(false))
   }
 
