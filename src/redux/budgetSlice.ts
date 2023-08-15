@@ -1,6 +1,6 @@
 import { IBudget, IIncomesExpensesData } from "@/lib/interfaces"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { getAllBudgets } from "./createAsyncs"
+import { getAllBudgets, getAllYearlyBudgets } from "./createAsyncs"
 
 interface IInitialState {
   allBudgets: IBudget[]
@@ -23,8 +23,16 @@ export const budgetSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(
       getAllBudgets.fulfilled,
-      (state, action) => (state.allBudgets = action.payload)
-    )
+      function (state, action: PayloadAction<IBudget[]>) {
+        state.allBudgets = action.payload
+      }
+    ),
+      builder.addCase(
+        getAllYearlyBudgets.fulfilled,
+        function (state, action: PayloadAction<IIncomesExpensesData[]>) {
+          state.yearlyBudgets = action.payload
+        }
+      )
   }
 })
 

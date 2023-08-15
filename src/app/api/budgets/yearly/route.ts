@@ -24,13 +24,25 @@ export const POST = async (req: Request) => {
   })
 
   let update
+  let create
+
   if (data.budgetType === "income") {
     update = {
       income: monthYear ? monthYear.income + budgetAmount : 0
     }
+    create = {
+      year,
+      month,
+      income: budgetAmount
+    }
   } else {
     update = {
       expense: monthYear ? monthYear.expense + budgetAmount : 0
+    }
+    create = {
+      year,
+      month,
+      expense: budgetAmount
     }
   }
 
@@ -44,11 +56,7 @@ export const POST = async (req: Request) => {
   const upsertBudget = await prisma.yearlyBudget.upsert({
     where,
     update,
-    create: {
-      year,
-      month,
-      income: budgetAmount
-    }
+    create
   })
 
   return NextResponse.json(upsertBudget)

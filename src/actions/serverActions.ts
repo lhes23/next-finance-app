@@ -4,20 +4,29 @@ import { baseUrl } from "@/lib/baseUrl"
 import { months } from "@/lib/months"
 import { revalidateTag } from "next/cache"
 
-export const addBudgetHandler = async (e: FormData) => {
-  const amnt = e.get("budgetAmount")?.toString()
-  const amountTotal = amnt?.startsWith("=")
-    ? amnt
+// export const addBudgetHandler = async (e: FormData) => {
+export const addBudgetHandler = async ({
+  budgetName,
+  budgetType,
+  budgetAmount
+}: {
+  budgetName: string
+  budgetType: string
+  budgetAmount: string
+}) => {
+  // const amnt = e.get("budgetAmount")?.toString()
+  const amountTotal = budgetAmount?.startsWith("=")
+    ? budgetAmount
         ?.split("=")[1]
         .toString()
         .split("+")
         .map((amn) => parseInt(amn))
         .reduce((a, c) => a + c)
-    : amnt
+    : budgetAmount
 
   const data = {
-    budgetName: e.get("budgetName")?.toString(),
-    budgetType: e.get("budgetType")?.toString(),
+    budgetName,
+    budgetType,
     budgetAmount: amountTotal?.toString()
   }
 

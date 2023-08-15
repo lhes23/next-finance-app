@@ -3,23 +3,22 @@ import React, { useEffect } from "react"
 import { IBudget } from "@/lib/interfaces"
 import { setAllBudgets } from "@/redux/budgetSlice"
 import { useAppDispatch } from "@/redux/store"
+import { getAllBudgets } from "@/redux/createAsyncs"
 
 const PageComponent = ({
   title,
-  children,
-  incomesExpenses
-}: {
+  children
+}: // incomesExpenses
+{
   title: string
   children: React.ReactNode
-  incomesExpenses?: IBudget[]
+  // incomesExpenses?: IBudget[]
 }) => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (incomesExpenses) {
-      dispatch(setAllBudgets(incomesExpenses))
-    }
-  }, [dispatch, incomesExpenses])
+    dispatch(getAllBudgets())
+  }, [dispatch])
 
   return (
     <>
