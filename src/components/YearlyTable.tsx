@@ -2,6 +2,7 @@
 import React, { useState } from "react"
 import { IIncomesExpensesData } from "@/lib/interfaces"
 import YearlyTableRow from "./YearlyTableRow"
+import ReactSelect from "react-select"
 
 const YearlyTable = ({
   incomesExpensesData
@@ -11,8 +12,15 @@ const YearlyTable = ({
   const [dataByYear, setDataByYear] =
     useState<IIncomesExpensesData[]>(incomesExpensesData)
 
+  const options = [
+    { label: 2023, value: 2023 },
+    { label: 2024, value: 2024 },
+    { label: 2025, value: 2025 }
+  ]
+  console.log({ options })
   return (
     <>
+      <ReactSelect options={options} />
       <div className="w-full overflow-hidden rounded-lg shadow-xs">
         <div className="w-full overflow-x-auto">
           <table className="w-full whitespace-no-wrap">
