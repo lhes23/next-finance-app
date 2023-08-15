@@ -1,18 +1,22 @@
 "use client"
-import React, { useState } from "react"
+import React from "react"
 import ButtonComp from "./ButtonComp"
 import AddBudgetForm from "./AddBudgetForm"
 import { AiOutlineCloseCircle } from "react-icons/ai"
+import { useAppDispatch, useAppSelector } from "@/redux/store"
+import { setShowModal } from "@/redux/dashboardSlice"
 
 const AddBudgetModal = () => {
-  const [showModal, setShowModal] = useState<boolean>(false)
+  const showModal = useAppSelector((state) => state.dashboardSlice.showModal)
+  const dispatch = useAppDispatch()
+
   return (
     <>
       <div>
         <ButtonComp>
           <button
             type="button"
-            onClick={() => setShowModal(true)}
+            onClick={() => dispatch(setShowModal(true))}
             className="text-sm md:text-base"
           >
             Add Budget
@@ -35,7 +39,7 @@ const AddBudgetModal = () => {
                     <button className="p-1 ml-auto border-0  float-right text-3xl leading-none font-semibold outline-none focus:outline-none">
                       <AiOutlineCloseCircle
                         className="text-red-500"
-                        onClick={() => setShowModal(false)}
+                        onClick={() => dispatch(setShowModal(false))}
                       />
                     </button>
                   </div>
@@ -46,14 +50,17 @@ const AddBudgetModal = () => {
                         <button
                           className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                           type="button"
-                          onClick={() => setShowModal(false)}
+                          onClick={() => dispatch(setShowModal(false))}
                         >
                           Close
                         </button>
                         <button
                           type="submit"
                           onClick={() => {
-                            setTimeout(() => setShowModal(false), 1000)
+                            setTimeout(
+                              () => dispatch(setShowModal(false)),
+                              1000
+                            )
                           }}
                         >
                           <ButtonComp>Add Budget</ButtonComp>
