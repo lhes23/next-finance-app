@@ -5,7 +5,7 @@ import React from "react"
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <div className="flex h-screen bg-gray-50 dark:bg-gray-900 w-screen">
+      <div className="flex h-screen bg-gray-50 dark:bg-gray-900 w-full">
         <Sidebar />
         <div className="flex flex-col flex-1 w-full">
           <Header />
