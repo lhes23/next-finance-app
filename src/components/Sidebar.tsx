@@ -48,19 +48,24 @@ const Sidebar = () => {
     }
   ]
 
+  const styles = {
+    aside:
+      "z-20 overflow-y-auto backdrop-blur-md bg-white/30 flex-shrink-0 duration-300"
+  }
+
   return (
     <>
-      <div className="text-white">
+      <div className="text-gray-600">
         {/* Desktop View */}
-        <aside className="z-20 hidden md:block w-52 overflow-y-auto bg-gradient-to-t from-purple-400 to-pink-400 flex-shrink-0 h-screen duration-300">
+        <aside className={`${styles.aside} hidden md:block w-52 h-screen`}>
           <SideBarContent title={title} sidebarLinks={sidebarLinks} />
         </aside>
         {/* Mobile View */}
         {/* {showSidebar && ( */}
         <aside
-          className={`${
+          className={`${styles.aside} ${
             showSidebar ? "w-52" : "w-0"
-          } fixed inset-y-0 z-20 flex-shrink-0 mt-16 overflow-y-auto bg-gradient-to-t from-purple-500 to-pink-500 md:hidden duration-500`}
+          } fixed inset-y-0 mt-16 md:hidden`}
         >
           <SideBarContent title={title} sidebarLinks={sidebarLinks} />
         </aside>

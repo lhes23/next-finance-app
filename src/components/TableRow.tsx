@@ -40,7 +40,7 @@ const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
     })
   }
   return (
-    <tr className="bg-white text-gray-600">
+    <tr className="text-gray-600">
       <td className="px-4 py-3">
         <div className="flex items-center text-sm">
           <div>

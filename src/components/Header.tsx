@@ -7,7 +7,7 @@ import HeaderProfile from "./HeaderProfile"
 const Header = () => {
   return (
     <>
-      <header className="z-10 py-4 shadow-md bg-gradient-to-t from-purple-400 to-pink-400">
+      <header className="z-10 py-4 shadow-md backdrop-blur-sm bg-white/30">
         <div className="container items-center justify-between h-full px-2 mx-auto text-white flex">
           {/* <!-- Mobile hamburger --> */}
           <div className="px-2">

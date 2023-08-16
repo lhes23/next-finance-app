@@ -21,7 +21,10 @@ const Notification = () => {
           dispatch(setShowProfileMenu(false))
         }}
       >
-        <IoNotificationsCircle className="w-full h-full" size={30} />
+        <IoNotificationsCircle
+          className="w-full h-full text-purple-500"
+          size={30}
+        />
         <span
           aria-hidden="true"
           className="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-gray-800"

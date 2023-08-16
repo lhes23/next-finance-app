@@ -5,7 +5,7 @@ import React from "react"
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <div className="flex h-screen bg-gray-50 dark:bg-gray-900 w-full">
+      <div className="flex h-screen w-full bg-no-repeat bg-cover bg-[url('/imgs/bg-mountains.jpg')]">
         <Sidebar />
         <div className="flex flex-col flex-1 w-full">
           <Header />

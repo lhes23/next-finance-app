@@ -2,7 +2,6 @@
 import React, { useEffect } from "react"
 import { useAppDispatch } from "@/redux/store"
 import { getAllBudgets } from "@/redux/createAsyncs"
-import { setShowModal } from "@/redux/dashboardSlice"
 
 const PageComponent = ({
   title,
