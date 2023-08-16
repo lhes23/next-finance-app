@@ -1,4 +1,3 @@
-"use client"
 import React from "react"
 import { IBudget } from "@/lib/interfaces"
 import TableRow from "./TableRow"
