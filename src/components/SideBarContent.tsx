@@ -14,7 +14,7 @@ const SideBarContent = ({
       <ul>
         {sidebarLinks.map((side, i) => (
           <li
-            className="relative px-6 py-3 hover:shadow-lg hover:text-xl"
+            className="relative px-6 py-3 hover:shadow-lg hover:text-xl hover:bg-purple-400"
             key={i}
           >
             <span
