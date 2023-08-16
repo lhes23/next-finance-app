@@ -19,7 +19,7 @@ const Card = ({
   }
   return (
     <>
-      <div className="flex items-center p-4 bg-white rounded-lg shadow-lg text-gray-600">
+      <div className="bg-white flex items-center p-4 border rounded-lg hover:shadow-lg text-gray-600 hover:scale-105">
         <div className={`p-3 mr-4 ${color} rounded-full text-white`}>
           {icon}
         </div>
