@@ -55,7 +55,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="text-gray-600">
+      <div className="text-black">
         {/* Desktop View */}
         <aside className={`${styles.aside} hidden md:block w-52 h-screen`}>
           <SideBarContent title={title} sidebarLinks={sidebarLinks} />
