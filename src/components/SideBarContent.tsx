@@ -13,15 +13,9 @@ const SideBarContent = ({
   )
   return (
     <div className={`py-4`}>
-      <h2
-        className={`${
-          showSidebar ? "scale-1" : "scale-0"
-        } ml-6 text-lg font-bold`}
-      >
-        {title}
-      </h2>
+      <h2 className={`ml-6 text-lg font-bold`}>{title}</h2>
 
-      <ul className={`${showSidebar ? "scale-1" : "scale-0"}`}>
+      <ul className={``}>
         {sidebarLinks.map((side, i) => (
           <li
             className={`relative px-6 py-3 hover:shadow-lg hover:text-xl hover:bg-purple-400 `}
