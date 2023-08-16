@@ -1,26 +1,25 @@
+import {
+  setShowNotifications,
+  setShowProfileMenu
+} from "@/redux/dashboardSlice"
+import { useAppDispatch, useAppSelector } from "@/redux/store"
 import Image from "next/image"
 import React from "react"
 
-const HeaderProfile = ({
-  isProfileOpen,
-  setIsProfileOpen,
-  setIsNotiOpen
-}: {
-  isProfileOpen: boolean
-  setIsProfileOpen: React.Dispatch<React.SetStateAction<boolean>>
-  setIsNotiOpen: React.Dispatch<React.SetStateAction<boolean>>
-}) => {
+const HeaderProfile = () => {
+  const dispatch = useAppDispatch()
+  const showProfileMenu = useAppSelector(
+    (state) => state.dashboardSlice.showProfileMenu
+  )
   return (
     <>
       <button
         className="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
-        //   @click="toggleProfileMenu"
-        //   @keydown.escape="closeProfileMenu"
         aria-label="Account"
         aria-haspopup="true"
         onClick={() => {
-          setIsProfileOpen(!isProfileOpen)
-          setIsNotiOpen(false)
+          dispatch(setShowProfileMenu(!showProfileMenu))
+          dispatch(setShowNotifications(false))
         }}
       >
         <Image
@@ -32,7 +31,7 @@ const HeaderProfile = ({
           height={32}
         />
       </button>
-      {isProfileOpen && (
+      {showProfileMenu && (
         <div x-if="isProfileMenuOpen">
           <ul
             className="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"

@@ -1,23 +1,24 @@
 "use client"
+import {
+  setShowNotifications,
+  setShowProfileMenu
+} from "@/redux/dashboardSlice"
+import { useAppDispatch, useAppSelector } from "@/redux/store"
 import React from "react"
 import { IoNotificationsCircle } from "react-icons/io5"
 
-const Notification = ({
-  isNotiOpen,
-  setIsNotiOpen,
-  setIsProfileOpen
-}: {
-  isNotiOpen: boolean
-  setIsNotiOpen: React.Dispatch<React.SetStateAction<boolean>>
-  setIsProfileOpen: React.Dispatch<React.SetStateAction<boolean>>
-}) => {
+const Notification = () => {
+  const dispatch = useAppDispatch()
+  const showNotifications = useAppSelector(
+    (state) => state.dashboardSlice.showNotifications
+  )
   return (
     <>
       <button
         className="relative align-middle rounded-md focus:outline-none focus:shadow-outline-purple"
         onClick={() => {
-          setIsNotiOpen(!isNotiOpen)
-          setIsProfileOpen(false)
+          dispatch(setShowNotifications(!showNotifications))
+          dispatch(setShowProfileMenu(false))
         }}
       >
         <IoNotificationsCircle className="w-full h-full" size={30} />
@@ -26,7 +27,7 @@ const Notification = ({
           className="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-gray-800"
         ></span>
       </button>
-      {isNotiOpen && (
+      {showNotifications && (
         <div>
           <ul className="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:text-gray-300 dark:border-gray-700 dark:bg-gray-700">
             <li className="flex">
