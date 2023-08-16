@@ -32,6 +32,7 @@ const YearlyTable = () => {
       <ReactSelect
         options={options}
         onChange={(selected: any) => setYear(selected?.value)}
+        className="text-gray-600"
       />
       <div className="w-full overflow-hidden rounded-lg shadow-xs">
         <div className="w-full overflow-x-auto">
