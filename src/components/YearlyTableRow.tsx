@@ -12,10 +12,10 @@ const YearlyTableRow = ({
   return (
     <>
       <tr className="text-sm">
-        <td className="p-2">{incomeExpenseRow.month}</td>
-        <td className="p-2">₱ {incomeExpenseRow.income}</td>
-        <td className="p-2">₱ {incomeExpenseRow.expense}</td>
-        <td className={`p-2 ${textColor}`}>₱ {cashFlow}</td>
+        <td className="px-4 py-3">{incomeExpenseRow.month}</td>
+        <td className="px-4 py-3">₱ {incomeExpenseRow.income}</td>
+        <td className="px-4 py-3">₱ {incomeExpenseRow.expense}</td>
+        <td className={`px-4 py-3 ${textColor}`}>₱ {cashFlow}</td>
       </tr>
     </>
   )

@@ -50,18 +50,14 @@ const DashboardCharts = () => {
 
   return (
     <>
-      <h2 className="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-        Charts
-      </h2>
+      <h2 className="my-6 text-2xl font-semibold text-white">Charts</h2>
       <div className="grid gap-6 mb-8 grid-cols-1 md:grid-cols-2">
-        <div className="min-w-0 p-4 bg-white rounded-lg shadow-lg">
-          <h4 className="mb-4 font-semibold text-gray-600">
-            Income and Expenses
-          </h4>
+        <div className="min-w-0 p-4 rounded-lg shadow-lg backdrop-blur-lg bg-white/50">
+          <h4 className="mb-4 font-semibold text-black">Income and Expenses</h4>
           <LineChart data={incomesExpensesData} />
         </div>
-        <div className="min-w-0 p-4 bg-white rounded-lg shadow-lg">
-          <h4 className="mb-4 font-semibold text-gray-600">Cash Flow</h4>
+        <div className="min-w-0 p-4 rounded-lg shadow-lg backdrop-blur-lg bg-white/50">
+          <h4 className="mb-4 font-semibold text-black">Cash Flow</h4>
           <LineChart data={cashFlowData} />
         </div>
       </div>

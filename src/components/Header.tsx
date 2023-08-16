@@ -1,30 +1,17 @@
-// "use client"
-import React, { useState } from "react"
+import React from "react"
 import AddBudgetModal from "./AddBudgetModal"
 import MobileHamburger from "./MobileHamburger"
 import HeaderNotification from "./HeaderNotification"
 import HeaderProfile from "./HeaderProfile"
 
-const Header = ({
-  isSideBarOpen,
-  setIsSideBarOpen
-}: {
-  isSideBarOpen: boolean
-  setIsSideBarOpen: React.Dispatch<React.SetStateAction<boolean>>
-}) => {
-  const [isNotiOpen, setIsNotiOpen] = useState<boolean>(false)
-  const [isProfileOpen, setIsProfileOpen] = useState<boolean>(false)
-
+const Header = () => {
   return (
     <>
-      <header className="z-10 py-4 shadow-md bg-gradient-to-t from-purple-400 to-pink-400">
+      <header className="z-10 py-4 shadow-md backdrop-blur-sm bg-white/30">
         <div className="container items-center justify-between h-full px-2 mx-auto text-white flex">
           {/* <!-- Mobile hamburger --> */}
           <div className="px-2">
-            <MobileHamburger
-              isSideBarOpen={isSideBarOpen}
-              setIsSideBarOpen={setIsSideBarOpen}
-            />
+            <MobileHamburger />
           </div>
 
           <div className="px-6">
@@ -44,19 +31,11 @@ const Header = ({
             </li> */}
             {/* <!-- Notifications menu --> */}
             <li className="relative px-2">
-              <HeaderNotification
-                isNotiOpen={isNotiOpen}
-                setIsNotiOpen={setIsNotiOpen}
-                setIsProfileOpen={setIsProfileOpen}
-              />
+              <HeaderNotification />
             </li>
             {/* <!-- Profile menu --> */}
             <li className="relative px-2">
-              <HeaderProfile
-                isProfileOpen={isProfileOpen}
-                setIsProfileOpen={setIsProfileOpen}
-                setIsNotiOpen={setIsNotiOpen}
-              />
+              <HeaderProfile />
             </li>
           </ul>
         </div>

@@ -2,10 +2,10 @@
 import React from "react"
 import { IBudget } from "@/lib/interfaces"
 import { BsFillTrashFill, BsPencil } from "react-icons/bs"
-import { deleteBudget } from "@/actions/serverActions"
 import Swal from "sweetalert2"
-import { useAppDispatch, useAppSelector } from "@/redux/store"
+import { useAppDispatch } from "@/redux/store"
 import { setShowModal } from "@/redux/dashboardSlice"
+import { getAllBudgets } from "@/redux/createAsyncs"
 
 const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
   const dispatch = useAppDispatch()
@@ -30,14 +30,17 @@ const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteBudget(id).then(() => {
+        fetch(`/api/budgets/${id}`, {
+          method: "DELETE"
+        }).then(() => {
+          dispatch(getAllBudgets())
           Swal.fire("Deleted!", "Your budget has been deleted.", "success")
         })
       }
     })
   }
   return (
-    <tr className="bg-white text-gray-600">
+    <tr className="text-gray-600">
       <td className="px-4 py-3">
         <div className="flex items-center text-sm">
           <div>

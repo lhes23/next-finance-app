@@ -8,13 +8,13 @@ const SideBarContent = ({
   sidebarLinks: { name: string; url: string; icon: any }[]
 }) => {
   return (
-    <div className="py-4">
-      <h2 className="ml-6 text-lg font-bold">{title}</h2>
+    <div className={`py-4`}>
+      <h2 className={`ml-6 text-lg font-bold`}>{title}</h2>
 
-      <ul>
+      <ul className={``}>
         {sidebarLinks.map((side, i) => (
           <li
-            className="relative px-6 py-3 hover:shadow-lg hover:text-xl"
+            className={`relative px-6 py-3 hover:shadow-lg hover:text-xl hover:bg-purple-400 `}
             key={i}
           >
             <span

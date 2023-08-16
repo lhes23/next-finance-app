@@ -19,12 +19,12 @@ const Card = ({
   }
   return (
     <>
-      <div className="flex items-center p-4 bg-white rounded-lg shadow-lg text-gray-600">
+      <div className="backdrop-blur-lg bg-white/50 flex items-center p-4 border rounded-lg hover:shadow-lg text-black hover:scale-105">
         <div className={`p-3 mr-4 ${color} rounded-full text-white`}>
           {icon}
         </div>
         <div>
-          <p className="mb-2 text-sm font-medium ">{name}</p>
+          <p className="mb-2 text-sm font-medium">{name}</p>
           <p className={`text-lg font-semibold ${amountColor()}`}>₱ {amount}</p>
         </div>
       </div>
