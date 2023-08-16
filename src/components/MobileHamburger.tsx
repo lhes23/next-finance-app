@@ -1,3 +1,4 @@
+"use client"
 import { setShowSidebar } from "@/redux/dashboardSlice"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import React from "react"
