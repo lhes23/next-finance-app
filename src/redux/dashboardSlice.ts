@@ -12,10 +12,13 @@ export const dashboardSlice = createSlice({
   reducers: {
     setShowModal: (state, action: PayloadAction<boolean>) => {
       state.showModal = action.payload
+    },
+    setShowSidebar: (state, action: PayloadAction<boolean>) => {
+      state.showSidebar = action.payload
     }
   }
 })
 
-export const { setShowModal } = dashboardSlice.actions
+export const { setShowModal, setShowSidebar } = dashboardSlice.actions
 
 export default dashboardSlice.reducer

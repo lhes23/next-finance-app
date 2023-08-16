@@ -1,17 +1,11 @@
-// "use client"
+"use client"
 import React, { useState } from "react"
 import AddBudgetModal from "./AddBudgetModal"
 import MobileHamburger from "./MobileHamburger"
 import HeaderNotification from "./HeaderNotification"
 import HeaderProfile from "./HeaderProfile"
 
-const Header = ({
-  isSideBarOpen,
-  setIsSideBarOpen
-}: {
-  isSideBarOpen: boolean
-  setIsSideBarOpen: React.Dispatch<React.SetStateAction<boolean>>
-}) => {
+const Header = () => {
   const [isNotiOpen, setIsNotiOpen] = useState<boolean>(false)
   const [isProfileOpen, setIsProfileOpen] = useState<boolean>(false)
 
@@ -21,10 +15,7 @@ const Header = ({
         <div className="container items-center justify-between h-full px-2 mx-auto text-white flex">
           {/* <!-- Mobile hamburger --> */}
           <div className="px-2">
-            <MobileHamburger
-              isSideBarOpen={isSideBarOpen}
-              setIsSideBarOpen={setIsSideBarOpen}
-            />
+            <MobileHamburger />
           </div>
 
           <div className="px-6">

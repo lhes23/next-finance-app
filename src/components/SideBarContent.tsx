@@ -1,3 +1,4 @@
+import { useAppSelector } from "@/redux/store"
 import Link from "next/link"
 
 const SideBarContent = ({
@@ -7,14 +8,23 @@ const SideBarContent = ({
   title: string
   sidebarLinks: { name: string; url: string; icon: any }[]
 }) => {
+  const showSidebar = useAppSelector(
+    (state) => state.dashboardSlice.showSidebar
+  )
   return (
-    <div className="py-4">
-      <h2 className="ml-6 text-lg font-bold">{title}</h2>
+    <div className={`py-4`}>
+      <h2
+        className={`${
+          showSidebar ? "scale-1" : "scale-0"
+        } ml-6 text-lg font-bold`}
+      >
+        {title}
+      </h2>
 
-      <ul>
+      <ul className={`${showSidebar ? "scale-1" : "scale-0"}`}>
         {sidebarLinks.map((side, i) => (
           <li
-            className="relative px-6 py-3 hover:shadow-lg hover:text-xl hover:bg-purple-400"
+            className={`relative px-6 py-3 hover:shadow-lg hover:text-xl hover:bg-purple-400 `}
             key={i}
           >
             <span
