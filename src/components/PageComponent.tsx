@@ -1,7 +1,8 @@
 "use client"
 import React, { useEffect } from "react"
 import { useAppDispatch } from "@/redux/store"
-import { getAllBudgets } from "@/redux/createAsyncs"
+import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs"
+import { setShowSidebar } from "@/redux/dashboardSlice"
 
 const PageComponent = ({
   title,
@@ -14,6 +15,8 @@ const PageComponent = ({
 
   useEffect(() => {
     dispatch(getAllBudgets())
+    dispatch(getAllYearlyBudgets())
+    dispatch(setShowSidebar(false))
   }, [dispatch])
 
   return (

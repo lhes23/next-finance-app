@@ -1,23 +1,15 @@
 "use client"
-import React, { useEffect } from "react"
+import React from "react"
 import PageComponent from "@/components/PageComponent"
 import DashboardCards from "@/components/DashboardCards"
 import DashboardCharts from "@/components/DashboardCharts"
 import IncomeExpenseTable from "@/components/IncomeExpenseTable"
-import { useAppDispatch, useAppSelector } from "@/redux/store"
-import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs"
+import { useAppSelector } from "@/redux/store"
 
 const DashboardPage = () => {
-  const dispatch = useAppDispatch()
-
   let all_budgets = useAppSelector(
     (state) => state.budgetSliceReducer.allBudgets
   )
-
-  useEffect(() => {
-    dispatch(getAllBudgets())
-    dispatch(getAllYearlyBudgets())
-  }, [dispatch])
 
   all_budgets = all_budgets.filter(
     (budget) =>
