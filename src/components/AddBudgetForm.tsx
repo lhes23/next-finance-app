@@ -3,50 +3,9 @@ import React from "react"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { setShowModal } from "@/redux/dashboardSlice"
 import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs"
-import { months } from "@/lib/months"
 import Swal from "sweetalert2"
 import { setSingleBudget } from "@/redux/budgetSlice"
-import { ISingleBudget } from "@/lib/interfaces"
-
-export const addBudgetRequest = async (singleBudget: ISingleBudget) => {
-  const res = await fetch(`/api/budgets`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(singleBudget)
-  })
-  if (!res.ok) throw new Error()
-
-  const dataRes = await res.json()
-  const year = new Date(dataRes.createdAt).getFullYear()
-  const month = months[new Date(dataRes.createdAt).getMonth()]
-
-  const response = await fetch(`/api/budgets/yearly`, {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json"
-    },
-    body: JSON.stringify({
-      year,
-      month,
-      budgetAmount: dataRes.budgetAmount,
-      budgetType: dataRes.budgetType
-    })
-  })
-  return response
-}
-
-export const editBudgetRequest = async (singleBudget: ISingleBudget) => {
-  const res = await fetch(`/api/budgets/${singleBudget.id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(singleBudget)
-  })
-  return res
-}
+import { addBudgetRequest, editBudgetRequest } from "@/lib/fetchData"
 
 const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
   const dispatch = useAppDispatch()
