@@ -14,23 +14,23 @@ const SideBarContent = ({
 
       <ul className={``}>
         {sidebarLinks.map((side, i) => (
-          <li
-            className={`relative px-6 py-3 hover:shadow-lg hover:text-xl hover:bg-purple-400 `}
+          <Link
             key={i}
+            className="inline-flex items-center w-full transition-colors duration-150"
+            href={side.url}
           >
-            <span
-              className="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
-              aria-hidden="true"
-            ></span>
-
-            <Link
-              className="inline-flex items-center w-full transition-colors duration-150"
-              href={side.url}
+            <li
+              className={`relative px-6 py-3 hover:shadow-lg hover:text-xl hover:bg-purple-400 `}
             >
+              <span
+                className="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                aria-hidden="true"
+              ></span>
+
               {side.icon}
               <span className="ml-4 text-sm font-semibold">{side.name}</span>
-            </Link>
-          </li>
+            </li>
+          </Link>
         ))}
       </ul>
     </div>
