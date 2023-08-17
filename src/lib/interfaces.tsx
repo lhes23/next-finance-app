@@ -18,6 +18,6 @@ export interface IIncomesExpensesData {
 }
 
 export interface IYearOption {
-  label: string
+  label: number
   value: number
 }

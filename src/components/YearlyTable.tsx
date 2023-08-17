@@ -21,16 +21,17 @@ const YearlyTable = () => {
     (ied) => ied.year === year
   )
 
-  const options: IYearOption[] = [
-    { label: "2023", value: 2023 },
-    { label: "2024", value: 2024 },
-    { label: "2025", value: 2025 }
-  ]
+  const iedOptions: IYearOption[] = incomesExpensesData.map((ied) => {
+    return {
+      label: ied.year,
+      value: ied.year
+    }
+  })
 
   return (
     <>
       <ReactSelect
-        options={options}
+        options={iedOptions}
         onChange={(selected: any) => setYear(selected?.value)}
         className="text-black"
       />
