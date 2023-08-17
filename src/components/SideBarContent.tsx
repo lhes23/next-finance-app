@@ -15,7 +15,6 @@ const SideBarContent = ({
   )
   const dispatch = useAppDispatch()
 
-  console.log({ activeSideMenu })
   return (
     <div className={`py-4`}>
       <h2 className={`ml-6 text-lg font-bold`}>{title}</h2>
