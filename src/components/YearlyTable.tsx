@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react"
-import { IIncomesExpensesData, IYearOption } from "@/lib/interfaces"
+import { IIncomesExpensesData, ISelectOption } from "@/lib/interfaces"
 import YearlyTableRow from "./YearlyTableRow"
 import ReactSelect from "react-select"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
@@ -21,7 +21,7 @@ const YearlyTable = () => {
     (ied) => ied.year === year
   )
 
-  const iedOptions: IYearOption[] = incomesExpensesData.map((ied) => {
+  const iedOptions: ISelectOption[] = incomesExpensesData.map((ied) => {
     return {
       label: ied.year,
       value: ied.year
