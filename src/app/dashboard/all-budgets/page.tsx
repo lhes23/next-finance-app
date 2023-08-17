@@ -10,10 +10,7 @@ import { ISelectOption } from "@/lib/interfaces"
 
 const AllBudgetsPage = () => {
   const dispatch = useAppDispatch()
-  const incomesExpensesData = useAppSelector(
-    (state) => state.budgetSliceReducer.yearlyBudgets
-  )
-  const [month, setMonth] = useState<number>(0)
+  const [month, setMonth] = useState<number>(new Date().getMonth())
 
   let allBudgets = useAppSelector(
     (state) => state.budgetSliceReducer.allBudgets
@@ -40,7 +37,6 @@ const AllBudgetsPage = () => {
     }
   )
 
-  console.log({ perMonth, iedOptions })
   return (
     <>
       <PageComponent title="All Budget">
