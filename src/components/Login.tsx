@@ -1,10 +1,18 @@
+"use client"
+import { setIsButtonLoading } from "@/redux/dashboardSlice"
+import { useAppDispatch, useAppSelector } from "@/redux/store"
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 import { AiFillGoogleCircle } from "react-icons/ai"
 import { BsFacebook } from "react-icons/bs"
+import LoadingButton from "./LoadingButton"
 
 const Login = () => {
+  const isButtonLoading = useAppSelector(
+    (state) => state.dashboardSlice.isButtonLoading
+  )
+  const dispatch = useAppDispatch()
   const styles = {
     socialBtns:
       "flex items-center justify-center w-full px-4 py-2 my-2 text-sm font-medium leading-5  text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray hover:shadow-lg hover:bg-white"
@@ -42,12 +50,18 @@ const Login = () => {
               />
             </label>
             {/* You should use a button here, as the anchor is only used for the example  */}
-            <Link
-              className="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple hover:shadow-lg"
-              href="/dashboard"
-            >
-              Log in
-            </Link>
+            {!isButtonLoading ? (
+              <Link
+                className="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple hover:shadow-lg"
+                href="/dashboard"
+                onClick={() => dispatch(setIsButtonLoading(true))}
+              >
+                Log in
+              </Link>
+            ) : (
+              <LoadingButton />
+            )}
+
             <hr className="my-4" />
             <button className={styles.socialBtns}>
               <BsFacebook />

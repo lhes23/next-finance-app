@@ -2,7 +2,7 @@
 import React, { useEffect } from "react"
 import { useAppDispatch } from "@/redux/store"
 import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs"
-import { setShowSidebar } from "@/redux/dashboardSlice"
+import { setIsButtonLoading, setShowSidebar } from "@/redux/dashboardSlice"
 import BudgetModal from "./BudgetModal"
 
 const PageComponent = ({
@@ -18,6 +18,7 @@ const PageComponent = ({
     dispatch(getAllBudgets())
     dispatch(getAllYearlyBudgets())
     dispatch(setShowSidebar(false))
+    dispatch(setIsButtonLoading(false))
   }, [dispatch])
 
   return (
