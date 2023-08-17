@@ -5,7 +5,8 @@ const initialState = {
   showSidebar: false,
   activeSideMenu: "",
   showNotifications: false,
-  showProfileMenu: false
+  showProfileMenu: false,
+  isButtonLoading: false
 }
 
 export const dashboardSlice = createSlice({
@@ -23,6 +24,9 @@ export const dashboardSlice = createSlice({
     },
     setShowProfileMenu: (state, action: PayloadAction<boolean>) => {
       state.showProfileMenu = action.payload
+    },
+    setIsButtonLoading: (state, action: PayloadAction<boolean>) => {
+      state.isButtonLoading = action.payload
     }
   }
 })
@@ -31,7 +35,8 @@ export const {
   setShowModal,
   setShowSidebar,
   setShowNotifications,
-  setShowProfileMenu
+  setShowProfileMenu,
+  setIsButtonLoading
 } = dashboardSlice.actions
 
 export default dashboardSlice.reducer
