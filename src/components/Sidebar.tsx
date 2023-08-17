@@ -1,12 +1,14 @@
 "use client"
-import React from "react"
+import React, { useEffect } from "react"
 import SideBarContent from "./SideBarContent"
 import { AiOutlineDashboard } from "react-icons/ai"
 import { BsClipboardCheck } from "react-icons/bs"
 import { FaMoneyBillTrendUp } from "react-icons/fa6"
-import { useAppSelector } from "@/redux/store"
+import { useAppDispatch, useAppSelector } from "@/redux/store"
+import { setShowSidebar } from "@/redux/dashboardSlice"
 
 const Sidebar = () => {
+  const dispatch = useAppDispatch()
   const showSidebar = useAppSelector(
     (state) => state.dashboardSlice.showSidebar
   )
@@ -52,6 +54,10 @@ const Sidebar = () => {
     aside:
       "z-20 overflow-y-auto backdrop-blur-md bg-white/30 flex-shrink-0 duration-300"
   }
+
+  useEffect(() => {
+    dispatch(setShowSidebar(false))
+  }, [dispatch])
 
   return (
     <>
