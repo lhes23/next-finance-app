@@ -1,11 +1,11 @@
 export interface ISingleBudget {
+  id: string
   budgetName: string
   budgetType: string
   budgetAmount: number | string
 }
 
 export interface IBudget extends ISingleBudget {
-  id: string
   createdAt: string
   updatedAt?: string
 }

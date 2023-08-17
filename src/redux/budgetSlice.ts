@@ -10,6 +10,7 @@ interface IInitialState {
 
 const initialState: IInitialState = {
   singleBudget: {
+    id: "",
     budgetName: "",
     budgetType: "expense",
     budgetAmount: ""

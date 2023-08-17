@@ -6,6 +6,7 @@ import Swal from "sweetalert2"
 import { useAppDispatch } from "@/redux/store"
 import { setShowModal } from "@/redux/dashboardSlice"
 import { getAllBudgets } from "@/redux/createAsyncs"
+import { setSingleBudget } from "@/redux/budgetSlice"
 
 const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
   const dispatch = useAppDispatch()
@@ -63,7 +64,17 @@ const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
           <button
             className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray"
             aria-label="Edit"
-            onClick={() => dispatch(setShowModal(true))}
+            onClick={() => {
+              dispatch(
+                setSingleBudget({
+                  id: incomeExpenseRow.id,
+                  budgetName: incomeExpenseRow.budgetName,
+                  budgetType: incomeExpenseRow.budgetType,
+                  budgetAmount: incomeExpenseRow.budgetAmount
+                })
+              )
+              dispatch(setShowModal(true))
+            }}
           >
             <BsPencil />
           </button>
