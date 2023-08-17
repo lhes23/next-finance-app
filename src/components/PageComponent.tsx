@@ -3,6 +3,7 @@ import React, { useEffect } from "react"
 import { useAppDispatch } from "@/redux/store"
 import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs"
 import { setShowSidebar } from "@/redux/dashboardSlice"
+import BudgetModal from "./BudgetModal"
 
 const PageComponent = ({
   title,
@@ -21,6 +22,7 @@ const PageComponent = ({
 
   return (
     <>
+      <BudgetModal />
       <h2 className="my-6 text-2xl font-semibold text-white">{title}</h2>
       {children}
     </>

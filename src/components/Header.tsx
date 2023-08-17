@@ -1,5 +1,5 @@
 import React from "react"
-import AddBudgetModal from "./AddBudgetModal"
+import BudgetModalButton from "./BudgetModalButton"
 import MobileHamburger from "./MobileHamburger"
 import HeaderNotification from "./HeaderNotification"
 import HeaderProfile from "./HeaderProfile"
@@ -15,7 +15,7 @@ const Header = () => {
           </div>
 
           <div className="px-6">
-            <AddBudgetModal />
+            <BudgetModalButton />
           </div>
 
           <ul className="flex px-1 justify-end">

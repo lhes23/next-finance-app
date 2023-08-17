@@ -1,13 +1,19 @@
-import { IBudget, IIncomesExpensesData } from "@/lib/interfaces"
+import { IBudget, IIncomesExpensesData, ISingleBudget } from "@/lib/interfaces"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { getAllBudgets, getAllYearlyBudgets } from "./createAsyncs"
 
 interface IInitialState {
+  singleBudget: ISingleBudget
   allBudgets: IBudget[]
   yearlyBudgets: IIncomesExpensesData[]
 }
 
 const initialState: IInitialState = {
+  singleBudget: {
+    budgetName: "",
+    budgetType: "expense",
+    budgetAmount: ""
+  },
   allBudgets: [],
   yearlyBudgets: []
 }
@@ -18,6 +24,9 @@ export const budgetSlice = createSlice({
   reducers: {
     setAllBudgets: (state, action: PayloadAction<IBudget[]>) => {
       state.allBudgets = action.payload
+    },
+    setSingleBudget: (state, action: PayloadAction<ISingleBudget>) => {
+      state.singleBudget = action.payload
     }
   },
   extraReducers: (builder) => {
@@ -36,6 +45,6 @@ export const budgetSlice = createSlice({
   }
 })
 
-export const { setAllBudgets } = budgetSlice.actions
+export const { setAllBudgets, setSingleBudget } = budgetSlice.actions
 
 export default budgetSlice.reducer
