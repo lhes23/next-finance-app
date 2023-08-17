@@ -27,6 +27,9 @@ export const dashboardSlice = createSlice({
     },
     setIsButtonLoading: (state, action: PayloadAction<boolean>) => {
       state.isButtonLoading = action.payload
+    },
+    setActiveSideMenu: (state, action: PayloadAction<string>) => {
+      state.activeSideMenu = action.payload
     }
   }
 })
@@ -36,7 +39,8 @@ export const {
   setShowSidebar,
   setShowNotifications,
   setShowProfileMenu,
-  setIsButtonLoading
+  setIsButtonLoading,
+  setActiveSideMenu
 } = dashboardSlice.actions
 
 export default dashboardSlice.reducer
