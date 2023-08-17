@@ -1,7 +1,7 @@
 "use client"
 import React from "react"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
-import { setShowModal } from "@/redux/dashboardSlice"
+import { setIsButtonLoading, setShowModal } from "@/redux/dashboardSlice"
 import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs"
 import Swal from "sweetalert2"
 import { setSingleBudget } from "@/redux/budgetSlice"
@@ -16,13 +16,13 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
   const submitFormHandler = async (e: React.FormEvent) => {
     e.preventDefault()
     let response
-
+    dispatch(setIsButtonLoading(true))
     if (singleBudget.id !== "") {
       response = await editBudgetRequest(singleBudget)
     } else {
       response = await addBudgetRequest(singleBudget)
     }
-
+    dispatch(setIsButtonLoading(false))
     if (!response.ok) console.log({ response })
 
     Swal.fire("Budget Saved", "You've added a budget for this month", "success")

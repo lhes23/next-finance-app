@@ -5,9 +5,13 @@ import React from "react"
 import { AiOutlineCloseCircle } from "react-icons/ai"
 import AddBudgetForm from "./AddBudgetForm"
 import ButtonComp from "./ButtonComp"
+import LoadingButton from "./LoadingButton"
 
 const BudgetModal = () => {
   const showModal = useAppSelector((state) => state.dashboardSlice.showModal)
+  const isButtonLoading = useAppSelector(
+    (state) => state.dashboardSlice.isButtonLoading
+  )
   const dispatch = useAppDispatch()
 
   return (
@@ -34,16 +38,24 @@ const BudgetModal = () => {
                 <div className="relative p-6 flex-auto">
                   <AddBudgetForm>
                     <div className="flex justify-center items-center">
-                      <button
-                        className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                        type="button"
-                        onClick={() => dispatch(setShowModal(false))}
-                      >
-                        Close
-                      </button>
-                      <button type="submit">
-                        <ButtonComp>Add Budget</ButtonComp>
-                      </button>
+                      {!isButtonLoading ? (
+                        <>
+                          <button
+                            className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            type="button"
+                            onClick={() => dispatch(setShowModal(false))}
+                          >
+                            Close
+                          </button>
+                          <button type="submit">
+                            <ButtonComp>Add Budget</ButtonComp>
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <LoadingButton />
+                        </>
+                      )}
                     </div>
                   </AddBudgetForm>
                 </div>
