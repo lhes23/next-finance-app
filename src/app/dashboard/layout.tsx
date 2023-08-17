@@ -1,6 +1,7 @@
 import Header from "@/components/Header"
 import Sidebar from "@/components/Sidebar"
-import React from "react"
+import React, { Suspense } from "react"
+import Loading from "./loading"
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -9,9 +10,11 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         <Sidebar />
         <div className="flex flex-col flex-1 w-full">
           <Header />
-          <main className="h-full overflow-y-auto">
-            <div className="container px-6 mx-auto grid">{children}</div>
-          </main>
+          <Suspense fallback={<Loading />}>
+            <main className="h-full overflow-y-auto">
+              <div className="container px-6 mx-auto grid">{children}</div>
+            </main>
+          </Suspense>
         </div>
       </div>
     </>
