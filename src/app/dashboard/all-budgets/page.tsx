@@ -1,23 +1,17 @@
 "use client"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import IncomeExpenseTable from "@/components/IncomeExpenseTable"
 import PageComponent from "@/components/PageComponent"
-import { useAppDispatch, useAppSelector } from "@/redux/store"
-import { getAllBudgets } from "@/redux/createAsyncs"
+import { useAppSelector } from "@/redux/store"
 import ReactSelect from "react-select"
 import { months } from "@/lib/months"
 import { ISelectOption } from "@/lib/interfaces"
 
 const AllBudgetsPage = () => {
-  const dispatch = useAppDispatch()
   let allBudgets = useAppSelector(
     (state) => state.budgetSliceReducer.allBudgets
   )
   const [month, setMonth] = useState<number>(new Date().getMonth())
-
-  useEffect(() => {
-    dispatch(getAllBudgets())
-  }, [dispatch])
 
   const perMonth = allBudgets.filter(
     (budget) => new Date(budget.createdAt).getMonth() === month
