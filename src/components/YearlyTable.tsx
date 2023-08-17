@@ -39,7 +39,7 @@ const YearlyTable = () => {
         <div className="w-full overflow-x-auto">
           <table className="w-full whitespace-no-wrap">
             <thead>
-              <tr className="text-xs font-semibold tracking-wide text-lef uppercase border-b ">
+              <tr className="text-xs font-semibold tracking-wide text-left uppercase border-b ">
                 <th className="px-4 py-3">Month</th>
                 <th className="px-4 py-3">Income</th>
                 <th className="px-4 py-3">Expense</th>
