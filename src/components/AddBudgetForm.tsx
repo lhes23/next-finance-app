@@ -44,8 +44,8 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
     <>
       {/* <form className="w-full max-w-md p-2" action={addBudgetHandler}> */}
       <form className="w-full max-w-md p-2" onSubmit={submitFormHandler}>
-        <div className="md:flex md:items-center mb-6">
-          <div className="md:w-1/3">
+        <div className="mb-6">
+          <div className="">
             <label
               className="block text-gray-500 font-bold mb-1 md:mb-0"
               htmlFor="inline-full-name"
@@ -53,7 +53,7 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
               Budget Name
             </label>
           </div>
-          <div className="md:w-2/3">
+          <div className="">
             <input
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
               id="inline-full-name"
@@ -71,13 +71,13 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
             />
           </div>
         </div>
-        <div className="md:flex md:items-center mb-6">
-          <div className="md:w-1/3">
+        <div className="mb-6">
+          <div className="">
             <label className="block text-gray-500 font-bold mb-1 md:mb-0">
               Budget Type
             </label>
           </div>
-          <div className="md:w-2/3 flex justify-evenly">
+          <div className="flex justify-evenly">
             <label className="inline-flex items-center text-gray-600 dark:text-gray-400">
               <input
                 type="radio"
@@ -116,13 +116,13 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
           </div>
         </div>
 
-        <div className="md:flex md:items-center mb-6">
-          <div className="md:w-1/3">
+        <div className="mb-6">
+          <div className="">
             <label className="block text-gray-500 font-bold mb-1 md:mb-0">
               Budget Amount
             </label>
           </div>
-          <div className="md:w-2/3 flex justify-evenly">
+          <div className="flex justify-evenly">
             <input
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
               type="text"
