@@ -75,6 +75,12 @@ const Sidebar = () => {
         >
           <SideBarContent title={title} sidebarLinks={sidebarLinks} />
         </aside>
+        {showSidebar && (
+          <div
+            className="w-full h-full absolute -z-0"
+            onClick={() => dispatch(setShowSidebar(false))}
+          ></div>
+        )}
         {/* )} */}
       </div>
     </>
