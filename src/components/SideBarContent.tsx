@@ -23,8 +23,8 @@ const SideBarContent = ({
         {sidebarLinks.map((side, i) => (
           <li
             key={i}
-            className={`relative px-6 py-3 hover:shadow-lg hover:text-xl hover:bg-purple-400 ${
-              activeSideMenu == side.name ? "bg-purple-500" : ""
+            className={`relative px-6 py-3 hover:shadow-lg hover:text-white hover:bg-purple-400 ${
+              activeSideMenu == side.name ? "bg-purple-500 text-white" : ""
             }`}
           >
             <Link

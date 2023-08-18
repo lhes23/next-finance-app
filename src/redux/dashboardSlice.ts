@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 const initialState = {
   showModal: false,
   showSidebar: false,
-  activeSideMenu: "",
+  activeSideMenu: "Dashboard",
   showNotifications: false,
   showProfileMenu: false,
   isButtonLoading: false
