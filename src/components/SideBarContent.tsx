@@ -16,8 +16,8 @@ const SideBarContent = ({
   const dispatch = useAppDispatch()
 
   return (
-    <div className={`py-4`}>
-      <h2 className={`ml-6 text-lg font-bold`}>{title}</h2>
+    <div className={``}>
+      <h2 className={`ml-6 text-2xl py-6 font-bold`}>{title}</h2>
 
       <ul className={``}>
         {sidebarLinks.map((side, i) => (
