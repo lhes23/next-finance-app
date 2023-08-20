@@ -48,14 +48,14 @@ const Sidebar = () => {
           className={iconClassName.color}
         />
       )
-    },
-    {
-      name: "Users",
-      url: "/dashboard/all-users",
-      icon: (
-        <FiUsers size={iconClassName.size} className={iconClassName.color} />
-      )
     }
+    // {
+    //   name: "Users",
+    //   url: "/dashboard/all-users",
+    //   icon: (
+    //     <FiUsers size={iconClassName.size} className={iconClassName.color} />
+    //   )
+    // }
   ]
 
   const styles = {
