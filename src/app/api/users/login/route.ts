@@ -16,5 +16,11 @@ export const POST = async (req: Request) => {
   const match = await compare(password, user.password)
   if (!match) return NextResponse.json({ error: "Wrong password" })
 
-  return NextResponse.json(user)
+  return NextResponse.json({
+    user: {
+      id: user.id,
+      email: user.email,
+      username: user.username
+    }
+  })
 }
