@@ -8,9 +8,11 @@ import ButtonComp from "./ButtonComp"
 import LoadingButton from "./LoadingButton"
 
 const BudgetModal = () => {
-  const showModal = useAppSelector((state) => state.dashboardSlice.showModal)
+  const showModal = useAppSelector(
+    (state) => state.dashboardSliceReducer.showModal
+  )
   const isButtonLoading = useAppSelector(
-    (state) => state.dashboardSlice.isButtonLoading
+    (state) => state.dashboardSliceReducer.isButtonLoading
   )
   const dispatch = useAppDispatch()
 

@@ -11,16 +11,15 @@ export const POST = async (req: Request) => {
     }
   })
 
-  if (!user) return NextResponse.json({ error: "User not found" })
+  if (!user) return NextResponse.json({ error: "No Username" }, { status: 401 })
 
   const match = await compare(password, user.password)
-  if (!match) return NextResponse.json({ error: "Wrong password" })
+  if (!match)
+    return NextResponse.json({ error: "Wrong Password" }, { status: 401 })
 
   return NextResponse.json({
-    user: {
-      id: user.id,
-      email: user.email,
-      username: user.username
-    }
+    id: user.id,
+    email: user.email,
+    username: user.username
   })
 }

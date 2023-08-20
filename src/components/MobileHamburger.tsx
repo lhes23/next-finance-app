@@ -7,7 +7,7 @@ import { GiHamburgerMenu } from "react-icons/gi"
 const MobileHamburger = () => {
   const dispatch = useAppDispatch()
   const showSidebar = useAppSelector(
-    (state) => state.dashboardSlice.showSidebar
+    (state) => state.dashboardSliceReducer.showSidebar
   )
   return (
     <>

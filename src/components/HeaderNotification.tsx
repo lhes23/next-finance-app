@@ -10,7 +10,7 @@ import { IoNotificationsCircle } from "react-icons/io5"
 const Notification = () => {
   const dispatch = useAppDispatch()
   const showNotifications = useAppSelector(
-    (state) => state.dashboardSlice.showNotifications
+    (state) => state.dashboardSliceReducer.showNotifications
   )
   return (
     <>

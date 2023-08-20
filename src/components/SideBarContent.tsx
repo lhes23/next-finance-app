@@ -11,7 +11,7 @@ const SideBarContent = ({
   sidebarLinks: { name: string; url: string; icon: any }[]
 }) => {
   const activeSideMenu = useAppSelector(
-    (state) => state.dashboardSlice.activeSideMenu
+    (state) => state.dashboardSliceReducer.activeSideMenu
   )
   const dispatch = useAppDispatch()
 

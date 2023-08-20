@@ -10,7 +10,7 @@ import React from "react"
 const HeaderProfile = () => {
   const dispatch = useAppDispatch()
   const showProfileMenu = useAppSelector(
-    (state) => state.dashboardSlice.showProfileMenu
+    (state) => state.dashboardSliceReducer.showProfileMenu
   )
   return (
     <>
