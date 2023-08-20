@@ -4,7 +4,9 @@ import {
   setShowProfileMenu
 } from "@/redux/dashboardSlice"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
+import { setUser } from "@/redux/userSlice"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import React from "react"
 
 const HeaderProfile = () => {
@@ -12,6 +14,7 @@ const HeaderProfile = () => {
   const showProfileMenu = useAppSelector(
     (state) => state.dashboardSliceReducer.showProfileMenu
   )
+  const { push } = useRouter()
   return (
     <>
       <button
@@ -55,12 +58,21 @@ const HeaderProfile = () => {
               </a>
             </li>
             <li className="flex">
-              <a
+              <button
                 className="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                href="#"
+                onClick={() => {
+                  dispatch(
+                    setUser({
+                      id: "",
+                      email: "",
+                      username: ""
+                    })
+                  )
+                  push("/")
+                }}
               >
                 <span>Log out</span>
-              </a>
+              </button>
             </li>
           </ul>
         </div>

@@ -18,12 +18,14 @@ const PageComponent = ({
   const { push } = useRouter()
 
   useEffect(() => {
-    if (!user) return push("/")
+    if (user.id === "") return push("/")
     dispatch(getAllBudgets())
     dispatch(getAllYearlyBudgets())
     dispatch(setShowSidebar(false))
     dispatch(setIsButtonLoading(false))
   }, [dispatch, user, push])
+
+  useEffect(() => console.log({ user }), [user])
 
   return (
     <>
