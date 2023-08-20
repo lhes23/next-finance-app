@@ -27,12 +27,14 @@ const BudgetModal = () => {
                   <h3 className="text-3xl font-semibold text-black">
                     Add a Budget
                   </h3>
-                  <button className="p-1 ml-auto border-0  float-right text-3xl leading-none font-semibold outline-none focus:outline-none">
-                    <AiOutlineCloseCircle
-                      className="text-red-500"
-                      onClick={() => dispatch(setShowModal(false))}
-                    />
-                  </button>
+                  {!isButtonLoading && (
+                    <button className="p-1 ml-auto border-0  float-right text-3xl leading-none font-semibold outline-none focus:outline-none">
+                      <AiOutlineCloseCircle
+                        className="text-red-500"
+                        onClick={() => dispatch(setShowModal(false))}
+                      />
+                    </button>
+                  )}
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
