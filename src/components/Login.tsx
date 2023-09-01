@@ -39,6 +39,7 @@ const Login = () => {
       Swal.fire("Wrong Username or Password", "Please try again", "error")
     } else {
       const data = await res.json()
+      localStorage.setItem("user", JSON.stringify(data))
       dispatch(setUser(data))
       push("/dashboard")
     }
