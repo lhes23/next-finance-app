@@ -12,10 +12,22 @@ const AllBudgetsPage = () => {
     (state) => state.budgetSliceReducer.allBudgets
   )
   const [month, setMonth] = useState<number>(new Date().getMonth())
+  const [budgetType, setBudgetType] = useState<string>("")
 
-  const perMonth = allBudgets.filter(
-    (budget) => new Date(budget.createdAt).getMonth() === month
-  )
+  const perMonth = allBudgets.filter((budget) => {
+    if (budgetType !== "") {
+      if (
+        new Date(budget.createdAt).getMonth() === month &&
+        budget.budgetType === budgetType
+      ) {
+        return budget
+      }
+    } else {
+      if (new Date(budget.createdAt).getMonth() === month) {
+        return budget
+      }
+    }
+  })
 
   const iedOptionsAll = allBudgets.map((budget) =>
     new Date(budget.createdAt).getMonth()
@@ -33,11 +45,24 @@ const AllBudgetsPage = () => {
   return (
     <>
       <PageComponent title="All Budget">
-        <ReactSelect
-          options={iedOptions}
-          onChange={(selected: any) => setMonth(selected?.value)}
-          className="text-black"
-        />
+        <div className="flex w-full">
+          <ReactSelect
+            options={iedOptions}
+            onChange={(selected: any) => setMonth(selected?.value)}
+            className="text-black w-full"
+            placeholder="Month"
+          />
+          <ReactSelect
+            options={[
+              { label: "Income", value: "income" },
+              { label: "Expenses", value: "expense" },
+              { label: "All", value: "" }
+            ]}
+            onChange={(selected: any) => setBudgetType(selected?.value)}
+            className="text-black w-full"
+            placeholder="Budget Type"
+          />
+        </div>
         <IncomeExpenseTable all_budgets={perMonth} />
       </PageComponent>
     </>
