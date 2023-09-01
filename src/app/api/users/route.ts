@@ -1,4 +1,5 @@
 import { prisma } from "@/prisma/prismaInit"
+import { hash } from "bcrypt"
 import { NextResponse } from "next/server"
 
 export const GET = async (req: Request) => {
@@ -8,12 +9,19 @@ export const GET = async (req: Request) => {
 
 export const POST = async (req: Request) => {
   const body = await req.json()
-  const user = await prisma.user.findUnique({
+  const { email, username, password } = body
+  const hashPassword = await hash(password, 10)
+  const user = await prisma.user.upsert({
     where: {
-      username: body.username,
-      password: body.password
+      username,
+    },update:{
+      password:hashPassword
+    },create:{
+      username,
+      password:hashPassword,
+      email
     }
   })
-  if (!user) return NextResponse.json(user, { status: 401 })
+  // if (!user) return NextResponse.json(user, { status: 401 })
   return NextResponse.json(user)
 }

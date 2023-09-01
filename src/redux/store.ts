@@ -1,13 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { TypedUseSelectorHook, useSelector, useDispatch } from "react-redux"
 import budgetSliceReducer from "./budgetSlice"
-import dashboardSlice from "./dashboardSlice"
+import dashboardSliceReducer from "./dashboardSlice"
+import userSliceReducer from "./userSlice"
 
 // Configure Store
 export const store = configureStore({
   reducer: {
     budgetSliceReducer,
-    dashboardSlice
+    dashboardSliceReducer,
+    userSliceReducer
   }
 })
 

@@ -11,7 +11,7 @@ import { setShowSidebar } from "@/redux/dashboardSlice"
 const Sidebar = () => {
   const dispatch = useAppDispatch()
   const showSidebar = useAppSelector(
-    (state) => state.dashboardSlice.showSidebar
+    (state) => state.dashboardSliceReducer.showSidebar
   )
   const title = "Finance App"
   const iconClassName = {
@@ -48,14 +48,14 @@ const Sidebar = () => {
           className={iconClassName.color}
         />
       )
-    },
-    {
-      name: "Users",
-      url: "/dashboard/all-users",
-      icon: (
-        <FiUsers size={iconClassName.size} className={iconClassName.color} />
-      )
     }
+    // {
+    //   name: "Users",
+    //   url: "/dashboard/all-users",
+    //   icon: (
+    //     <FiUsers size={iconClassName.size} className={iconClassName.color} />
+    //   )
+    // }
   ]
 
   const styles = {
