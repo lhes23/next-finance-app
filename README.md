@@ -53,13 +53,13 @@ To run this portfolio locally on your machine, follow these steps:
 1. Clone the repository:
 
 ```
-git clone https://github.com/lhes23/next-portfolio.git
+git clone https://github.com/lhes23/next-finance-app.git
 ```
 
 2. Navigate to the project directory:
 
 ```
-cd next-portfolio
+cd next-finance-app
 ```
 
 3. Install dependencies:
