@@ -42,10 +42,17 @@ const AllBudgetsPage = () => {
     }
   )
 
+  let perMonthTotal: number = perMonth
+    .map((p) => (p.budgetType === budgetType ? Number(p.budgetAmount) : 0))
+    .reduce((a, c) => a + c, 0)
+
   return (
     <>
       <PageComponent title="All Budget">
-        <div className="flex w-full">
+        <h1 className="text-white font-semibold text-xl py-2">
+          Total {budgetType} : {perMonthTotal}
+        </h1>
+        <div className="flex w-full my-2">
           <ReactSelect
             options={iedOptions}
             onChange={(selected: any) => setMonth(selected?.value)}
