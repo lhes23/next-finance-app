@@ -1,6 +1,6 @@
 # Finance Budget App
 
-![Budget Finance App](/public/images/portfolio/next-portfolio-lhes23.vercel.app.jpg)
+![Budget Finance App](/public/imgs/screenshots/front.png)
 
 ## Introduction
 
@@ -78,13 +78,11 @@ npm run dev
 
 ## Screenshots
 
-![Portfolio Screenshot 1](/public/images/portfolio/next-portfolio-lhes23.vercel.app.jpg)
+![Screenshot 1](/public/imgs/screenshots/front.png)
 
-![Portfolio Screenshot 2](/public/images/portfolio-web-1.png)
+![Screenshot 2](/public/imgs/screenshots/table-list.png)
 
-![Portfolio Screenshot 3](/public/images/portfolio-web-2.png)
-
-![Portfolio Screenshot 3](/public/images/portfolio-web-3.png)
+![Screenshot 3](/public/imgs/screenshots/charts.png)
 
 ## Contributing
 
