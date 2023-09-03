@@ -9,7 +9,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const { push } = useRouter()
   // useEffect(() => {
   //   if (typeof window !== "undefined" && window.localStorage) {
-  //     let userData = localStorage.getItem("user")
+  //     let userData = localStorage.getItem("userData")
   //     if (!userData) return push("/")
   //   }
   // }, [push])

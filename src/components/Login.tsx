@@ -9,6 +9,7 @@ import LoadingButton from "./LoadingButton"
 import Swal from "sweetalert2"
 import { setUser } from "@/redux/userSlice"
 import { useRouter } from "next/navigation"
+import { signIn } from "next-auth/react"
 
 const Login = () => {
   const [username, setUsername] = useState<string>("")
@@ -27,22 +28,39 @@ const Login = () => {
 
   const loginFormHandler = async (e: React.FormEvent) => {
     e.preventDefault()
-    // console.log({ username, password })
-    const res = await fetch(`/api/users/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ username, password })
+
+    // const res = await fetch(`/api/users/login`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify({ username, password })
+    // })
+    // if (!res.ok) {
+    //   Swal.fire("Wrong Username or Password", "Please try again", "error")
+    // } else {
+    //   const data = await res.json()
+    //   localStorage.setItem("user", JSON.stringify(data))
+    //   dispatch(setUser(data))
+    //   push("/dashboard")
+    // }
+
+    const signInResponse = await signIn("credentials", {
+      username,
+      password,
+      redirect: false
     })
-    if (!res.ok) {
-      Swal.fire("Wrong Username or Password", "Please try again", "error")
-    } else {
-      const data = await res.json()
-      localStorage.setItem("user", JSON.stringify(data))
-      dispatch(setUser(data))
+
+    if (signInResponse && !signInResponse?.error) {
+      // dispatch(setUser({ username }))
       push("/dashboard")
+    } else {
+      Swal.fire("Wrong Username or Password", "Please try again", "error")
     }
+  }
+
+  const googleSignInButton = async () => {
+    signIn("google")
   }
 
   return (
@@ -105,7 +123,7 @@ const Login = () => {
               <BsFacebook />
               <span className="px-4">Facebook</span>
             </button>
-            <button className={styles.socialBtns}>
+            <button className={styles.socialBtns} onClick={googleSignInButton}>
               <AiFillGoogleCircle />
               <span className="px-4">Google</span>
             </button>
