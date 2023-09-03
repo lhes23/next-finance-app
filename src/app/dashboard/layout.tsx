@@ -7,12 +7,12 @@ import { useRouter } from "next/navigation"
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const { push } = useRouter()
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.localStorage) {
-      let userData = localStorage.getItem("user")
-      if (!userData) return push("/")
-    }
-  }, [push])
+  // useEffect(() => {
+  //   if (typeof window !== "undefined" && window.localStorage) {
+  //     let userData = localStorage.getItem("user")
+  //     if (!userData) return push("/")
+  //   }
+  // }, [push])
   return (
     <>
       <div className="flex h-screen w-full bg-no-repeat bg-cover bg-[url('/imgs/bg-mountains.jpg')]">
