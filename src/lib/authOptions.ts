@@ -1,6 +1,4 @@
 import { NextAuthOptions } from "next-auth"
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { PrismaClient } from "@prisma/client"
 
 import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google"
@@ -8,15 +6,12 @@ import GithubProvider from "next-auth/providers/github"
 import { compare } from "bcrypt"
 import { prisma } from "@/prisma/prismaInit"
 
-// const prisma = new PrismaClient()
-
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
   secret: process.env.NEXT_AUTH_SECRET,
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
+      clientId: process.env.GOOGLE_CLIENT_ID ?? "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? ""
     }),
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID as string,
@@ -34,7 +29,8 @@ export const authOptions: NextAuthOptions = {
           return null
 
         const { password, email } = credentials
-        const user = await prisma.user.findFirst({
+
+        const user = await prisma.user.findUnique({
           where: { email }
         })
 
