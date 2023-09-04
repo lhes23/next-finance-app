@@ -25,18 +25,17 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "credentials",
       credentials: {
-        username: { label: "username", type: "text" },
+        // username: { label: "username", type: "text" },
+        email: { label: "email", type: "email" },
         password: { label: "password", type: "password" }
       },
       async authorize(credentials) {
-        if (!credentials || !credentials?.username || !credentials?.password)
+        if (!credentials || !credentials?.email || !credentials?.password)
           return null
 
-        const { username, password } = credentials
-        const user = await prisma.user.findUnique({
-          where: {
-            username
-          }
+        const { password, email } = credentials
+        const user = await prisma.user.findFirst({
+          where: { email }
         })
 
         if (!user) return null

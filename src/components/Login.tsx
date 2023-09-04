@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation"
 import { signIn } from "next-auth/react"
 
 const Login = () => {
-  const [username, setUsername] = useState<string>("")
+  const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
 
   const { push } = useRouter()
@@ -46,7 +46,7 @@ const Login = () => {
     // }
 
     const signInResponse = await signIn("credentials", {
-      username,
+      email,
       password,
       redirect: false
     })
@@ -82,14 +82,12 @@ const Login = () => {
                 Login
               </h1>
               <label className="block text-sm">
-                <span className="text-gray-700 dark:text-gray-400">
-                  Username
-                </span>
+                <span className="text-gray-700 dark:text-gray-400">Email</span>
                 <input
                   className="p-2 block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder="Jane Doe"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </label>
               <label className="block mt-4 text-sm">
