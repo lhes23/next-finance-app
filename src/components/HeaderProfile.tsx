@@ -1,13 +1,13 @@
 "use client"
+import React from "react"
+import { useAppDispatch, useAppSelector } from "@/redux/store"
 import {
   setShowNotifications,
   setShowProfileMenu
 } from "@/redux/dashboardSlice"
-import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { setUser } from "@/redux/userSlice"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
-import React from "react"
+import { redirect } from "next/navigation"
 import { signOut } from "next-auth/react"
 
 const HeaderProfile = () => {
@@ -15,7 +15,6 @@ const HeaderProfile = () => {
   const showProfileMenu = useAppSelector(
     (state) => state.dashboardSliceReducer.showProfileMenu
   )
-  const { push } = useRouter()
   return (
     <>
       <button
@@ -63,15 +62,15 @@ const HeaderProfile = () => {
                 className="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
                 onClick={() => {
                   signOut()
-                  localStorage.removeItem("userData")
-                  dispatch(
-                    setUser({
-                      id: "",
-                      email: "",
-                      username: ""
-                    })
-                  )
-                  push("/")
+                  // localStorage.removeItem("userData")
+                  // dispatch(
+                  //   setUser({
+                  //     id: "",
+                  //     email: "",
+                  //     username: ""
+                  //   })
+                  // )
+                  return redirect("/")
                 }}
               >
                 <span>Log out</span>
