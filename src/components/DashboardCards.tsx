@@ -20,7 +20,7 @@ const DashboardCards = () => {
 
   const incomesAmount = getAmount("income")
   const expensesAmount = getAmount("expense")
-  const cashFlowAmount = incomesAmount - expensesAmount
+  const cashFlowAmount = (incomesAmount - expensesAmount).toFixed(2)
 
   const incomeStatement = [
     {

@@ -1,18 +1,15 @@
-"use client"
+// "use client"
 import Header from "@/components/Header"
 import Sidebar from "@/components/Sidebar"
-import React, { Suspense, useEffect } from "react"
+import React, { Suspense } from "react"
 import Loading from "./loading"
-import { useRouter } from "next/navigation"
+import { authOptions } from "@/lib/authOptions"
+import { redirect } from "next/navigation"
+import { getServerSession } from "next-auth/next"
 
-const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  const { push } = useRouter()
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.localStorage) {
-      let userData = localStorage.getItem("user")
-      if (!userData) return push("/")
-    }
-  }, [push])
+const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
+  const session = await getServerSession(authOptions)
+  if (!session) return redirect("/")
   return (
     <>
       <div className="flex h-screen w-full bg-no-repeat bg-cover bg-[url('/imgs/bg-mountains.jpg')]">
