@@ -36,5 +36,6 @@ model User {
   email String  @unique
   username  String @unique
   password String
-  name String @default("")
+  name String?
+  image String?
 }
