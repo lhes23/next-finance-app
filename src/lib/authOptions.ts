@@ -2,7 +2,6 @@ import { NextAuthOptions } from "next-auth"
 
 import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google"
-import GithubProvider from "next-auth/providers/github"
 import FacebookProvider from "next-auth/providers/facebook"
 
 import { compare } from "bcrypt"
@@ -18,10 +17,6 @@ export const authOptions: NextAuthOptions = {
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID ?? "",
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET ?? ""
-    }),
-    GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID as string,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET as string
     }),
     CredentialsProvider({
       name: "credentials",
