@@ -63,6 +63,10 @@ const Login = () => {
     signIn("google")
   }
 
+  const facebookSignInButton = async () => {
+    signIn("facebook")
+  }
+
   return (
     <div className="flex-1 h-full max-w-4xl mx-auto overflow-hidden rounded-lg shadow-xl backdrop-blur-md bg-white/50">
       <div className="flex flex-col overflow-y-auto md:flex-row">
@@ -78,25 +82,23 @@ const Login = () => {
         <div className="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
           <div className="w-full">
             <form onSubmit={loginFormHandler}>
-              <h1 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
+              <h1 className="mb-4 text-xl font-semibold text-gray-700">
                 Login
               </h1>
               <label className="block text-sm">
-                <span className="text-gray-700 dark:text-gray-400">Email</span>
+                <span className="text-gray-700">Email</span>
                 <input
-                  className="p-2 block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  className="p-2 block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
                   placeholder="Jane Doe"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </label>
               <label className="block mt-4 text-sm">
-                <span className="text-gray-700 dark:text-gray-400">
-                  Password
-                </span>
+                <span className="text-gray-700">Password</span>
                 <input
-                  className="p-2 block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="***************"
+                  className="p-2 block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
+                  placeholder="*************"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -117,7 +119,10 @@ const Login = () => {
             </form>
 
             <hr className="my-4" />
-            <button className={styles.socialBtns}>
+            <button
+              className={styles.socialBtns}
+              onClick={facebookSignInButton}
+            >
               <BsFacebook />
               <span className="px-4">Facebook</span>
             </button>

@@ -10,7 +10,6 @@ import { getServerSession } from "next-auth/next"
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   const session = await getServerSession(authOptions)
   if (!session) return redirect("/")
-
   return (
     <>
       <div className="flex h-screen w-full bg-no-repeat bg-cover bg-[url('/imgs/bg-mountains.jpg')]">
