@@ -8,9 +8,10 @@ import {
 import { setUser } from "@/redux/userSlice"
 import Image from "next/image"
 import { redirect } from "next/navigation"
-import { signOut } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
 
 const HeaderProfile = () => {
+  const session = useSession()
   const dispatch = useAppDispatch()
   const showProfileMenu = useAppSelector(
     (state) => state.dashboardSliceReducer.showProfileMenu
@@ -26,14 +27,16 @@ const HeaderProfile = () => {
           dispatch(setShowNotifications(false))
         }}
       >
-        <Image
-          className="object-cover w-8 h-8 rounded-full"
-          src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
-          alt=""
-          aria-hidden="true"
-          width={32}
-          height={32}
-        />
+        {session?.data?.user?.image && (
+          <Image
+            className="object-cover w-8 h-8 rounded-full"
+            src={session?.data?.user?.image}
+            alt=""
+            aria-hidden="true"
+            width={32}
+            height={32}
+          />
+        )}
       </button>
       {showProfileMenu && (
         <div x-if="isProfileMenuOpen">
