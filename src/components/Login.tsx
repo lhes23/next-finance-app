@@ -7,7 +7,6 @@ import { AiFillGoogleCircle } from "react-icons/ai"
 import { BsFacebook } from "react-icons/bs"
 import LoadingButton from "./LoadingButton"
 import Swal from "sweetalert2"
-import { setUser } from "@/redux/userSlice"
 import { useRouter } from "next/navigation"
 import { signIn } from "next-auth/react"
 
@@ -28,43 +27,18 @@ const Login = () => {
 
   const loginFormHandler = async (e: React.FormEvent) => {
     e.preventDefault()
-
-    // const res = await fetch(`/api/users/login`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({ username, password })
-    // })
-    // if (!res.ok) {
-    //   Swal.fire("Wrong Username or Password", "Please try again", "error")
-    // } else {
-    //   const data = await res.json()
-    //   localStorage.setItem("user", JSON.stringify(data))
-    //   dispatch(setUser(data))
-    //   push("/dashboard")
-    // }
-
+    dispatch(setIsButtonLoading(true))
     const signInResponse = await signIn("credentials", {
       email,
       password,
       redirect: false
     })
-
+    dispatch(setIsButtonLoading(false))
     if (signInResponse && !signInResponse?.error) {
-      // dispatch(setUser({ username }))
       push("/dashboard")
     } else {
       Swal.fire("Wrong Username or Password", "Please try again", "error")
     }
-  }
-
-  const googleSignInButton = async () => {
-    signIn("google")
-  }
-
-  const facebookSignInButton = async () => {
-    signIn("facebook")
   }
 
   return (
@@ -104,12 +78,11 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </label>
-              {/* You should use a button here, as the anchor is only used for the example  */}
+
               {!isButtonLoading ? (
                 <button
                   className="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple hover:shadow-lg"
                   type="submit"
-                  // onClick={() => dispatch(setIsButtonLoading(true))}
                 >
                   Log in
                 </button>
@@ -121,12 +94,15 @@ const Login = () => {
             <hr className="my-4" />
             <button
               className={styles.socialBtns}
-              onClick={facebookSignInButton}
+              onClick={() => signIn("facebook")}
             >
               <BsFacebook />
               <span className="px-4">Facebook</span>
             </button>
-            <button className={styles.socialBtns} onClick={googleSignInButton}>
+            <button
+              className={styles.socialBtns}
+              onClick={() => signIn("google")}
+            >
               <AiFillGoogleCircle />
               <span className="px-4">Google</span>
             </button>
