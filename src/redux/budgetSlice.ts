@@ -6,6 +6,7 @@ interface IInitialState {
   singleBudget: ISingleBudget
   allBudgets: IBudget[]
   yearlyBudgets: IIncomesExpensesData[]
+  searchQuery: string
 }
 
 const initialState: IInitialState = {
@@ -16,7 +17,8 @@ const initialState: IInitialState = {
     budgetAmount: ""
   },
   allBudgets: [],
-  yearlyBudgets: []
+  yearlyBudgets: [],
+  searchQuery: ""
 }
 
 export const budgetSlice = createSlice({
@@ -28,6 +30,9 @@ export const budgetSlice = createSlice({
     },
     setSingleBudget: (state, action: PayloadAction<ISingleBudget>) => {
       state.singleBudget = action.payload
+    },
+    setSearchQuery: (state, action: PayloadAction<string>) => {
+      state.searchQuery = action.payload
     }
   },
   extraReducers: (builder) => {
@@ -46,6 +51,7 @@ export const budgetSlice = createSlice({
   }
 })
 
-export const { setAllBudgets, setSingleBudget } = budgetSlice.actions
+export const { setAllBudgets, setSingleBudget, setSearchQuery } =
+  budgetSlice.actions
 
 export default budgetSlice.reducer

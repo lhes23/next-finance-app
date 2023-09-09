@@ -1,10 +1,12 @@
 import React from "react"
 import { IBudget } from "@/lib/interfaces"
 import TableRow from "./TableRow"
+import SearchBar from "./SearchBar"
 
 const IncomeExpenseTable = ({ all_budgets }: { all_budgets: IBudget[] }) => {
   return (
     <>
+      <SearchBar />
       <div className="w-full overflow-hidden rounded-lg shadow-xs mb-16 backdrop-blur-lg bg-white/50">
         <div className="w-full overflow-x-auto">
           <table className="w-full whitespace-no-wrap">
