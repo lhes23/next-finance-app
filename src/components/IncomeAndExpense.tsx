@@ -27,9 +27,6 @@ const IncomeAndExpense = () => {
       return budget
     }
   })
-  useEffect(() => {
-    console.log({ searchQuery })
-  }, [searchQuery])
 
   return (
     <>
