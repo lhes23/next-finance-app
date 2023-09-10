@@ -12,6 +12,14 @@ export const getIncomeExpenseThisMonth = (incomesExpenses: IBudget[]) => {
   })
 }
 
+// For Dashboard Cards
+export const getAmount = (incomeExpenseThisMonth: IBudget[], type: string) => {
+  return incomeExpenseThisMonth
+    .filter((inExp: IBudget) => inExp.budgetType === type)
+    .map((c: IBudget) => Number(c.budgetAmount))
+    .reduce((a: number, c: number) => a + c, 0)
+}
+
 // For Dashboard Charts
 export const getIncomesExpensesData = (
   incomesExpenses: IIncomesExpensesData[]
