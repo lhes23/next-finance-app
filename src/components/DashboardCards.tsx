@@ -3,8 +3,8 @@ import React from "react"
 import Card from "./Card"
 import { GiReceiveMoney, GiPayMoney, GiCash } from "react-icons/gi"
 import { IBudget } from "@/lib/interfaces"
-import { getIncomeExpenseThisMonth } from "@/lib/getIncomeExpensesThisMonth"
 import { useAppSelector } from "@/redux/store"
+import { getIncomeExpenseThisMonth } from "@/lib/getIncomesExpensesData"
 
 const DashboardCards = () => {
   const incomesExpenses = useAppSelector(
