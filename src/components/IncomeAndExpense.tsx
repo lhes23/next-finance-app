@@ -21,8 +21,8 @@ const IncomeAndExpense = () => {
 
   all_budgets = all_budgets.filter((budget) => {
     if (
-      budget.budgetName.includes(searchQuery) ||
-      budget.budgetType.includes(searchQuery)
+      budget.budgetName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      budget.budgetType.toLowerCase().includes(searchQuery.toLowerCase())
     ) {
       return budget
     }
