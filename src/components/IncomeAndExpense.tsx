@@ -1,6 +1,6 @@
 "use client"
 import { useAppSelector } from "@/redux/store"
-import React, { useEffect } from "react"
+import React from "react"
 import IncomeExpenseTable from "./IncomeExpenseTable"
 
 const IncomeAndExpense = () => {
