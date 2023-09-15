@@ -16,6 +16,8 @@ const HeaderProfile = () => {
   const showProfileMenu = useAppSelector(
     (state) => state.dashboardSliceReducer.showProfileMenu
   )
+
+  console.log({ session })
   return (
     <>
       <button
@@ -27,16 +29,16 @@ const HeaderProfile = () => {
           dispatch(setShowNotifications(false))
         }}
       >
-        {session?.data?.user?.image && (
-          <Image
-            className="object-cover w-8 h-8 rounded-full"
-            src={session?.data?.user?.image}
-            alt=""
-            aria-hidden="true"
-            width={32}
-            height={32}
-          />
-        )}
+        {/* {session?.data?.user?.image && ( */}
+        <Image
+          className="object-cover w-8 h-8 rounded-full"
+          src={session?.data?.user?.image ?? `/imgs/no-img.jpg`}
+          alt=""
+          aria-hidden="true"
+          width={32}
+          height={32}
+        />
+        {/* )} */}
       </button>
       {showProfileMenu && (
         <div x-if="isProfileMenuOpen">
