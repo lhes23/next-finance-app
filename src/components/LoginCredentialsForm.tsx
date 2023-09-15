@@ -40,7 +40,7 @@ const LoginCredentialsForm = () => {
         <label className="block text-sm">
           <span className="text-gray-700">Email</span>
           <input
-            className="p-2 block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
+            className="text-gray-700 p-2 block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
             placeholder="Jane Doe"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -49,7 +49,7 @@ const LoginCredentialsForm = () => {
         <label className="block mt-4 text-sm">
           <span className="text-gray-700">Password</span>
           <input
-            className="p-2 block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
+            className="text-gray-700 p-2 block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
             placeholder="*************"
             type="password"
             value={password}
