@@ -5,7 +5,6 @@ import {
   setShowNotifications,
   setShowProfileMenu
 } from "@/redux/dashboardSlice"
-import { setUser } from "@/redux/userSlice"
 import Image from "next/image"
 import { redirect } from "next/navigation"
 import { signOut, useSession } from "next-auth/react"
@@ -17,7 +16,6 @@ const HeaderProfile = () => {
     (state) => state.dashboardSliceReducer.showProfileMenu
   )
 
-  console.log({ session })
   return (
     <>
       <button
@@ -29,7 +27,6 @@ const HeaderProfile = () => {
           dispatch(setShowNotifications(false))
         }}
       >
-        {/* {session?.data?.user?.image && ( */}
         <Image
           className="object-cover w-8 h-8 rounded-full"
           src={session?.data?.user?.image ?? `/imgs/no-img.jpg`}
@@ -38,7 +35,6 @@ const HeaderProfile = () => {
           width={32}
           height={32}
         />
-        {/* )} */}
       </button>
       {showProfileMenu && (
         <div x-if="isProfileMenuOpen">
