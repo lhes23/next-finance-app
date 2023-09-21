@@ -81,3 +81,8 @@ export const getAllBudgets = async () => {
   })
   return budgets
 }
+
+export const getAllYearlyBudgets = async () => {
+  const yearlyBudgets = await prisma.yearlyBudget.findMany()
+  return yearlyBudgets
+}
