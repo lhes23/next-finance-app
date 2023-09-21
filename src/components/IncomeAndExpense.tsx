@@ -1,16 +1,9 @@
-"use client"
-import { useAppSelector } from "@/redux/store"
 import React from "react"
 import IncomeExpenseTable from "./IncomeExpenseTable"
+import { getAllBudgets } from "@/actions/serverActions"
 
-const IncomeAndExpense = () => {
-  let all_budgets = useAppSelector(
-    (state) => state.budgetSliceReducer.allBudgets
-  )
-
-  const searchQuery = useAppSelector(
-    (state) => state.budgetSliceReducer.searchQuery
-  )
+const IncomeAndExpense = async () => {
+  let all_budgets = await getAllBudgets()
 
   all_budgets = all_budgets.filter(
     (budget) =>
@@ -18,15 +11,6 @@ const IncomeAndExpense = () => {
       new Date(budget.createdAt).getMonth() === new Date().getMonth() &&
       new Date(budget.createdAt).getMonth()
   )
-
-  all_budgets = all_budgets.filter((budget) => {
-    if (
-      budget.budgetName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      budget.budgetType.toLowerCase().includes(searchQuery.toLowerCase())
-    ) {
-      return budget
-    }
-  })
 
   return (
     <>

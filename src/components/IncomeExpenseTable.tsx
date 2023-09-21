@@ -1,9 +1,22 @@
+"use client"
 import React from "react"
 import { IBudget } from "@/lib/interfaces"
 import TableRow from "./TableRow"
 import SearchBar from "./SearchBar"
+import { useAppSelector } from "@/redux/store"
 
 const IncomeExpenseTable = ({ all_budgets }: { all_budgets: IBudget[] }) => {
+  const searchQuery = useAppSelector(
+    (state) => state.budgetSliceReducer.searchQuery
+  )
+  all_budgets = all_budgets.filter((budget) => {
+    if (
+      budget.budgetName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      budget.budgetType.toLowerCase().includes(searchQuery.toLowerCase())
+    ) {
+      return budget
+    }
+  })
   return (
     <>
       <SearchBar />
