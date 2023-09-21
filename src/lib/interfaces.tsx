@@ -6,8 +6,8 @@ export interface ISingleBudget {
 }
 
 export interface IBudget extends ISingleBudget {
-  createdAt: string
-  updatedAt?: string
+  createdAt: string | Date
+  updatedAt?: string | Date
 }
 
 export interface IIncomesExpensesData {

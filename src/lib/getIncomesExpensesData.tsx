@@ -4,9 +4,7 @@ import { months } from "./months"
 // For Dashboard Cards
 export const getIncomeExpenseThisMonth = (incomesExpenses: IBudget[]) => {
   return incomesExpenses?.filter((incomeExpenseRow) => {
-    const d = new Date(Date.parse(incomeExpenseRow.createdAt))
-      .toString()
-      .split(" ")
+    const d = new Date(incomeExpenseRow.createdAt).toString().split(" ")
     const dt = new Date().getMonth()
     if (d[1] === months[dt]) return incomeExpenseRow
   })

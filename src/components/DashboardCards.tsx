@@ -1,18 +1,17 @@
-"use client"
 import React from "react"
 import Card from "./Card"
 import { GiReceiveMoney, GiPayMoney, GiCash } from "react-icons/gi"
-import { useAppSelector } from "@/redux/store"
 import {
   getAmount,
   getIncomeExpenseThisMonth
 } from "@/lib/getIncomesExpensesData"
+import { getAllBudgets } from "@/actions/serverActions"
 
-const DashboardCards = () => {
-  const incomesExpenses = useAppSelector(
-    (state) => state.budgetSliceReducer.allBudgets
+const DashboardCards = async () => {
+  const incomesExpenses = await getAllBudgets()
+  const incomeExpenseThisMonth = await getIncomeExpenseThisMonth(
+    incomesExpenses
   )
-  const incomeExpenseThisMonth = getIncomeExpenseThisMonth(incomesExpenses)
 
   const incomesAmount = getAmount(incomeExpenseThisMonth, "income")
   const expensesAmount = getAmount(incomeExpenseThisMonth, "expense")

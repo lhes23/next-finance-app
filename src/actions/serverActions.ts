@@ -2,6 +2,7 @@
 
 import { baseUrl } from "@/lib/baseUrl"
 import { months } from "@/lib/months"
+import { prisma } from "@/prisma/prismaInit"
 import { revalidateTag } from "next/cache"
 
 // export const addBudgetHandler = async (e: FormData) => {
@@ -69,4 +70,14 @@ export const deleteBudget = async (id: string) => {
   })
   if (!res.ok) return
   revalidateTag("budgets")
+}
+
+// DashboardCards
+export const getAllBudgets = async () => {
+  const budgets = await prisma.budget.findMany({
+    orderBy: {
+      createdAt: "desc"
+    }
+  })
+  return budgets
 }
