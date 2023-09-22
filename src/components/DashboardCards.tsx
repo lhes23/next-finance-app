@@ -15,22 +15,22 @@ const DashboardCards = async () => {
 
   const incomesAmount = getAmount(incomeExpenseThisMonth, "income")
   const expensesAmount = getAmount(incomeExpenseThisMonth, "expense")
-  const cashFlowAmount = incomesAmount - expensesAmount
+  const cashFlowAmount = (incomesAmount - expensesAmount).toFixed(2)
 
   const incomeStatement = [
     {
       name: "Incomes",
-      amount: incomesAmount.toFixed(2),
+      amount: incomesAmount,
       icon: <GiReceiveMoney />
     },
     {
       name: "Expenses",
-      amount: expensesAmount.toFixed(2),
+      amount: expensesAmount,
       icon: <GiPayMoney />
     },
     {
       name: "Cashflow",
-      amount: cashFlowAmount.toFixed(2),
+      amount: cashFlowAmount,
       icon: <GiCash />
     }
   ]
