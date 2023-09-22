@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect } from "react"
 import { useAppDispatch } from "@/redux/store"
-import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs2"
+// import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs2"
 import { setIsButtonLoading, setShowSidebar } from "@/redux/dashboardSlice"
 import BudgetModal from "./BudgetModal"
 
@@ -15,8 +15,8 @@ const PageComponent = ({
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(getAllBudgets())
-    dispatch(getAllYearlyBudgets())
+    // dispatch(getAllBudgets())
+    // dispatch(getAllYearlyBudgets())
     dispatch(setShowSidebar(false))
     dispatch(setIsButtonLoading(false))
   }, [dispatch])

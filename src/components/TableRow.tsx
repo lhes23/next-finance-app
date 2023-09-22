@@ -5,7 +5,7 @@ import { BsFillTrashFill, BsPencil } from "react-icons/bs"
 import Swal from "sweetalert2"
 import { useAppDispatch } from "@/redux/store"
 import { setShowModal } from "@/redux/dashboardSlice"
-import { getAllBudgets } from "@/redux/createAsyncs2"
+// import { getAllBudgets } from "@/redux/createAsyncs2"
 import { setSingleBudget } from "@/redux/budgetSlice"
 
 const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
@@ -34,7 +34,7 @@ const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
         fetch(`/api/budgets/${id}`, {
           method: "DELETE"
         }).then(() => {
-          dispatch(getAllBudgets())
+          // dispatch(getAllBudgets())
           Swal.fire("Deleted!", "Your budget has been deleted.", "success")
         })
       }

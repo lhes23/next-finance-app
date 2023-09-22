@@ -4,7 +4,7 @@ import { IIncomesExpensesData, ISelectOption } from "@/lib/interfaces"
 import YearlyTableRow from "./YearlyTableRow"
 import ReactSelect from "react-select"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
-import { getAllYearlyBudgets } from "@/redux/createAsyncs2"
+// import { getAllYearlyBudgets } from "@/redux/createAsyncs2"
 
 const YearlyTable = () => {
   const dispatch = useAppDispatch()
@@ -12,9 +12,9 @@ const YearlyTable = () => {
     (state) => state.budgetSliceReducer.yearlyBudgets
   )
 
-  useEffect(() => {
-    dispatch(getAllYearlyBudgets())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(getAllYearlyBudgets())
+  // }, [dispatch])
 
   const [year, setYear] = useState<number>(2023)
   const dataIncomeExpense = incomesExpensesData.filter(
