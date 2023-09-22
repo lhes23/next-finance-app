@@ -3,7 +3,7 @@ import React, { useEffect } from "react"
 import LineChart, { IData } from "./LineChart"
 import { getIncomesExpensesData } from "@/lib/getIncomesExpensesData"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
-import { getAllYearlyBudgets } from "@/redux/createAsyncs"
+import { getAllYearlyBudgets } from "@/redux/createAsyncs2"
 
 const DashboardCharts = () => {
   const dispatch = useAppDispatch()

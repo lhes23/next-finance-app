@@ -2,7 +2,7 @@
 import React from "react"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { setIsButtonLoading, setShowModal } from "@/redux/dashboardSlice"
-import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs"
+import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs2"
 import Swal from "sweetalert2"
 import { setSingleBudget } from "@/redux/budgetSlice"
 import { addBudgetRequest, editBudgetRequest } from "@/lib/fetchData"

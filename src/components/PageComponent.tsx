@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect } from "react"
 import { useAppDispatch } from "@/redux/store"
-import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs"
+import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs2"
 import { setIsButtonLoading, setShowSidebar } from "@/redux/dashboardSlice"
 import BudgetModal from "./BudgetModal"
 

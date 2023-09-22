@@ -4,7 +4,7 @@ import { IIncomesExpensesData, ISelectOption } from "@/lib/interfaces"
 import YearlyTableRow from "./YearlyTableRow"
 import ReactSelect from "react-select"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
-import { getAllYearlyBudgets } from "@/redux/createAsyncs"
+import { getAllYearlyBudgets } from "@/redux/createAsyncs2"
 
 const YearlyTable = () => {
   const dispatch = useAppDispatch()

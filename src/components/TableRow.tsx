@@ -5,7 +5,7 @@ import { BsFillTrashFill, BsPencil } from "react-icons/bs"
 import Swal from "sweetalert2"
 import { useAppDispatch } from "@/redux/store"
 import { setShowModal } from "@/redux/dashboardSlice"
-import { getAllBudgets } from "@/redux/createAsyncs"
+import { getAllBudgets } from "@/redux/createAsyncs2"
 import { setSingleBudget } from "@/redux/budgetSlice"
 
 const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
