@@ -4,22 +4,20 @@ import { IIncomesExpensesData, ISelectOption } from "@/lib/interfaces"
 import YearlyTableRow from "./YearlyTableRow"
 import ReactSelect from "react-select"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
+import YearlyTableBody from "@/app/dashboard/yearly-budgets/components/YearlyTableBody"
+import YearBudgetsSelect from "./YearBudgetsSelect"
 // import { getAllYearlyBudgets } from "@/redux/createAsyncs2"
 
-const YearlyTable = () => {
-  const dispatch = useAppDispatch()
-  const incomesExpensesData = useAppSelector(
-    (state) => state.budgetSliceReducer.yearlyBudgets
-  )
+const YearlyTable = ({
+  yearlyBudgets
+}: {
+  yearlyBudgets: IIncomesExpensesData[]
+}) => {
+  // const dispatch = useAppDispatch()
 
   // useEffect(() => {
   //   dispatch(getAllYearlyBudgets())
   // }, [dispatch])
-
-  const [year, setYear] = useState<number>(2023)
-  const dataIncomeExpense = incomesExpensesData.filter(
-    (ied) => ied.year === year
-  )
 
   // const iedOptions: ISelectOption[] = incomesExpensesData.map((ied) => {
   //   return {
@@ -28,20 +26,9 @@ const YearlyTable = () => {
   //   }
   // })
 
-  const iedOptions: ISelectOption[] = [
-    { label: "2023", value: 2023 },
-    { label: "2024", value: 2024 },
-    { label: "2025", value: 2025 },
-    { label: "2026", value: 2026 }
-  ]
-
   return (
     <>
-      <ReactSelect
-        options={iedOptions}
-        onChange={(selected: any) => setYear(selected?.value)}
-        className="text-black"
-      />
+      <YearBudgetsSelect yearlyBudgets={yearlyBudgets} />
       <div className="w-full overflow-hidden rounded-lg shadow-xs backdrop-blur-lg bg-white/50 text-black">
         <div className="w-full overflow-x-auto">
           <table className="w-full whitespace-no-wrap">
@@ -53,18 +40,7 @@ const YearlyTable = () => {
                 <th className="px-4 py-3">Cash Flow</th>
               </tr>
             </thead>
-            <tbody className="">
-              {dataIncomeExpense.map(
-                (incomeExpenseRow: IIncomesExpensesData, i: number) => {
-                  return (
-                    <YearlyTableRow
-                      key={i}
-                      incomeExpenseRow={incomeExpenseRow}
-                    />
-                  )
-                }
-              )}
-            </tbody>
+            <YearlyTableBody />
           </table>
         </div>
       </div>
