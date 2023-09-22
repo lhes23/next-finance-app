@@ -16,8 +16,8 @@ export interface IIncomesExpensesData {
   month: string
   income: number
   expense: number
-  createdAt?: string | Date
-  updatedAt?: string | Date
+  createdAt?: string
+  updatedAt?: string
 }
 
 export interface ISelectOption {
