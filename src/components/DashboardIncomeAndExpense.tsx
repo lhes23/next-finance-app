@@ -2,10 +2,10 @@ import React from "react"
 import IncomeExpenseTable from "./IncomeExpenseTable"
 import { getAllBudgets } from "@/actions/serverActions"
 
-const IncomeAndExpense = async () => {
-  let all_budgets = await getAllBudgets()
+const DashboardIncomeAndExpense = async () => {
+  let allBudgets = await getAllBudgets()
 
-  all_budgets = all_budgets.filter(
+  allBudgets = allBudgets.filter(
     (budget) =>
       new Date(budget.createdAt).getFullYear() === new Date().getFullYear() &&
       new Date(budget.createdAt).getMonth() === new Date().getMonth() &&
@@ -14,9 +14,9 @@ const IncomeAndExpense = async () => {
 
   return (
     <>
-      <IncomeExpenseTable all_budgets={all_budgets} />
+      <IncomeExpenseTable allBudgets={allBudgets} />
     </>
   )
 }
 
-export default IncomeAndExpense
+export default DashboardIncomeAndExpense

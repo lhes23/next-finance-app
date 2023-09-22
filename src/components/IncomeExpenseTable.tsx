@@ -5,21 +5,13 @@ import TableRow from "./TableRow"
 import SearchBar from "./SearchBar"
 import { useAppSelector } from "@/redux/store"
 
-const IncomeExpenseTable = ({ all_budgets }: { all_budgets: IBudget[] }) => {
-  const searchQuery = useAppSelector(
-    (state) => state.budgetSliceReducer.searchQuery
+const IncomeExpenseTable = ({ allBudgets }: { allBudgets: IBudget[] }) => {
+  const filteredAllBudgets = useAppSelector(
+    (state) => state.budgetSliceReducer.filteredAllBudgets
   )
-  all_budgets = all_budgets.filter((budget) => {
-    if (
-      budget.budgetName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      budget.budgetType.toLowerCase().includes(searchQuery.toLowerCase())
-    ) {
-      return budget
-    }
-  })
   return (
     <>
-      <SearchBar />
+      <SearchBar allBudgets={allBudgets} />
       <div className="w-full overflow-hidden rounded-lg shadow-xs mb-16 backdrop-blur-lg bg-white/50">
         <div className="w-full overflow-x-auto">
           <table className="w-full whitespace-no-wrap">
@@ -33,7 +25,7 @@ const IncomeExpenseTable = ({ all_budgets }: { all_budgets: IBudget[] }) => {
               </tr>
             </thead>
             <tbody className="divide-y dark:divide-gray-700">
-              {all_budgets.map((incomeExpenseRow: IBudget) => {
+              {filteredAllBudgets.map((incomeExpenseRow: IBudget) => {
                 return (
                   <TableRow
                     key={incomeExpenseRow.id}

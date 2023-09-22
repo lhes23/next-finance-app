@@ -72,7 +72,7 @@ export const deleteBudget = async (id: string) => {
   revalidateTag("budgets")
 }
 
-// DashboardCards
+// DashboardCards, IncomeAndExpense, AllBudgetsPage
 export const getAllBudgets = async () => {
   const budgets = await prisma.budget.findMany({
     orderBy: {
@@ -82,6 +82,7 @@ export const getAllBudgets = async () => {
   return budgets
 }
 
+// DashboardCharts
 export const getAllYearlyBudgets = async () => {
   const yearlyBudgets = await prisma.yearlyBudget.findMany()
   return yearlyBudgets

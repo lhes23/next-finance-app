@@ -2,7 +2,7 @@ import React from "react"
 import PageComponent from "@/components/PageComponent"
 import DashboardCards from "@/components/DashboardCards"
 import DashboardCharts from "@/components/DashboardCharts"
-import IncomeAndExpense from "@/components/IncomeAndExpense"
+import DashboardIncomeAndExpense from "@/components/DashboardIncomeAndExpense"
 
 const DashboardPage = async () => {
   return (
@@ -15,7 +15,7 @@ const DashboardPage = async () => {
         <DashboardCharts />
 
         {/* New Table */}
-        <IncomeAndExpense />
+        <DashboardIncomeAndExpense />
       </PageComponent>
     </>
   )

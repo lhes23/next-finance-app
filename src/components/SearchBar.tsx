@@ -1,13 +1,32 @@
 "use client"
-import { setSearchQuery } from "@/redux/budgetSlice"
+import { IBudget } from "@/lib/interfaces"
+import { setFilteredAllBudgets, setSearchQuery } from "@/redux/budgetSlice"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
-import React from "react"
+import React, { useEffect } from "react"
 
-const SearchBar = () => {
+const SearchBar = ({ allBudgets }: { allBudgets: IBudget[] }) => {
+  const dispatch = useAppDispatch()
+
   const searchQuery = useAppSelector(
     (state) => state.budgetSliceReducer.searchQuery
   )
-  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(
+      setFilteredAllBudgets(
+        allBudgets?.filter((budget) => {
+          if (
+            budget.budgetName
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase()) ||
+            budget.budgetType.toLowerCase().includes(searchQuery.toLowerCase())
+          ) {
+            return budget
+          }
+        })
+      )
+    )
+  }, [searchQuery])
   return (
     <>
       <div
