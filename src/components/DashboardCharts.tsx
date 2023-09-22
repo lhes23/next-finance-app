@@ -1,19 +1,21 @@
-"use client"
+// "use client"
 import React, { useEffect } from "react"
 import LineChart, { IData } from "./LineChart"
 import { getIncomesExpensesData } from "@/lib/getIncomesExpensesData"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
-import { getAllYearlyBudgets } from "@/redux/createAsyncs2"
+import { getAllYearlyBudgets } from "@/actions/serverActions"
+// import { getAllYearlyBudgets } from "@/redux/createAsyncs2"
 
-const DashboardCharts = () => {
-  const dispatch = useAppDispatch()
-  useEffect(() => {
-    dispatch(getAllYearlyBudgets())
-  }, [dispatch])
+const DashboardCharts = async () => {
+  // const dispatch = useAppDispatch()
+  const incomesExpenses = await getAllYearlyBudgets()
+  // useEffect(() => {
+  //   dispatch(getAllYearlyBudgets())
+  // }, [dispatch])
 
-  const incomesExpenses = useAppSelector(
-    (state) => state.budgetSliceReducer.yearlyBudgets
-  )
+  // const incomesExpenses = useAppSelector(
+  //   (state) => state.budgetSliceReducer.yearlyBudgets
+  // )
   const monthsIncomesExpenses = getIncomesExpensesData(incomesExpenses)
 
   const incomesExpensesData: IData = {
