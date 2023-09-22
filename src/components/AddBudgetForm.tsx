@@ -2,7 +2,7 @@
 import React from "react"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { setIsButtonLoading, setShowModal } from "@/redux/dashboardSlice"
-import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs2"
+// import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs2"
 import Swal from "sweetalert2"
 import { setSingleBudget } from "@/redux/budgetSlice"
 import { addBudgetRequest, editBudgetRequest } from "@/lib/fetchData"
@@ -27,8 +27,8 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
 
     Swal.fire("Budget Saved", "You've added a budget for this month", "success")
 
-    dispatch(getAllBudgets())
-    dispatch(getAllYearlyBudgets())
+    // dispatch(getAllBudgets())
+    // dispatch(getAllYearlyBudgets())
     dispatch(setShowModal(false))
     dispatch(
       setSingleBudget({
