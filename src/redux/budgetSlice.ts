@@ -1,6 +1,6 @@
 import { IBudget, IIncomesExpensesData, ISingleBudget } from "@/lib/interfaces"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { getAllBudgets, getAllYearlyBudgets } from "./createAsyncs"
+// import { getAllBudgets, getAllYearlyBudgets } from "./createAsyncs2"
 
 interface IInitialState {
   singleBudget: ISingleBudget
@@ -10,6 +10,7 @@ interface IInitialState {
   selectBudgetType: string
   selectPerMonthTotal: number
   filteredAllBudgets: IBudget[]
+  filteredYearlyBudgets: IIncomesExpensesData[]
 }
 
 const initialState: IInitialState = {
@@ -24,7 +25,8 @@ const initialState: IInitialState = {
   searchQuery: "",
   selectBudgetType: "",
   selectPerMonthTotal: 0,
-  filteredAllBudgets: []
+  filteredAllBudgets: [],
+  filteredYearlyBudgets: []
 }
 
 export const budgetSlice = createSlice({
@@ -48,22 +50,28 @@ export const budgetSlice = createSlice({
     },
     setFilteredAllBudgets: (state, action: PayloadAction<IBudget[]>) => {
       state.filteredAllBudgets = action.payload
+    },
+    setFilteredYearlyBudgets: (
+      state,
+      action: PayloadAction<IIncomesExpensesData[]>
+    ) => {
+      state.filteredYearlyBudgets = action.payload
     }
-  },
-  extraReducers: (builder) => {
-    builder.addCase(
-      getAllBudgets.fulfilled,
-      function (state, action: PayloadAction<IBudget[]>) {
-        state.allBudgets = action.payload
-      }
-    ),
-      builder.addCase(
-        getAllYearlyBudgets.fulfilled,
-        function (state, action: PayloadAction<IIncomesExpensesData[]>) {
-          state.yearlyBudgets = action.payload
-        }
-      )
   }
+  // extraReducers: (builder) => {
+  //   builder.addCase(
+  //     getAllBudgets.fulfilled,
+  //     function (state, action: PayloadAction<IBudget[]>) {
+  //       state.allBudgets = action.payload
+  //     }
+  //   ),
+  //     builder.addCase(
+  //       getAllYearlyBudgets.fulfilled,
+  //       function (state, action: PayloadAction<IIncomesExpensesData[]>) {
+  //         state.yearlyBudgets = action.payload
+  //       }
+  //     )
+  // }
 })
 
 export const {
@@ -72,7 +80,8 @@ export const {
   setSearchQuery,
   setSelectBudgetType,
   setSelectPerMonthTotal,
-  setFilteredAllBudgets
+  setFilteredAllBudgets,
+  setFilteredYearlyBudgets
 } = budgetSlice.actions
 
 export default budgetSlice.reducer
