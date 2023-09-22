@@ -2,16 +2,16 @@
 import { IBudget, ISelectOption } from "@/lib/interfaces"
 import { months } from "@/lib/months"
 import {
+  setFilteredAllBudgets,
   setSelectBudgetType,
   setSelectPerMonthTotal
 } from "@/redux/budgetSlice"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import ReactSelect from "react-select"
 
 const MonthsBudgetTypeSelect = ({ allBudgets }: { allBudgets: IBudget[] }) => {
   const [month, setMonth] = useState<number>(new Date().getMonth())
-  //   const [budgetType, setBudgetType] = useState<string>("")
 
   const dispatch = useAppDispatch()
   const budgetType = useAppSelector(
@@ -46,16 +46,22 @@ const MonthsBudgetTypeSelect = ({ allBudgets }: { allBudgets: IBudget[] }) => {
     }
   })
 
-  let perMonthTotal: number = perMonth
+  const perMonthTotal = perMonth
     .map((p) => (p.budgetType === budgetType ? Number(p.budgetAmount) : 0))
     .reduce((a, c) => a + c, 0)
 
-  dispatch(setSelectPerMonthTotal(perMonthTotal))
+  useEffect(() => {
+    dispatch(setFilteredAllBudgets(perMonth))
+    dispatch(setSelectPerMonthTotal(perMonthTotal))
+  }, [perMonth, dispatch, perMonthTotal])
+
   return (
     <>
       <ReactSelect
         options={iedOptions}
-        onChange={(selected: any) => setMonth(selected?.value)}
+        onChange={(selected: any) => {
+          setMonth(selected?.value)
+        }}
         className="text-black w-full"
         placeholder="Month"
       />
@@ -65,9 +71,10 @@ const MonthsBudgetTypeSelect = ({ allBudgets }: { allBudgets: IBudget[] }) => {
           { label: "Expenses", value: "expense" },
           { label: "All", value: "" }
         ]}
-        onChange={(selected: any) =>
+        onChange={(selected: any) => {
           dispatch(setSelectBudgetType(selected?.value))
-        }
+          dispatch(setSelectPerMonthTotal(perMonthTotal))
+        }}
         className="text-black w-full"
         placeholder="Budget Type"
       />
