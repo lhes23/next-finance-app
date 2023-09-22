@@ -11,7 +11,6 @@ const DashboardIncomeAndExpense = async () => {
       new Date(budget.createdAt).getMonth() === new Date().getMonth() &&
       new Date(budget.createdAt).getMonth()
   )
-
   return (
     <>
       <IncomeExpenseTable allBudgets={allBudgets} />
