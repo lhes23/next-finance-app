@@ -17,7 +17,7 @@ const TableRow = ({ incomeExpenseRow }: { incomeExpenseRow: IBudget }) => {
 
   const d =
     incomeExpenseRow?.updatedAt !== undefined
-      ? new Date(Date.parse(incomeExpenseRow.updatedAt)).toString().split(" ")
+      ? new Date(incomeExpenseRow.updatedAt).toString().split(" ")
       : ""
 
   const deleteHandler = (id: string) => {
