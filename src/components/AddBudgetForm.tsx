@@ -2,10 +2,9 @@
 import React from "react"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { setIsButtonLoading, setShowModal } from "@/redux/dashboardSlice"
-// import { getAllBudgets, getAllYearlyBudgets } from "@/redux/createAsyncs2"
 import Swal from "sweetalert2"
 import { setSingleBudget } from "@/redux/budgetSlice"
-import { addBudgetRequest, editBudgetRequest } from "@/lib/fetchData"
+import { addBudget, editBudget } from "@/actions/serverActions"
 
 const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
   const dispatch = useAppDispatch()
@@ -13,17 +12,19 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
     (state) => state.budgetSliceReducer.singleBudget
   )
 
-  const submitFormHandler = async (e: React.FormEvent) => {
-    e.preventDefault()
-    let response
+  const submitFormHandler = async (formData: FormData) => {
     dispatch(setIsButtonLoading(true))
-    if (singleBudget.id !== "") {
-      response = await editBudgetRequest(singleBudget)
-    } else {
-      response = await addBudgetRequest(singleBudget)
-    }
+    const response =
+      singleBudget.id !== ""
+        ? await editBudget(singleBudget.id, singleBudget)
+        : await addBudget(singleBudget)
+    // if (singleBudget.id !== "") {
+    //   response = await editBudget(singleBudget.id, singleBudget)
+    // } else {
+    //   response = await addBudget(singleBudget)
+    // }
     dispatch(setIsButtonLoading(false))
-    if (!response.ok) console.log({ response })
+    if (!response) console.log({ response })
 
     Swal.fire("Budget Saved", "You've added a budget for this month", "success")
 
@@ -42,8 +43,7 @@ const AddBudgetForm = ({ children }: { children?: React.ReactNode }) => {
 
   return (
     <>
-      {/* <form className="w-full max-w-md p-2" action={addBudgetHandler}> */}
-      <form className="w-full max-w-md p-2" onSubmit={submitFormHandler}>
+      <form className="w-full max-w-md p-2" action={submitFormHandler}>
         <div className="mb-6">
           <div className="">
             <label
