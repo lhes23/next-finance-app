@@ -26,7 +26,7 @@ const SearchBar = ({ allBudgets }: { allBudgets: IBudget[] }) => {
         })
       )
     )
-  }, [searchQuery])
+  }, [dispatch, allBudgets, searchQuery])
   return (
     <>
       <div
